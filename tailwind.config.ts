@@ -62,14 +62,10 @@ const config: Config = {
         },
       },
     },
-    // colors: {
-    //   bgMain: "#242629",
-    //   bgCard: "#16161a",
-    //   title: "#fffffe",
-    //   paragraph: "#94a1b2",
-    //   highlight: "#7f5af0",
-    //   stroke: "#010101",
-    // },
+    colors: {
+      primary: "#e11d48",
+      stroke: "#5a5a5a",
+    },
   },
   plugins: [tailwindcssAnimate],
 };

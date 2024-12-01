@@ -25,6 +25,7 @@
       "@/layout/*": ["src/components/layout/*"],
       "@/module/*": ["src/components/module/*"],
       "@/template/*": ["src/components/template/*"],
+      "@/ui/*": ["src/components/ui/*"],
       "@/config/*": ["src/config/*"],
       "@/models/*": ["src/models/*"],
       "@/providers/*": ["src/providers/*"],

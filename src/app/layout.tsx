@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Children } from "@/types/types";
 
+import Layout from "@/layout/Layout";
+
 import ShadThemeProviders from "@/providers/ShadThemeProvider";
 
 import myFont from "@/config/font";
@@ -14,9 +16,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Children) {
   return (
-    <html lang="en" className={`${myFont.className} text-base`}>
-      <body className="max-w-7xl p-2 ">
-        <ShadThemeProviders>{children}</ShadThemeProviders>
+    <html lang="en" className={`${myFont.className}`}>
+      <body className="max-w-5xl p-2 ">
+        <ShadThemeProviders>
+          <Layout>{children}</Layout>
+        </ShadThemeProviders>
       </body>
     </html>
   );

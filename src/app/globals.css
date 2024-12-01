@@ -1,10 +1,11 @@
-/* :root {
-  --bg-main: #242629;
-  --bg-card: #16161a;
-  --title: #fffffe;
-  --paragraph: #94a1b2;
-  --stroke: #010101;
-} */
+:root {
+  /* --bg-main: #242629; */
+  /* --bg-card: #16161a; */
+  /* --title: #fffffe; */
+  /* --paragraph: #94a1b2; */
+  --primary: #e11d48;
+  --stroke: #5a5a5a;
+}
 
 * {
   padding: 0;
@@ -31,7 +32,7 @@ input {
 @tailwind utilities;
 
 body {
-  max-width: 1280px;
+  max-width: 1024px;
   margin: 0 auto;
 }
 
