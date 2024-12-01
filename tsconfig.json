@@ -19,6 +19,7 @@
     ],
     "baseUrl": ".",
     "paths": {
+      "@/*": ["./src/*"],
       "@/app/*": ["src/app/*"],
       "@/element/*": ["src/components/element/*"],
       "@/layout/*": ["src/components/layout/*"],
@@ -26,6 +27,7 @@
       "@/template/*": ["src/components/template/*"],
       "@/config/*": ["src/config/*"],
       "@/models/*": ["src/models/*"],
+      "@/providers/*": ["src/providers/*"],
       "@/serverAction/*": ["src/serverAction/*"],
       "@/types/*": ["src/types/*"],
       "@/utils/*": ["src/utils/*"]
