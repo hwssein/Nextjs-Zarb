@@ -5,13 +5,21 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      fontFamily: {
+        poppins: ["var(--font-poppins)"],
       },
+    },
+    colors: {
+      bgMain: "#242629",
+      bgCard: "#16161a",
+      title: "#fffffe",
+      paragraph: "#94a1b2",
+      highlight: "#7f5af0",
+      stroke: "#010101",
     },
   },
   plugins: [],

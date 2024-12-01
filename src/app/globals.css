@@ -1,27 +1,38 @@
+:root {
+  --bg-main: #242629;
+  --bg-card: #16161a;
+  --title: #fffffe;
+  --paragraph: #94a1b2;
+  --highlight: #7f5af0;
+  --stroke: #010101;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+  border: none;
+  outline: none;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+a,
+button,
+input {
+  font-family: inherit;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  max-width: 1280px;
+  margin: 0 auto;
+  background-color: var(--bg-main);
 }
