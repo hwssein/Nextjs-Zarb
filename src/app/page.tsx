@@ -1,4 +1,4 @@
-function Home() {
+async function Home() {
   return <div>Home</div>;
 }
 
