@@ -4,6 +4,7 @@ import { Children } from "@/types/types";
 
 import { useEffect, useState } from "react";
 
+import Loader from "@/element/Loader";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 
 function ShadThemeProviders({ children }: Children) {
@@ -14,7 +15,7 @@ function ShadThemeProviders({ children }: Children) {
   }, []);
 
   if (!mounted) {
-    return null;
+    return <Loader />;
   }
   return (
     <>
