@@ -2,12 +2,14 @@ import { Children } from "@/types/types";
 
 import Header from "./Header";
 import Footer from "./Footer";
+import checkSession from "@/serverAction/checkSession";
 
 function Layout({ children }: Children) {
+  const session = checkSession();
+
   return (
     <>
-      <Header />
-      <span className="w-full h-px bg-stroke block my-3"></span>
+      <Header session={session} />
       {children}
       <Footer />
     </>

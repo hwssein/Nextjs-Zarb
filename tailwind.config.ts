@@ -20,6 +20,8 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        stroke: "#5a5a5a",
+
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -61,10 +63,6 @@ const config: Config = {
           "5": "hsl(var(--chart-5))",
         },
       },
-    },
-    colors: {
-      primary: "#e11d48",
-      stroke: "#5a5a5a",
     },
   },
   plugins: [tailwindcssAnimate],

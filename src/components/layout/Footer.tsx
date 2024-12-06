@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
-import React from "react";
+import { usePathname } from "next/navigation";
 
 function Footer() {
+  const pathName = usePathname();
+  if (pathName === "/login") return null;
+
   return (
     <>
       <div className="w-full flex items-center justify-start flex-col mt-6">

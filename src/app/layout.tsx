@@ -8,6 +8,7 @@ import ApolloProviders from "@/providers/ApolloProviders";
 
 import myFont from "@/config/font";
 import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "MuGym | The Music for Gym",
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: Children) {
             <Layout>{children}</Layout>
           </ApolloProviders>
         </ShadThemeProviders>
+        <Toaster />
       </body>
     </html>
   );

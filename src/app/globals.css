@@ -1,8 +1,4 @@
 :root {
-  /* --bg-main: #242629; */
-  /* --bg-card: #16161a; */
-  /* --title: #fffffe; */
-  /* --paragraph: #94a1b2; */
   --primary-color: #e11d48;
   --stroke: #5a5a5a;
 }
@@ -27,7 +23,6 @@ input {
   font-family: inherit;
 }
 
-/* HTML: <div class="loader"></div> */
 .loader {
   width: 50px;
   aspect-ratio: 1;
