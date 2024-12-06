@@ -51,7 +51,7 @@ function LoginPage() {
           width={500}
           height={400}
           alt="logo"
-          className="w-48 mb-4 rounded"
+          className="w-44 mb-4 rounded"
         ></Image>
 
         <p className="w-full text-center capitalize mb-2">

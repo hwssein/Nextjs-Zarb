@@ -25,7 +25,7 @@ function Header({
           width={400}
           height={300}
           alt="logo"
-          className="w-28 rounded"
+          className="w-24 rounded"
         ></Image>
 
         <div className="flex flex-row items-center justify-end gap-4">
