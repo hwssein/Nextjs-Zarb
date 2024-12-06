@@ -1,4 +1,4 @@
-import { Button } from "../ui/button";
+import LogoutButton from "../element/LogoutButton";
 
 function InformationSection({
   user,
@@ -26,7 +26,7 @@ function InformationSection({
       </div>
 
       <div className="w-full flex items-center justify-end">
-        <Button size="sm">Logout</Button>
+        <LogoutButton />
       </div>
     </section>
   );
