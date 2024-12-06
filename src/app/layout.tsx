@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Children) {
   return (
     <html lang="en" className={`${myFont.className}`}>
-      <body className="max-w-5xl p-2 ">
+      <body className="max-w-5xl p-2 font-normal">
         <ShadThemeProviders>
           <ApolloProviders>
             <Layout>{children}</Layout>

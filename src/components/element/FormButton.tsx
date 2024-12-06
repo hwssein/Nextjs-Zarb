@@ -8,7 +8,7 @@ function FormButton({ title }: { title: string }) {
   return (
     <>
       {pending ? (
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full" disabled={true}>
           <Loader />
         </Button>
       ) : (

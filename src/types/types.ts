@@ -16,7 +16,14 @@ export interface FindExistingUserProps {
     email: string;
     role: "ADMIN" | "USER";
     password: string;
+    createdAt: string;
   }[];
+}
+export interface UserInfo {
+  email: string;
+  id: string;
+  role: "ADMIN" | "USER";
+  createdAt: string;
 }
 
 export interface CheckSessionResponse {

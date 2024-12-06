@@ -7,6 +7,7 @@ const Find_Existing_User = gql`
       email
       role
       password
+      createdAt
     }
   }
 `;
