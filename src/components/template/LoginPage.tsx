@@ -46,7 +46,13 @@ function LoginPage() {
   return (
     <>
       <div className="w-5/6 flex flex-col items-center justify-start gap-2 bg-secondary rounded-md my-4 mx-auto py-4 px-1 shadow sm:w-4/6">
-        <p className="text-5xl mb-2">MuGym</p>
+        <Image
+          src="/images/logo.png"
+          width={500}
+          height={400}
+          alt="logo"
+          className="w-48 mb-4 rounded"
+        ></Image>
 
         <p className="w-full text-center capitalize mb-2">
           login or register your account

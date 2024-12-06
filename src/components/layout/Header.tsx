@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 import { CheckSessionResponse } from "@/types/types";
@@ -19,9 +20,13 @@ function Header({
   return (
     <>
       <nav className="w-full flex items-center justify-between">
-        <strong className="font-bold text-2xl text-highlight tracking-widest">
-          MuGym
-        </strong>
+        <Image
+          src="/images/logo.png"
+          width={400}
+          height={300}
+          alt="logo"
+          className="w-28 rounded"
+        ></Image>
 
         <div className="flex flex-row items-center justify-end gap-4">
           <span>

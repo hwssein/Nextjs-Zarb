@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -10,9 +11,13 @@ function Footer() {
   return (
     <>
       <div className="w-full flex items-center justify-start flex-col mt-6">
-        <span className="font-bold text-2xl text-highlight tracking-widest mb-4">
-          MuGym
-        </span>
+        <Image
+          src="/images/logo.png"
+          width={400}
+          height={300}
+          alt="logo"
+          className="w-48 mb-4 rounded"
+        ></Image>
 
         <span className="font-light capitalize mb-1">
           Listen to the music and build your body

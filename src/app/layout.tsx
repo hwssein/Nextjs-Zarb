@@ -11,7 +11,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: "MuGym | The Music for Gym",
+  title: "ZARB | The Music For Build The Body",
   description:
     "this is a next.js project developed by hwssein for personal or public usage",
 };
