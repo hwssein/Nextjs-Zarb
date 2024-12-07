@@ -1,6 +1,5 @@
 import { Bool, LoginFormType } from "@/types/types";
 
-import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 
 import { Eye, EyeOff } from "lucide-react";
