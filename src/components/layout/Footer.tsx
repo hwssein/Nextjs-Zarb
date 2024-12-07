@@ -16,7 +16,7 @@ function Footer() {
           width={400}
           height={300}
           alt="logo"
-          className="w-40 mb-4 rounded"
+          className="w-32 mb-4 rounded"
         ></Image>
 
         <span className="font-light capitalize mb-1">

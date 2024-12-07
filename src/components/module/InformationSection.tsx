@@ -1,4 +1,4 @@
-import LogoutButton from "../element/LogoutButton";
+import { Button } from "../ui/button";
 
 function InformationSection({
   user,
@@ -11,22 +11,29 @@ function InformationSection({
   const day = String(date.getDate()).padStart(2, "0");
 
   return (
-    <section className="w-full bg-secondary py-1 px-2 flex flex-col items-start justify-start gap-1 rounded-md border border-stroke">
+    <section className="w-full p-2 flex flex-col items-start justify-start gap-2 rounded-md border border-stroke shadow-sm">
       <div className="w-full flex items-center gap-1 font-light">
         <span>Email:</span>
         <span>{user.email}</span>
       </div>
+
       <div className="w-full flex items-center gap-1 font-light">
         <span>Role:</span>
         <span>{user.role}</span>
       </div>
+
       <div className="w-full flex items-center gap-1 font-light">
         <span>Register Date:</span>
         <span>{`${year}-${month}-${day}`}</span>
       </div>
 
-      <div className="w-full flex items-center justify-end">
-        <LogoutButton />
+      <div className="w-full flex items-center justify-around gap-2 ">
+        <Button variant="secondary" size="sm" className="font-light">
+          Your Musics
+        </Button>
+        <Button variant="secondary" size="sm" className="font-light">
+          Liked Musics
+        </Button>
       </div>
     </section>
   );
