@@ -1,5 +1,7 @@
 export type Children = Readonly<{ children: React.ReactNode }>;
 export type Bool = boolean;
+export type OnChangeType = React.ChangeEvent<HTMLInputElement>;
+export type OnClickType = React.MouseEvent<HTMLButtonElement>;
 
 export interface LoginFormType {
   email: string;
@@ -29,4 +31,12 @@ export interface UserInfo {
 export interface CheckSessionResponse {
   email: string;
   exp?: number;
+}
+
+export interface MusicFormProps {
+  name: string;
+  artist: string;
+  url: string;
+  category: "remix" | "electronic" | "hip-hop" | "house";
+  language: "persian" | "english" | "turkish" | "other";
 }
