@@ -16,4 +16,28 @@ const Publish_Item = gql`
   }
 `;
 
-export { Create_User, Publish_Item };
+const Create_Music = gql`
+  mutation createMusic(
+    $name: String!
+    $artist: String!
+    $url: String!
+    $category: String!
+    $language: String!
+    $id: ID!
+  ) {
+    createMusic(
+      data: {
+        name: $name
+        artist: $artist
+        url: $url
+        category: $category
+        language: $language
+        myUser: { connect: { id: $id } }
+      }
+    ) {
+      id
+    }
+  }
+`;
+
+export { Create_User, Publish_Item, Create_Music };

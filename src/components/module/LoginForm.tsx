@@ -1,4 +1,4 @@
-import { Bool, LoginFormType } from "@/types/types";
+import { Bool, LoginFormType, OnChangeType } from "@/types/types";
 
 import { Input } from "../ui/input";
 
@@ -7,9 +7,9 @@ import FormButton from "../element/FormButton";
 
 interface LoginFormProps {
   form: LoginFormType;
-  changeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  changeHandler: (event: OnChangeType) => void;
   isShowPassword: Bool;
-  setIsShowPassword: (value: Bool) => void;
+  setIsShowPassword: React.Dispatch<React.SetStateAction<Bool>>;
   loginHandler: () => void;
 }
 
