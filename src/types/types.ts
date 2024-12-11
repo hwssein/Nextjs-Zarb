@@ -37,6 +37,7 @@ export interface MusicFormProps {
   name: string;
   artist: string;
   url: string;
+  mp3File: File | null;
   category: "remix" | "electronic" | "hip-hop" | "house" | "";
   language: "persian" | "english" | "turkish" | "other" | "";
 }

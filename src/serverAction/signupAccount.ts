@@ -6,7 +6,7 @@ import signinAccount from "./signinAccount";
 import { hashPassword } from "@/utils/verifyPassword";
 
 import createApolloClient from "@/config/apolloClient";
-import { Create_User, Publish_Item } from "@/graphql/mutation";
+import { Create_User, Publish_User } from "@/graphql/mutation";
 
 const signupAccount = async (
   email: string,
@@ -25,7 +25,7 @@ const signupAccount = async (
     if (!createUser?.createMyUser.id) throw new Error("server error");
 
     const { data: publishUser } = await client.mutate({
-      mutation: Publish_Item,
+      mutation: Publish_User,
       variables: { id: createUser.createMyUser.id },
     });
     if (!publishUser?.publishMyUser.email) throw new Error("server error");
