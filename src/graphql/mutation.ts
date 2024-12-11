@@ -8,7 +8,7 @@ const Create_User = gql`
   }
 `;
 
-const Publish_Item = gql`
+const Publish_User = gql`
   mutation publishItem($id: ID!) {
     publishMyUser(where: { id: $id }) {
       email
@@ -40,4 +40,30 @@ const Create_Music = gql`
   }
 `;
 
-export { Create_User, Publish_Item, Create_Music };
+const Create_Upload_Music_Url = gql`
+  mutation createUploadMusicUrl($fileName: String!) {
+    createAsset(data: { fileName: $fileName }) {
+      fileName
+      id
+      url
+      upload {
+        error {
+          message
+        }
+        expiresAt
+        requestPostData {
+          url
+          date
+          key
+          signature
+          algorithm
+          policy
+          credential
+          securityToken
+        }
+      }
+    }
+  }
+`;
+
+export { Create_User, Publish_User, Create_Music, Create_Upload_Music_Url };

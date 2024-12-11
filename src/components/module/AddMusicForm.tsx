@@ -4,15 +4,18 @@ import MusicCategoryButton from "../element/MusicCategoryButton";
 import MusicInfoInput from "../element/MusicInfoInput";
 import MusicLangButton from "../element/MusicLangButton";
 import FormButton from "../element/FormButton";
+import MusicFileInput from "../element/MusicFileInput";
 
 interface AddMusicFormProps {
   form: MusicFormProps;
+  setForm: React.Dispatch<React.SetStateAction<MusicFormProps>>;
   changeHandler: (event: OnChangeType) => void;
   saveMusicHandler: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 
 function AddMusicForm({
   form,
+  setForm,
   changeHandler,
   saveMusicHandler,
 }: AddMusicFormProps) {
@@ -20,19 +23,19 @@ function AddMusicForm({
     <>
       <form
         onSubmit={saveMusicHandler}
-        className="w-full flex flex-col items-center justify-start gap-2 sm:gap-3"
+        className="w-full flex flex-col items-center justify-start gap-4 sm:gap-6"
       >
-        <div className="w-full flex flex-col items-start justify-start gap-2 sm:flex-row sm:items-center sm:gap-3">
+        <div className="w-full flex flex-col items-start justify-start gap-4 sm:flex-row sm:items-center sm:gap-6">
           <MusicInfoInput
             title="Name"
             name="name"
-            form={form}
+            value={form.name}
             changeHandler={changeHandler}
           />
           <MusicInfoInput
             title="Artist"
             name="artist"
-            form={form}
+            value={form.artist}
             changeHandler={changeHandler}
           />
         </div>
@@ -40,8 +43,15 @@ function AddMusicForm({
         <MusicInfoInput
           title="URL"
           name="url"
-          form={form}
+          value={form.url}
           changeHandler={changeHandler}
+        />
+
+        <MusicFileInput
+          title="Add MP3 File"
+          name="mp3File"
+          form={form}
+          setForm={setForm}
         />
 
         <div className="w-full flex flex-col items-start justify-start gap-2 sm:flex-row sm:items-center sm:justify-between">

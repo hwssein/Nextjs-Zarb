@@ -8,6 +8,7 @@ import { CheckSessionResponse } from "@/types/types";
 
 import ThemeToggle from "../element/ThemeToggle";
 import { Button } from "../ui/button";
+import LogoutButton from "../element/LogoutButton";
 
 function Header({
   session,
@@ -34,9 +35,15 @@ function Header({
           </span>
 
           {"email" in session ? (
-            <Link href="/dashboard">
-              <Button size="sm">Dashboard</Button>
-            </Link>
+            <div className="flex items-center gap-2">
+              <Link href="/dashboard">
+                <Button size="sm">Dashboard</Button>
+              </Link>
+
+              <span>
+                <LogoutButton />
+              </span>
+            </div>
           ) : (
             <Link href="/login">
               <Button size="sm">Login</Button>
