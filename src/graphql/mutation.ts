@@ -16,6 +16,22 @@ const Publish_User = gql`
   }
 `;
 
+const Publish_User_music_Asset = gql`
+  mutation publishUserMusicFile($id: ID!) {
+    publishAsset(where: { id: $id }) {
+      id
+    }
+  }
+`;
+
+const Publish_User_music_Data = gql`
+  mutation publishUserMusicData($id: ID!) {
+    publishMusic(where: { id: $id }) {
+      id
+    }
+  }
+`;
+
 const Create_Music = gql`
   mutation createMusic(
     $name: String!
@@ -40,7 +56,7 @@ const Create_Music = gql`
   }
 `;
 
-const Create_Upload_Music_Url = gql`
+const Create_Asset_Music_Url = gql`
   mutation createUploadMusicUrl($fileName: String!) {
     createAsset(data: { fileName: $fileName }) {
       fileName
@@ -66,4 +82,11 @@ const Create_Upload_Music_Url = gql`
   }
 `;
 
-export { Create_User, Publish_User, Create_Music, Create_Upload_Music_Url };
+export {
+  Create_User,
+  Publish_User,
+  Publish_User_music_Asset,
+  Publish_User_music_Data,
+  Create_Music,
+  Create_Asset_Music_Url,
+};
