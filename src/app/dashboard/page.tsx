@@ -8,7 +8,7 @@ import Loader from "@/components/element/Loader";
 
 async function Dashboard() {
   const user = await findUser();
-  if ("error" in user) redirect("/");
+  if ("error" in user) redirect("/login");
 
   return (
     <>
