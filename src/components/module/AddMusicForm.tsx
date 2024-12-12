@@ -45,6 +45,7 @@ function AddMusicForm({
           name="url"
           value={form.url}
           changeHandler={changeHandler}
+          form={form}
         />
 
         <MusicFileInput

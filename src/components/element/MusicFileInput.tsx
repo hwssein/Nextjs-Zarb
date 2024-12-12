@@ -38,7 +38,7 @@ function MusicFileInput({ title, name, form, setForm }: MusicFileInputProps) {
           name={name}
           onChange={changeHandler}
           className="hidden"
-          disabled={form.mp3File !== null}
+          disabled={form.mp3File !== null || form.url !== ""}
         />
         <label
           htmlFor={`music-${name}`}

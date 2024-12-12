@@ -6,6 +6,7 @@ interface MusicInfoInputProps {
   name: keyof MusicFormProps;
   value: string;
   changeHandler: (event: OnChangeType) => void;
+  form: MusicFormProps;
 }
 
 function MusicInfoInput({
@@ -13,6 +14,7 @@ function MusicInfoInput({
   name,
   value,
   changeHandler,
+  form,
 }: MusicInfoInputProps) {
   return (
     <>
@@ -39,6 +41,7 @@ function MusicInfoInput({
           value={value}
           onChange={changeHandler}
           className="w-full bg-popover"
+          disabled={name === "url" && form.mp3File !== null}
         ></Input>
       </span>
     </>
