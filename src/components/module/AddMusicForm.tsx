@@ -31,12 +31,14 @@ function AddMusicForm({
             name="name"
             value={form.name}
             changeHandler={changeHandler}
+            form={form}
           />
           <MusicInfoInput
             title="Artist"
             name="artist"
             value={form.artist}
             changeHandler={changeHandler}
+            form={form}
           />
         </div>
 
