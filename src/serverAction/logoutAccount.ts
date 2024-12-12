@@ -1,6 +1,7 @@
 "use server";
 
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 const logoutAccount = (): void => {
   const cookie = cookies();
@@ -12,6 +13,8 @@ const logoutAccount = (): void => {
     httpOnly: true,
     path: "/",
   });
+
+  redirect("/");
 };
 
 export default logoutAccount;

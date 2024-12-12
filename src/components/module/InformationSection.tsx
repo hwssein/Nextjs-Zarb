@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "../ui/button";
 
 function InformationSection({
@@ -28,9 +29,11 @@ function InformationSection({
       </div>
 
       <div className="w-full flex items-center justify-around gap-2 ">
-        <Button variant="secondary" size="sm" className="font-light">
-          Your Musics
-        </Button>
+        <Link href="/dashboard/added-music">
+          <Button variant="secondary" size="sm" className="font-light">
+            Your Musics
+          </Button>
+        </Link>
         <Button variant="secondary" size="sm" className="font-light">
           Liked Musics
         </Button>

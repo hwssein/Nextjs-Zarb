@@ -3,6 +3,9 @@ export type Bool = boolean;
 export type OnChangeType = React.ChangeEvent<HTMLInputElement>;
 export type OnClickType = React.MouseEvent<HTMLButtonElement>;
 
+export type MusicCategory = "remix" | "electronic" | "hip-hop" | "house";
+export type MusicLanguage = "persian" | "english" | "turkish" | "other";
+
 export interface LoginFormType {
   email: string;
   password: string;
@@ -28,6 +31,19 @@ export interface UserInfo {
   createdAt: string;
 }
 
+export interface UserMusicInfoProps {
+  myUser: {
+    music: {
+      id: string;
+      name: string;
+      artist: string;
+      url: string;
+      category: MusicCategory;
+      language: MusicLanguage;
+    }[];
+  };
+}
+
 export interface CheckSessionResponse {
   email: string;
   exp?: number;
@@ -38,6 +54,6 @@ export interface MusicFormProps {
   artist: string;
   url: string;
   mp3File: File | null;
-  category: "remix" | "electronic" | "hip-hop" | "house" | "";
-  language: "persian" | "english" | "turkish" | "other" | "";
+  category: MusicCategory | "";
+  language: MusicLanguage | "";
 }
