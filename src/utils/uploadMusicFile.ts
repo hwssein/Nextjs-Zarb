@@ -10,10 +10,10 @@ import createMusicData from "./createMusicData";
 
 const uploadMusicFile = async (
   name: string,
-  artist: string | null,
+  artist: string,
   mp3File: File,
   category: string,
-  language: string | null,
+  language: string,
   userId: string
 ): Promise<FunctionResponse> => {
   try {
@@ -76,7 +76,8 @@ const uploadMusicFile = async (
       urlMusicAsset.createAsset.url,
       category,
       language,
-      userId
+      userId,
+      urlMusicAsset.createAsset.id
     );
     if ("error" in createMusicDataResponse)
       throw new Error(createMusicDataResponse.error);

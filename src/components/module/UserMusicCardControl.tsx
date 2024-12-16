@@ -11,14 +11,15 @@ import MusicCard from "./MusicCard";
 import { Button } from "../ui/button";
 import { useToast } from "@/hooks/use-toast";
 
-function UserMusicCardContainer({
+function UserMusicCardControl({
   name,
   artist,
   url,
   category,
   language,
   id,
-}: musicPlayerProps & { id: string }) {
+  assetId,
+}: musicPlayerProps & { id: string; assetId: string }) {
   const { toast } = useToast();
   const router = useRouter();
 
@@ -28,7 +29,7 @@ function UserMusicCardContainer({
 
     if (!confirmDelete) return;
 
-    const deleteRes = await deleteMusic(id);
+    const deleteRes = await deleteMusic(id, assetId);
 
     if ("message" in deleteRes) {
       toast({ description: "Deleted successful" });
@@ -58,4 +59,4 @@ function UserMusicCardContainer({
   );
 }
 
-export default UserMusicCardContainer;
+export default UserMusicCardControl;

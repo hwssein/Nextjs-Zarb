@@ -23,6 +23,7 @@ const Get_User_Music = gql`
           url
           category
           language
+          assetId
         }
       }
     }

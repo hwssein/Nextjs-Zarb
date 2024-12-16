@@ -40,6 +40,7 @@ export interface UserMusicInfoProps {
       url: string;
       category: MusicCategory;
       language: MusicLanguage;
+      assetId: string;
     }[];
   };
 }
@@ -60,7 +61,7 @@ export interface CheckSessionResponse {
 export interface MusicFormProps {
   name: string;
   artist: string;
-  url: string;
+  url: string | null;
   mp3File: File | null;
   category: MusicCategory | "";
   language: MusicLanguage | "";

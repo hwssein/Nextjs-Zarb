@@ -1,12 +1,12 @@
 import { UserMusicInfoProps } from "@/types/types";
-import UserMusicCardContainer from "../module/UserMusicCardControl";
+import UserMusicCardControl from "../module/UserMusicCardControl";
 
 function AddedMusicPage({ musics }: { musics: UserMusicInfoProps }) {
   return (
     <>
       <div className="w-full flex flex-col items-center justify-start gap-2 md:flex-row md:flex-wrap md:justify-between">
         {musics.myUser.music.map((item) => (
-          <UserMusicCardContainer
+          <UserMusicCardControl
             key={item.id}
             name={item.name}
             artist={item.artist}
@@ -14,6 +14,7 @@ function AddedMusicPage({ musics }: { musics: UserMusicInfoProps }) {
             category={item.category}
             language={item.language}
             id={item.id}
+            assetId={item.assetId}
           />
         ))}
       </div>

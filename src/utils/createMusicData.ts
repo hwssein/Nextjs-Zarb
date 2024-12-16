@@ -5,11 +5,12 @@ import { Create_Music, Publish_User_music_Data } from "@/graphql/mutation";
 
 const createMusicData = async (
   name: string,
-  artist: string | null,
-  url: string | null,
+  artist: string,
+  url: string,
   category: string,
-  language: string | null,
-  userId: string
+  language: string,
+  userId: string,
+  assetId: string
 ): Promise<FunctionResponse> => {
   try {
     const client = createApolloClient();
@@ -23,6 +24,7 @@ const createMusicData = async (
         category,
         language,
         id: userId,
+        assetId,
       },
     });
     if (!createMusicData.createMusic.id) throw new Error("server error");

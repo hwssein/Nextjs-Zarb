@@ -57,6 +57,7 @@ const Create_Music = gql`
     $category: String!
     $language: String!
     $id: ID!
+    $assetId: String!
   ) {
     createMusic(
       data: {
@@ -65,6 +66,7 @@ const Create_Music = gql`
         url: $url
         category: $category
         language: $language
+        assetId: $assetId
         myUser: { connect: { id: $id } }
       }
     ) {
@@ -88,6 +90,14 @@ const Delete_User_Music = gql`
   }
 `;
 
+const Delete_Music_Asset = gql`
+  mutation deleteMusicAsset($id: ID!) {
+    deleteAsset(where: { id: $id }) {
+      id
+    }
+  }
+`;
+
 export {
   Create_User,
   Publish_User,
@@ -96,4 +106,5 @@ export {
   Create_Music,
   Create_Asset_Music_Url,
   Delete_User_Music,
+  Delete_Music_Asset,
 };

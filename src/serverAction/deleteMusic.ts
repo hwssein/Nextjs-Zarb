@@ -4,22 +4,34 @@ import { revalidatePath } from "next/cache";
 
 import { FunctionResponse } from "@/types/types";
 
-import { Delete_User_Music } from "@/graphql/mutation";
+import { Delete_Music_Asset, Delete_User_Music } from "@/graphql/mutation";
 import createApolloClient from "@/config/apolloClient";
 import findUser from "./findUser";
 
-const deleteMusic = async (id: string): Promise<FunctionResponse> => {
+const deleteMusic = async (
+  id: string,
+  assetId: string
+): Promise<FunctionResponse> => {
   try {
     const user = await findUser();
     if ("error" in user) throw new Error("please login to your account");
 
     const client = createApolloClient();
 
-    const { data } = await client.mutate({
+    if (assetId !== "false") {
+      const { data: deleteAsset } = await client.mutate({
+        mutation: Delete_Music_Asset,
+        variables: { id: assetId },
+      });
+      if (!deleteAsset.deleteAsset.id || !deleteAsset || "error" in deleteAsset)
+        throw new Error("server error");
+    }
+
+    const { data: deleteMusic } = await client.mutate({
       mutation: Delete_User_Music,
       variables: { id },
     });
-    if (!data.deleteMusic.name || !data || "error" in data)
+    if (!deleteMusic.deleteMusic.name || !deleteMusic || "error" in deleteMusic)
       throw new Error("server error");
 
     revalidatePath("/dashboard/added-music");
