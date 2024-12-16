@@ -9,7 +9,7 @@ function Footer() {
 
   return (
     <>
-      <div className="w-full flex flex-col items-center justify-center gap-1 p-1 mt-4">
+      <div className="w-full flex flex-col items-center justify-center gap-1 p-1 mt-10">
         <span className="font-semibold capitalize text-center">
           Listen to the music and build your body
         </span>

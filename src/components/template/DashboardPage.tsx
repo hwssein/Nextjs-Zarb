@@ -5,7 +5,7 @@ import AddMusicSection from "../module/AddMusicSection";
 function DashboardPage({ user }: { user: UserInfo }) {
   return (
     <>
-      <div className="w-full flex flex-col items-start justify-start gap-2 mb-10">
+      <div className="w-full flex flex-col items-start justify-start gap-2">
         <strong className="capitalize font-semibold">Information</strong>
         <InformationSection user={user} />
 
