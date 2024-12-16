@@ -1,18 +1,18 @@
 "use client";
 
-import { Bool, MusicCategory, MusicLanguage } from "@/types/types";
-import Image from "next/image";
 import { useState } from "react";
+import Image from "next/image";
+
+import { Bool, musicPlayerProps } from "@/types/types";
 import MusicPlayer from "../element/MusicPlayer";
 
-interface musicProps {
-  name: string;
-  artist: string;
-  url: string;
-  category: MusicCategory;
-  language: MusicLanguage;
-}
-function MusicCard({ name, artist, url, category, language }: musicProps) {
+function MusicCard({
+  name,
+  artist,
+  url,
+  category,
+  language,
+}: musicPlayerProps) {
   const [isPlay, setIsPlay] = useState<Bool>(false);
 
   return (

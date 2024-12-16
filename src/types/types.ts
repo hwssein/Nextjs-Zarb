@@ -44,6 +44,14 @@ export interface UserMusicInfoProps {
   };
 }
 
+export interface musicPlayerProps {
+  name: string;
+  artist: string;
+  url: string;
+  category: MusicCategory;
+  language: MusicLanguage;
+}
+
 export interface CheckSessionResponse {
   email: string;
   exp?: number;

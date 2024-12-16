@@ -16,17 +16,34 @@ const Publish_User = gql`
   }
 `;
 
-const Publish_User_music_Asset = gql`
-  mutation publishUserMusicFile($id: ID!) {
-    publishAsset(where: { id: $id }) {
+const Create_Asset_Music_Url = gql`
+  mutation createUploadMusicUrl($fileName: String!) {
+    createAsset(data: { fileName: $fileName }) {
+      fileName
       id
+      url
+      upload {
+        error {
+          message
+        }
+        expiresAt
+        requestPostData {
+          url
+          date
+          key
+          signature
+          algorithm
+          policy
+          credential
+          securityToken
+        }
+      }
     }
   }
 `;
-
-const Publish_User_music_Data = gql`
-  mutation publishUserMusicData($id: ID!) {
-    publishMusic(where: { id: $id }) {
+const Publish_User_music_Asset = gql`
+  mutation publishUserMusicFile($id: ID!) {
+    publishAsset(where: { id: $id }) {
       id
     }
   }
@@ -55,29 +72,18 @@ const Create_Music = gql`
     }
   }
 `;
-
-const Create_Asset_Music_Url = gql`
-  mutation createUploadMusicUrl($fileName: String!) {
-    createAsset(data: { fileName: $fileName }) {
-      fileName
+const Publish_User_music_Data = gql`
+  mutation publishUserMusicData($id: ID!) {
+    publishMusic(where: { id: $id }) {
       id
-      url
-      upload {
-        error {
-          message
-        }
-        expiresAt
-        requestPostData {
-          url
-          date
-          key
-          signature
-          algorithm
-          policy
-          credential
-          securityToken
-        }
-      }
+    }
+  }
+`;
+
+const Delete_User_Music = gql`
+  mutation deleteUserMusic($id: ID!) {
+    deleteMusic(where: { id: $id }) {
+      name
     }
   }
 `;
@@ -89,4 +95,5 @@ export {
   Publish_User_music_Data,
   Create_Music,
   Create_Asset_Music_Url,
+  Delete_User_Music,
 };
