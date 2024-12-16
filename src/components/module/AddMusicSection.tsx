@@ -33,7 +33,11 @@ function AddMusicSection() {
   const saveMusicHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (form.name && (form.url || form.mp3File) && form.category) {
+    if (
+      form.name ||
+      (!form.artist && (form.url || form.mp3File) && form.category) ||
+      !form.category
+    ) {
       const formData = new FormData();
 
       for (const i in form) {

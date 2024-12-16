@@ -16,46 +16,6 @@ const Publish_User = gql`
   }
 `;
 
-const Publish_User_music_Asset = gql`
-  mutation publishUserMusicFile($id: ID!) {
-    publishAsset(where: { id: $id }) {
-      id
-    }
-  }
-`;
-
-const Publish_User_music_Data = gql`
-  mutation publishUserMusicData($id: ID!) {
-    publishMusic(where: { id: $id }) {
-      id
-    }
-  }
-`;
-
-const Create_Music = gql`
-  mutation createMusic(
-    $name: String!
-    $artist: String!
-    $url: String!
-    $category: String!
-    $language: String!
-    $id: ID!
-  ) {
-    createMusic(
-      data: {
-        name: $name
-        artist: $artist
-        url: $url
-        category: $category
-        language: $language
-        myUser: { connect: { id: $id } }
-      }
-    ) {
-      id
-    }
-  }
-`;
-
 const Create_Asset_Music_Url = gql`
   mutation createUploadMusicUrl($fileName: String!) {
     createAsset(data: { fileName: $fileName }) {
@@ -81,6 +41,62 @@ const Create_Asset_Music_Url = gql`
     }
   }
 `;
+const Publish_User_music_Asset = gql`
+  mutation publishUserMusicFile($id: ID!) {
+    publishAsset(where: { id: $id }) {
+      id
+    }
+  }
+`;
+
+const Create_Music = gql`
+  mutation createMusic(
+    $name: String!
+    $artist: String!
+    $url: String!
+    $category: String!
+    $language: String!
+    $id: ID!
+    $assetId: String!
+  ) {
+    createMusic(
+      data: {
+        name: $name
+        artist: $artist
+        url: $url
+        category: $category
+        language: $language
+        assetId: $assetId
+        myUser: { connect: { id: $id } }
+      }
+    ) {
+      id
+    }
+  }
+`;
+const Publish_User_music_Data = gql`
+  mutation publishUserMusicData($id: ID!) {
+    publishMusic(where: { id: $id }) {
+      id
+    }
+  }
+`;
+
+const Delete_User_Music = gql`
+  mutation deleteUserMusic($id: ID!) {
+    deleteMusic(where: { id: $id }) {
+      name
+    }
+  }
+`;
+
+const Delete_Music_Asset = gql`
+  mutation deleteMusicAsset($id: ID!) {
+    deleteAsset(where: { id: $id }) {
+      id
+    }
+  }
+`;
 
 export {
   Create_User,
@@ -89,4 +105,6 @@ export {
   Publish_User_music_Data,
   Create_Music,
   Create_Asset_Music_Url,
+  Delete_User_Music,
+  Delete_Music_Asset,
 };

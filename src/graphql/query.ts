@@ -12,4 +12,22 @@ const Find_Existing_User = gql`
   }
 `;
 
-export { Find_Existing_User };
+const Get_User_Music = gql`
+  query getUserMusic($id: ID!) {
+    myUser(where: { id: $id }) {
+      music {
+        ... on Music {
+          id
+          name
+          artist
+          url
+          category
+          language
+          assetId
+        }
+      }
+    }
+  }
+`;
+
+export { Find_Existing_User, Get_User_Music };

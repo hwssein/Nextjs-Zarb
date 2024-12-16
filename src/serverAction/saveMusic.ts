@@ -10,13 +10,13 @@ import createMusicData from "@/utils/createMusicData";
 const saveMusic = async (formData: FormData): Promise<FunctionResponse> => {
   try {
     const name = formData.get("name") as string;
-    const artist = (formData.get("artist") as string) || null;
+    const artist = formData.get("artist") as string;
     const url = (formData.get("url") as string) || null;
     const mp3File = (formData.get("mp3File") as File) || null;
     const category = formData.get("category") as string;
-    const language = (formData.get("language") as string) || null;
+    const language = formData.get("language") as string;
 
-    if (!name && (!url || !mp3File) && !category)
+    if (!name || (!artist && (!url || !mp3File) && !category) || !language)
       throw new Error("please fill in the fields.");
 
     const user = await findUser();
@@ -43,7 +43,8 @@ const saveMusic = async (formData: FormData): Promise<FunctionResponse> => {
         url,
         category,
         language,
-        user.id
+        user.id,
+        "false"
       );
       if ("error" in createMusicResponse)
         throw new Error(createMusicResponse.error);
