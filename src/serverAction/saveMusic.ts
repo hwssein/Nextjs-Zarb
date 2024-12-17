@@ -18,7 +18,7 @@ const saveMusic = async (formData: FormData): Promise<FunctionResponse> => {
 
     const urlCondition = url?.length !== 0 ? true : !!mp3File;
 
-    if (!name || !artist || !category || !language || urlCondition) {
+    if (!name || !artist || !category || !language || !urlCondition) {
       throw new Error("Please fill in all the required fields.");
     }
 
