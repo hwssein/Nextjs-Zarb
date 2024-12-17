@@ -42,53 +42,54 @@ function AddMusicSection() {
       !form.language ||
       !urlCondition
     ) {
-      const formData = new FormData();
-
-      for (const i in form) {
-        const item = i as keyof MusicFormProps;
-
-        if (form[item] !== null) {
-          if (item === "mp3File" && form[item] instanceof File) {
-            formData.append(item, form[item]);
-          } else {
-            formData.append(item, form[item]);
-          }
-        }
-      }
-
-      setIsLoading((prevValue) => !prevValue);
-
-      const data = await saveMusic(formData);
-
-      setIsLoading((prevValue) => !prevValue);
-
-      if (data.message) {
-        toast({
-          description:
-            "music saved successfully, will be published after approval",
-        });
-
-        setForm({
-          name: "",
-          artist: "",
-          url: "",
-          mp3File: null,
-          category: "",
-          language: "",
-        });
-
-        router.refresh();
-      }
-
-      if (data.error) {
-        toast({
-          description: "there was a problem, try again",
-          variant: "destructive",
-        });
-      }
-    } else {
       toast({
         description: "please fill the fields",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const formData = new FormData();
+
+    for (const i in form) {
+      const item = i as keyof MusicFormProps;
+
+      if (form[item] !== null) {
+        if (item === "mp3File" && form[item] instanceof File) {
+          formData.append(item, form[item]);
+        } else {
+          formData.append(item, form[item]);
+        }
+      }
+    }
+
+    setIsLoading((prevValue) => !prevValue);
+
+    const data = await saveMusic(formData);
+
+    setIsLoading((prevValue) => !prevValue);
+
+    if (data.message) {
+      toast({
+        description:
+          "music saved successfully, will be published after approval",
+      });
+
+      setForm({
+        name: "",
+        artist: "",
+        url: "",
+        mp3File: null,
+        category: "",
+        language: "",
+      });
+
+      router.refresh();
+    }
+
+    if (data.error) {
+      toast({
+        description: "there was a problem, try again",
         variant: "destructive",
       });
     }
