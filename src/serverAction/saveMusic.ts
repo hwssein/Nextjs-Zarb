@@ -16,7 +16,9 @@ const saveMusic = async (formData: FormData): Promise<FunctionResponse> => {
     const category = formData.get("category") as string;
     const language = formData.get("language") as string;
 
-    if (!name || !artist || !category || !language || (!url && !mp3File)) {
+    const urlCondition = url?.length !== 0 ? true : !!mp3File;
+
+    if (!name || !artist || !category || !language || urlCondition) {
       throw new Error("Please fill in all the required fields.");
     }
 

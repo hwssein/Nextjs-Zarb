@@ -32,7 +32,7 @@ function MusicCard({
             className="w-16 rounded-md mr-2 p-1"
           ></Image>
 
-          <div className="w-full flex flex-col items-start justify-start gap-0.5">
+          <div className="w-full flex flex-col items-start justify-start gap-0.5 capitalize">
             <span className="w-full">{name}</span>
             <span className="w-full">{artist}</span>
             <div className="w-full flex items-center justify-start gap-2 text-stroke">
