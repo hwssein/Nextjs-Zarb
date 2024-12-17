@@ -45,7 +45,7 @@ function AddMusicForm({
         <MusicInfoInput
           title="URL"
           name="url"
-          value={form.url}
+          value={form.url ?? ""}
           changeHandler={changeHandler}
           form={form}
         />

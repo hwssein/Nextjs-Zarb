@@ -6,7 +6,7 @@ import { Create_Music, Publish_User_music_Data } from "@/graphql/mutation";
 const createMusicData = async (
   name: string,
   artist: string,
-  url: string,
+  url: string | null,
   category: string,
   language: string,
   userId: string,

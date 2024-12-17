@@ -1,3 +1,5 @@
+"use server";
+
 import { verify, JwtPayload } from "jsonwebtoken";
 
 const verifyToken = (

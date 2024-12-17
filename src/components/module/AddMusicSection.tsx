@@ -34,9 +34,11 @@ function AddMusicSection() {
     event.preventDefault();
 
     if (
-      form.name ||
-      (!form.artist && (form.url || form.mp3File) && form.category) ||
-      !form.category
+      !form.name ||
+      !form.artist ||
+      !form.category ||
+      !form.language ||
+      (!form.url && !form.mp3File)
     ) {
       const formData = new FormData();
 

@@ -4,7 +4,6 @@ import { Children } from "@/types/types";
 import Layout from "@/layout/Layout";
 
 import ShadThemeProviders from "@/providers/ShadThemeProvider";
-import ApolloProviders from "@/providers/ApolloProviders";
 
 import myFont from "@/config/font";
 import "./globals.css";
@@ -21,9 +20,7 @@ export default function RootLayout({ children }: Children) {
     <html lang="en" className={`${myFont.className}`}>
       <body className="max-w-5xl p-2 font-normal">
         <ShadThemeProviders>
-          <ApolloProviders>
-            <Layout>{children}</Layout>
-          </ApolloProviders>
+          <Layout>{children}</Layout>
         </ShadThemeProviders>
         <Toaster />
       </body>

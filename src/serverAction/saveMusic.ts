@@ -16,8 +16,9 @@ const saveMusic = async (formData: FormData): Promise<FunctionResponse> => {
     const category = formData.get("category") as string;
     const language = formData.get("language") as string;
 
-    if (!name || (!artist && (!url || !mp3File) && !category) || !language)
-      throw new Error("please fill in the fields.");
+    if (!name || !artist || !category || !language || (!url && !mp3File)) {
+      throw new Error("Please fill in all the required fields.");
+    }
 
     const user = await findUser();
     if ("error" in user) throw new Error("please login to your account");
