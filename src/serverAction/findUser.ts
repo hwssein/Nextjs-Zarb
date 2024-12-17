@@ -8,7 +8,7 @@ import checkSession from "./checkSession";
 
 const findUser = async (): Promise<UserInfo | { error: string }> => {
   try {
-    const session = checkSession();
+    const session = await checkSession();
     if ("error" in session) throw new Error("Please Login to your account");
 
     const client = createApolloClient();
