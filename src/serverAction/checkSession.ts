@@ -6,12 +6,9 @@ import { CheckSessionResponse } from "@/types/types";
 
 import { verifyToken } from "@/utils/verifyToken";
 
-const checkSession = async (): Promise<
-  { error: string } | CheckSessionResponse
-> => {
+const checkSession = (): { error: string } | CheckSessionResponse => {
   try {
-    const cookie = await cookies();
-
+    const cookie = cookies();
     const token = cookie.get("token");
     if (!token) throw new Error("unauthorized");
 
