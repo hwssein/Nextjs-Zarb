@@ -69,7 +69,7 @@ function AddMusicSection() {
 
     setIsLoading((prevValue) => !prevValue);
 
-    if (data.message) {
+    if ("message" in data) {
       toast({
         description:
           "music saved successfully, will be published after approval",
@@ -87,7 +87,7 @@ function AddMusicSection() {
       router.refresh();
     }
 
-    if (data.error) {
+    if ("error" in data) {
       toast({
         description: "there was a problem, try again",
         variant: "destructive",

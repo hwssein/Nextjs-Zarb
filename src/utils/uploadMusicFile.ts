@@ -1,3 +1,5 @@
+"use server";
+
 import { FunctionResponse } from "@/types/types";
 
 import createApolloClient from "@/config/apolloClient";

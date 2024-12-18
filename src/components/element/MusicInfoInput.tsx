@@ -30,7 +30,7 @@ function MusicInfoInput({
           {title}{" "}
           {title === "URL" && (
             <span className="text-stroke">
-              (Please select one of the URL or file methods)
+              (select one of the URL(youtube , soundCloud) or file methods)
             </span>
           )}
         </label>

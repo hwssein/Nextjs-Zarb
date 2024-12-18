@@ -52,7 +52,7 @@ const saveMusic = async (formData: FormData): Promise<FunctionResponse> => {
       if ("error" in createMusicResponse)
         throw new Error(createMusicResponse.error);
 
-      return { message: "music saved successfully " };
+      return { message: "music saved successfully" };
     }
   } catch (error) {
     if (error instanceof Error) {

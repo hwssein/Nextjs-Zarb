@@ -22,10 +22,21 @@ function MusicFileInput({ title, name, form, setForm }: MusicFileInputProps) {
           description: "please select the MP3 file",
           variant: "destructive",
         });
-      } else {
-        setForm((prevForm) => ({ ...prevForm, mp3File: file }));
-        toast({ description: "added successfully" });
+
+        return;
       }
+
+      if (file.size >= 10000000) {
+        toast({
+          description: "max file size 10MB",
+          variant: "destructive",
+        });
+
+        return;
+      }
+
+      setForm((prevForm) => ({ ...prevForm, mp3File: file }));
+      toast({ description: "added successfully" });
     }
   };
 
@@ -49,7 +60,7 @@ function MusicFileInput({ title, name, form, setForm }: MusicFileInputProps) {
           {title}
         </label>
 
-        <span className="text-stroke">Max Size 50MB</span>
+        <span className="text-stroke">Max Size 10MB</span>
       </span>
     </>
   );
