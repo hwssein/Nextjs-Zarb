@@ -26,10 +26,11 @@ function MusicCard({
         >
           <Image
             src="/images/music-card.png"
-            width={200}
-            height={200}
+            width={100}
+            height={100}
             alt="card cover"
             className="w-16 rounded-md mr-2 p-1"
+            priority={true}
           ></Image>
 
           <div className="w-full flex flex-col items-start justify-start gap-0.5 capitalize">

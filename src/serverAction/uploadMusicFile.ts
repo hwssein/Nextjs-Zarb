@@ -26,25 +26,26 @@ const uploadMusicFile = async (
       variables: { fileName: mp3File.name },
     });
 
-    const assetUrl = urlMusicAsset.createAsset.upload.requestPostData.url;
+    const assetUrl = urlMusicAsset?.createAsset.upload.requestPostData.url;
 
-    const assetDate = urlMusicAsset.createAsset.upload.requestPostData.date;
+    const assetDate = urlMusicAsset?.createAsset.upload.requestPostData.date;
 
-    const assetKey = urlMusicAsset.createAsset.upload.requestPostData.key;
+    const assetKey = urlMusicAsset?.createAsset.upload.requestPostData.key;
 
     const assetSignature =
-      urlMusicAsset.createAsset.upload.requestPostData.signature;
+      urlMusicAsset?.createAsset.upload.requestPostData.signature;
 
     const assetAlgorithm =
-      urlMusicAsset.createAsset.upload.requestPostData.algorithm;
+      urlMusicAsset?.createAsset.upload.requestPostData.algorithm;
 
-    const assetPolicy = urlMusicAsset.createAsset.upload.requestPostData.policy;
+    const assetPolicy =
+      urlMusicAsset?.createAsset.upload.requestPostData.policy;
 
     const assetCredential =
-      urlMusicAsset.createAsset.upload.requestPostData.credential;
+      urlMusicAsset?.createAsset.upload.requestPostData.credential;
 
     const assetSecurityToken =
-      urlMusicAsset.createAsset.upload.requestPostData.securityToken;
+      urlMusicAsset?.createAsset.upload.requestPostData.securityToken;
 
     const assetFormData = new FormData();
 

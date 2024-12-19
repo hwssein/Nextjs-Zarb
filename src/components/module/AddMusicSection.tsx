@@ -1,14 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { Bool, MusicFormProps, OnChangeType } from "@/types/types";
 
 import AddMusicForm from "./AddMusicForm";
 import saveMusic from "@/serverAction/saveMusic";
+
 import { useToast } from "@/hooks/use-toast";
 import Loader from "../element/Loader";
-import { useRouter } from "next/navigation";
 
 function AddMusicSection() {
   const router = useRouter();
@@ -88,6 +89,7 @@ function AddMusicSection() {
     }
 
     if ("error" in data) {
+      console.log(data.error);
       toast({
         description: "there was a problem, try again",
         variant: "destructive",

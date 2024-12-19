@@ -23,10 +23,11 @@ function Header({
       <nav className="w-full flex items-center justify-between">
         <Image
           src="/images/logo.png"
-          width={400}
-          height={300}
+          width={200}
+          height={100}
           alt="logo"
           className="w-24 rounded"
+          priority={true}
         ></Image>
 
         <div className="flex flex-row items-center justify-end gap-4">

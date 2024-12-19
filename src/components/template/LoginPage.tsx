@@ -48,10 +48,11 @@ function LoginPage() {
       <div className="w-11/12 flex flex-col items-center justify-start gap-2 bg-secondary rounded-md my-4 mx-auto py-4 px-1 shadow sm:w-4/6">
         <Image
           src="/images/logo.png"
-          width={500}
-          height={400}
+          width={300}
+          height={200}
           alt="logo"
           className="w-44 mb-4 rounded"
+          priority={true}
         ></Image>
 
         <p className="w-full text-center capitalize mb-2">
@@ -60,10 +61,11 @@ function LoginPage() {
 
         <Image
           src="/images/header-login.png"
-          width={400}
-          height={300}
+          width={300}
+          height={200}
           alt="login header image"
           className="w-40 flex items-center justify-center mb-4 sm:w-48"
+          priority={true}
         ></Image>
 
         <LoginForm

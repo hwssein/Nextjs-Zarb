@@ -17,7 +17,6 @@ function MusicPlayer({
       {isPlay && (
         <div className="w-full p-1 h-full flex items-center justify-center gap-1 bg-secondary rounded-md">
           <ReactPlayer
-            onPause={() => setIsPlay(false)}
             url={url}
             controls={true}
             config={{
