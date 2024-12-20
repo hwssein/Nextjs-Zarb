@@ -31,12 +31,12 @@ function UserMusicCardControl({
 
     const deleteRes = await deleteMusic(id, assetId);
 
-    if ("message" in deleteRes) {
+    if ("message" in deleteRes || deleteRes.message) {
       toast({ description: "Deleted successful" });
       router.refresh();
     }
 
-    if ("error" in deleteRes)
+    if ("error" in deleteRes || deleteRes.error)
       toast({ description: "Server Error, Try Again", variant: "destructive" });
   };
 
