@@ -2,9 +2,10 @@
 
 import { useRouter } from "next/navigation";
 
-import { musicPlayerProps, OnClickType } from "@/types/types";
+import { MusicPlayerProps, OnClickType } from "@/types/types";
 
 import deleteMusic from "@/serverAction/deleteMusic";
+import publishMusic from "@/serverAction/publishMusic";
 
 import MusicCard from "./MusicCard";
 
@@ -19,13 +20,18 @@ function UserMusicCardControl({
   language,
   id,
   assetId,
-}: musicPlayerProps & { id: string; assetId: string }) {
+  role,
+}: MusicPlayerProps & {
+  id: string;
+  assetId: string;
+  role?: string;
+}) {
   const { toast } = useToast();
   const router = useRouter();
 
   const deleteHandler = async (event: OnClickType) => {
     event.stopPropagation();
-    const confirmDelete: boolean = confirm("Are You Sure?");
+    const confirmDelete: boolean = confirm("Are You Sure To DELETE?");
 
     if (!confirmDelete) return;
 
@@ -40,6 +46,24 @@ function UserMusicCardControl({
       toast({ description: "Server Error, Try Again", variant: "destructive" });
   };
 
+  const publishHandler = async (event: OnClickType) => {
+    event.stopPropagation();
+
+    const confirmDelete: boolean = confirm("Are You Sure To PUBLISH?");
+
+    if (!confirmDelete) return;
+
+    const publishRes = await publishMusic(id);
+
+    if ("message" in publishRes || publishRes.message) {
+      toast({ description: "Deleted successful" });
+      router.refresh();
+    }
+
+    if ("error" in publishRes || publishRes.error)
+      toast({ description: "Server Error, Try Again", variant: "destructive" });
+  };
+
   return (
     <>
       <div className="w-full h-20 flex items-center shadow-md md:w-[calc(50%-4px)] bg-secondary rounded-md pr-1">
@@ -51,9 +75,17 @@ function UserMusicCardControl({
           language={language}
         />
 
-        <Button size="sm" variant="outline" onClick={deleteHandler}>
-          Delete
-        </Button>
+        <div className="flex flex-col items-center justify-center gap-1">
+          <Button size="sm" variant="outline" onClick={deleteHandler}>
+            Delete
+          </Button>
+
+          {role === "ADMIN" && (
+            <Button size="sm" variant="outline" onClick={publishHandler}>
+              Publish
+            </Button>
+          )}
+        </div>
       </div>
     </>
   );

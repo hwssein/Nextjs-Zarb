@@ -27,6 +27,7 @@ const createMusicData = async (
         language,
         id: userId,
         assetId,
+        published: false,
       },
     });
     if (!createMusicData.createMusic.id) throw new Error("server error");

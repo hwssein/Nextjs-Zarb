@@ -58,6 +58,7 @@ const Create_Music = gql`
     $language: String!
     $id: ID!
     $assetId: String!
+    $published: Boolean!
   ) {
     createMusic(
       data: {
@@ -67,6 +68,7 @@ const Create_Music = gql`
         category: $category
         language: $language
         assetId: $assetId
+        published: $published
         myUser: { connect: { id: $id } }
       }
     ) {
@@ -98,6 +100,15 @@ const Delete_Music_Asset = gql`
   }
 `;
 
+const Publish_Music_For_View = gql`
+  mutation publishMusicForView($id: ID!) {
+    updateMusic(data: { published: true }, where: { id: $id }) {
+      id
+      name
+    }
+  }
+`;
+
 export {
   Create_User,
   Publish_User,
@@ -107,4 +118,5 @@ export {
   Create_Asset_Music_Url,
   Delete_User_Music,
   Delete_Music_Asset,
+  Publish_Music_For_View,
 };

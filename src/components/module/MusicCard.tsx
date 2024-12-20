@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-import { Bool, musicPlayerProps } from "@/types/types";
+import { Bool, MusicPlayerProps } from "@/types/types";
 import MusicPlayer from "../element/MusicPlayer";
 
 function MusicCard({
@@ -12,7 +12,7 @@ function MusicCard({
   url,
   category,
   language,
-}: musicPlayerProps) {
+}: MusicPlayerProps) {
   const [isPlay, setIsPlay] = useState<Bool>(false);
 
   return (

@@ -45,7 +45,7 @@ export interface UserMusicInfoProps {
   };
 }
 
-export interface musicPlayerProps {
+export interface MusicPlayerProps {
   name: string;
   artist: string;
   url: string;

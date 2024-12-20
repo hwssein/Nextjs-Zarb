@@ -18,9 +18,19 @@ function InformationSection({
         <span>{user.email}</span>
       </div>
 
-      <div className="w-full flex items-center gap-1 font-light">
-        <span>Role:</span>
-        <span>{user.role}</span>
+      <div className="w-full flex items-center justify-start gap-2 font-light">
+        <div className="flex items-center justify-start gap-1 font-light">
+          <span>Role:</span>
+          <span>{user.role}</span>
+        </div>
+
+        {user.role === "ADMIN" && (
+          <Link href="/admin">
+            <Button variant="secondary" size="sm" className="font-light">
+              Go To Admin Page
+            </Button>
+          </Link>
+        )}
       </div>
 
       <div className="w-full flex items-center gap-1 font-light">
