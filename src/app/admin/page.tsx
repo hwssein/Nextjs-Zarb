@@ -24,7 +24,7 @@ interface Music {
 
 async function Admin() {
   const user = await findUser();
-  if ("error" in user) redirect("/login");
+  if ("error" in user || user.role !== "ADMIN") redirect("/dashboard");
 
   const client = createApolloClient();
   const { data } = await client.query<Music>({

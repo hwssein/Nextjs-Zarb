@@ -21,14 +21,16 @@ function Header({
   return (
     <>
       <nav className="w-full flex items-center justify-between">
-        <Image
-          src="/images/logo.png"
-          width={200}
-          height={100}
-          alt="logo"
-          className="w-24 rounded"
-          priority={true}
-        ></Image>
+        <Link href="/">
+          <Image
+            src="/images/logo.png"
+            width={200}
+            height={100}
+            alt="logo"
+            className="w-24 rounded"
+            priority={true}
+          ></Image>
+        </Link>
 
         <div className="flex flex-row items-center justify-end gap-4">
           <span>

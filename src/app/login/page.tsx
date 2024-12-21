@@ -6,8 +6,8 @@ import LoginPage from "@/components/template/LoginPage";
 
 import Loader from "@/components/element/Loader";
 
-async function Login() {
-  const session = await checkSession();
+function Login() {
+  const session = checkSession();
   if ("email" in session) redirect("/dashboard");
 
   return (

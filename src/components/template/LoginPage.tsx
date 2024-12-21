@@ -9,9 +9,11 @@ import LoginForm from "../module/LoginForm";
 
 import { useToast } from "@/hooks/use-toast";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 function LoginPage() {
   const { toast } = useToast();
+  const router = useRouter();
 
   const [form, setForm] = useState<LoginFormType>({
     email: "",
@@ -40,6 +42,8 @@ function LoginPage() {
         description: data.message,
       });
       setForm({ email: "", password: "" });
+
+      router.replace("/");
     }
   };
 
