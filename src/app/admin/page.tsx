@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-import { MusicCategory, MusicLanguage } from "@/types/types";
+import { GetMusicProps } from "@/types/types";
 
 import createApolloClient from "@/config/apolloClient";
 import { Get_Unpublished_Music } from "@/graphql/query";
@@ -8,30 +8,16 @@ import { Get_Unpublished_Music } from "@/graphql/query";
 import findUser from "@/serverAction/findUser";
 import AdminPage from "@/components/template/AdminPage";
 
-interface Music {
-  musics: [
-    {
-      id: string;
-      name: string;
-      artist: string;
-      url: string;
-      category: MusicCategory;
-      language: MusicLanguage;
-      assetId: string;
-    }
-  ];
-}
-
 async function Admin() {
   const user = await findUser();
   if ("error" in user || user.role !== "ADMIN") redirect("/dashboard");
 
   const client = createApolloClient();
-  const { data } = await client.query<Music>({
+  const { data } = await client.query<GetMusicProps>({
     query: Get_Unpublished_Music,
   });
 
-  if ("musics" in data) {
+  if ("musics" in data && data.musics.length > 0) {
     return (
       <>
         <AdminPage musics={data.musics} role={user.role} />

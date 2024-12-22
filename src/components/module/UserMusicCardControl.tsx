@@ -56,7 +56,7 @@ function UserMusicCardControl({
     const publishRes = await publishMusic(id);
 
     if ("message" in publishRes || publishRes.message) {
-      toast({ description: "Deleted successful" });
+      toast({ description: "published successful" });
       router.refresh();
     }
 

@@ -44,4 +44,22 @@ const Get_Unpublished_Music = gql`
   }
 `;
 
-export { Find_Existing_User, Get_User_Music, Get_Unpublished_Music };
+const Get_Published_Music = gql`
+  query getUnpublishedMusic {
+    musics(where: { published: true }) {
+      id
+      name
+      artist
+      category
+      language
+      url
+    }
+  }
+`;
+
+export {
+  Find_Existing_User,
+  Get_User_Music,
+  Get_Unpublished_Music,
+  Get_Published_Music,
+};

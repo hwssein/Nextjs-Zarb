@@ -1,21 +1,7 @@
-import { MusicCategory, MusicLanguage } from "@/types/types";
+import { GetMusicProps } from "@/types/types";
 import UserMusicCardControl from "../module/UserMusicCardControl";
 
-interface Music {
-  musics: [
-    {
-      id: string;
-      name: string;
-      artist: string;
-      url: string;
-      category: MusicCategory;
-      language: MusicLanguage;
-      assetId: string;
-    }
-  ];
-}
-
-function AdminPage({ musics, role }: Music & { role: string }) {
+function AdminPage({ musics, role }: GetMusicProps & { role: string }) {
   return (
     <>
       <div className="w-full flex flex-col items-center justify-start gap-2 md:flex-row md:flex-wrap md:justify-between">
@@ -29,7 +15,7 @@ function AdminPage({ musics, role }: Music & { role: string }) {
             category={item.category}
             language={item.language}
             id={item.id}
-            assetId={item.assetId}
+            assetId={item.assetId ?? "false"}
           />
         ))}
       </div>

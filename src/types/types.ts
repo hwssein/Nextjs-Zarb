@@ -45,6 +45,20 @@ export interface UserMusicInfoProps {
   };
 }
 
+export interface GetMusicProps {
+  musics: [
+    {
+      id: string;
+      name: string;
+      artist: string;
+      url: string;
+      category: MusicCategory;
+      language: MusicLanguage;
+      assetId?: string;
+    }
+  ];
+}
+
 export interface MusicPlayerProps {
   name: string;
   artist: string;
