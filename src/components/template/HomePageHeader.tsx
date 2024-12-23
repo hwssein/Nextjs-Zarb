@@ -7,7 +7,7 @@ function HomePageHeader() {
       <div className="w-full flex items-center justify-between gap-2 mb-2">
         <div className="w-3/6 rounded-md">
           <Image
-            src="/images/home-page-header.jpg"
+            src="/images/homepage-header.jpg"
             width={300}
             height={300}
             alt="homepage header"
