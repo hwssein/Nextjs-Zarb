@@ -54,6 +54,7 @@ export interface GetMusicProps {
       url: string;
       category: MusicCategory;
       language: MusicLanguage;
+      createdAt: string;
       assetId?: string;
     }
   ];

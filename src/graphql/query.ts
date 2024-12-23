@@ -53,6 +53,7 @@ const Get_Published_Music = gql`
       category
       language
       url
+      createdAt
     }
   }
 `;
