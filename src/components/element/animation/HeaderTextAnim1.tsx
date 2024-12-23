@@ -71,16 +71,16 @@ const HeaderTextAnim1: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full min-h-[120px] md:min-h-[220] flex justify-center items-start mt-11">
-      <h1 className="w-full ml4 relative font-black text-3xl md:text-5xl text-center">
-        <span className="letters letters-1 absolute inset-0 text-center opacity-0">
+    <div className="w-full h-full flex justify-center items-start mt-10  md:mt-20">
+      <h1 className="w-full ml4 relative font-black text-3xl md:text-5xl text-center uppercase text-black tracking-wider">
+        <span className="letters letters-1 absolute inset-0 opacity-0">
           Build
         </span>
-        <span className="letters letters-2 absolute inset-0 text-center opacity-0">
+        <span className="letters letters-2 absolute inset-0 opacity-0">
           Your
         </span>
-        <span className="letters letters-3 absolute inset-0 text-center opacity-0">
-          Body!
+        <span className="letters letters-3 absolute inset-0 opacity-0">
+          Body
         </span>
       </h1>
     </div>
