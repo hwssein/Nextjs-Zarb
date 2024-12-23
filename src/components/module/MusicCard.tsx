@@ -22,7 +22,7 @@ function MusicCard({
       ) : (
         <div
           onClick={() => setIsPlay(true)}
-          className="w-full flex items-center justify-start gap-1 cursor-pointer bg-secondary rounded-md"
+          className="w-full flex items-center justify-start gap-1 cursor-pointer bg-secondary rounded"
         >
           <Image
             src="/images/music-card.png"

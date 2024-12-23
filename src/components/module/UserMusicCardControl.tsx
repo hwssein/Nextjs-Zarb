@@ -66,7 +66,7 @@ function UserMusicCardControl({
 
   return (
     <>
-      <div className="w-full h-20 flex items-center shadow-md md:w-[calc(50%-4px)] bg-secondary rounded-md pr-1">
+      <div className="w-full h-20 flex items-center shadow-md md:w-[calc(50%-4px)] bg-secondary rounded pr-1">
         <MusicCard
           name={name}
           artist={artist}
