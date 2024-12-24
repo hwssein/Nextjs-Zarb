@@ -10,7 +10,13 @@ function HomePage({ musics }: GetMusicProps) {
       <div className="w-full flex flex-col items-center justify-start gap-2">
         <HomePageHeader />
 
-        <AllMusicPreview musics={musics} />
+        {musics && musics.length > 0 ? (
+          <AllMusicPreview musics={musics} />
+        ) : (
+          <div className="w-full text-center bg-secondary py-4 px-2 rounded-md mt-4 mb-10">
+            No Items Found
+          </div>
+        )}
 
         <div className="w-full flex items-center justify-center my-2">
           <HeaderTextAnim2 />

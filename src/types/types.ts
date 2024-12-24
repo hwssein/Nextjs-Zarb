@@ -56,6 +56,8 @@ export interface GetMusicProps {
       language: MusicLanguage;
       createdAt: string;
       assetId?: string;
+      like?: number;
+      dislike?: number;
     }
   ];
 }
