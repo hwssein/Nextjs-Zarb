@@ -10,7 +10,7 @@ import signupAccount from "./signupAccount";
 import signinAccount from "./signinAccount";
 
 import createApolloClient from "@/config/apolloClient";
-import { Find_Existing_User } from "@/graphql/query";
+import { Get_Existing_User } from "@/graphql/query";
 
 const registerUser = async (form: LoginFormType): Promise<FunctionResponse> => {
   try {
@@ -29,7 +29,7 @@ const registerUser = async (form: LoginFormType): Promise<FunctionResponse> => {
     const client = createApolloClient();
 
     const { data } = await client.query<FindExistingUserProps>({
-      query: Find_Existing_User,
+      query: Get_Existing_User,
       variables: { email },
     });
 

@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-const Find_Existing_User = gql`
+const Get_Existing_User = gql`
   query findExistingUser($email: String!) {
     myUsers(where: { email: $email }) {
       id
@@ -60,9 +60,30 @@ const Get_Published_Music = gql`
   }
 `;
 
+const Get_User_Vote = gql`
+  query getUserVote($userId: ID!, $musicId: ID!) {
+    userVotes(where: { myUser: { id: $userId }, music: { id: $musicId } }) {
+      id
+      voteType
+    }
+  }
+`;
+
+const Get_Music_Vote = gql`
+  query getMusicVote($id: ID!) {
+    music(where: { id: $id }) {
+      id
+      like
+      dislike
+    }
+  }
+`;
+
 export {
-  Find_Existing_User,
+  Get_Existing_User,
   Get_User_Music,
   Get_Unpublished_Music,
   Get_Published_Music,
+  Get_User_Vote,
+  Get_Music_Vote,
 };

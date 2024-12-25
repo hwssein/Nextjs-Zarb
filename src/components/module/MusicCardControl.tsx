@@ -1,12 +1,20 @@
 "use client";
 
-import { MusicPlayerProps, OnClickType } from "@/types/types";
+import { useState } from "react";
+
+import { Bool, MusicPlayerProps, OnClickType } from "@/types/types";
+
+import voteSubmit from "@/serverAction/vote/voteSubmit";
 
 import MusicCard from "./MusicCard";
 
 import { Button } from "../ui/button";
 import { ThumbsUp } from "lucide-react";
 import { ThumbsDown } from "lucide-react";
+import { EllipsisVertical } from "lucide-react";
+import { Loader } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 function MusicCardControl({
   name,
@@ -18,44 +26,105 @@ function MusicCardControl({
   dislike,
   id,
 }: MusicPlayerProps & { id: string; like: number; dislike: number }) {
-  const likeHandler = (event: OnClickType) => {
-    event.stopPropagation();
-  };
+  const { toast } = useToast();
 
-  const disLikeHandler = (event: OnClickType) => {
+  const [isLoading, setIsLoading] = useState<{ like: Bool; dislike: Bool }>({
+    like: false,
+    dislike: false,
+  });
+
+  const voteHandler = async (
+    event: OnClickType,
+    voteType: "like" | "dislike"
+  ) => {
     event.stopPropagation();
+
+    if (voteType === "like") {
+      setIsLoading((prevValue) => ({ ...prevValue, like: true }));
+    }
+    if (voteType === "dislike") {
+      setIsLoading((prevValue) => ({ ...prevValue, dislike: true }));
+    }
+
+    const likeResponse = await voteSubmit(id, voteType);
+
+    if (voteType === "like") {
+      setIsLoading((prevValue) => ({ ...prevValue, like: false }));
+    }
+    if (voteType === "dislike") {
+      setIsLoading((prevValue) => ({ ...prevValue, dislike: false }));
+    }
+
+    if ("error" in likeResponse || likeResponse.error) {
+      toast({
+        description: likeResponse.error,
+        variant: "destructive",
+      });
+
+      return;
+    }
+
+    if ("message" in likeResponse || likeResponse.message) {
+      toast({
+        description: likeResponse.message,
+      });
+    }
   };
 
   return (
     <>
-      <div className="w-full h-20 flex items-center shadow-md md:w-[calc(50%-4px)] bg-secondary rounded pr-1">
-        <MusicCard
-          name={name}
-          artist={artist}
-          url={url}
-          category={category}
-          language={language}
-        />
-
-        <div className="flex flex-col justify-center items-center gap-2">
-          <Button
-            onClick={likeHandler}
-            className="w-14 bg-green-600 hover:bg-green-700 dark:bg-green-800 dark:hover:bg-green-700 text-white"
-            variant="outline"
-            size="sm"
-          >
-            <ThumbsUp />
-          </Button>
-
-          <Button
-            onClick={disLikeHandler}
-            className="w-14  bg-red-600 hover:bg-red-700 dark:bg-red-800 dark:hover:bg-red-700 text-white"
-            variant="outline"
-            size="sm"
-          >
-            <ThumbsDown />
-          </Button>
+      <div className="w-full h-20 flex items-center gap-2 shadow-md md:w-[calc(50%-4px)] bg-secondary rounded pr-1">
+        <div className="w-[calc(100%-32px)]">
+          <MusicCard
+            name={name}
+            artist={artist}
+            url={url}
+            category={category}
+            language={language}
+          />
         </div>
+
+        <Popover>
+          <PopoverTrigger className="p-1">
+            <EllipsisVertical />
+          </PopoverTrigger>
+
+          <PopoverContent className="w-48 p-4">
+            <div className="w-full flex flex-col items-center justify-between gap-2">
+              <div className="w-full flex items-center justify-between gap-2">
+                <span className="w-20 py-px border-2 border-chart-2 rounded-md text-center">
+                  {like}
+                </span>
+
+                <Button
+                  onClick={(event) => voteHandler(event, "like")}
+                  className="w-20 bg-chart-2 text-white"
+                  variant="outline"
+                  size="sm"
+                  disabled={isLoading.like || isLoading.dislike}
+                >
+                  {isLoading.like ? <Loader /> : <ThumbsUp />}
+                </Button>
+              </div>
+
+              <div className="w-full flex items-center justify-between gap-2">
+                <span className="w-20 py-px border-2 border-destructive rounded-md text-center">
+                  {dislike}
+                </span>
+
+                <Button
+                  onClick={(event) => voteHandler(event, "dislike")}
+                  className="w-20 bg-destructive text-white"
+                  variant="outline"
+                  size="sm"
+                  disabled={isLoading.like || isLoading.dislike}
+                >
+                  {isLoading.dislike ? <Loader /> : <ThumbsDown />}
+                </Button>
+              </div>
+            </div>
+          </PopoverContent>
+        </Popover>
       </div>
     </>
   );

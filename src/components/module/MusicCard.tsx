@@ -33,9 +33,13 @@ function MusicCard({
             priority={true}
           ></Image>
 
-          <div className="w-full flex flex-col items-start justify-start gap-0.5 capitalize">
-            <span className="w-full">{name}</span>
-            <span className="w-full">{artist}</span>
+          <div className="w-full flex flex-col items-start justify-start gap-0.5 capitalize overflow-hidden">
+            <span className="w-full overflow-x-auto scrollbar-hidden whitespace-nowrap">
+              {name}
+            </span>
+            <span className="w-full overflow-x-auto scrollbar-hidden whitespace-nowrap">
+              {artist}
+            </span>
             <div className="w-full flex items-center justify-start gap-2 text-stroke">
               <span>{category}</span>
               <span>{language}</span>

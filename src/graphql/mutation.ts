@@ -109,6 +109,49 @@ const Publish_Music_For_View = gql`
   }
 `;
 
+const Create_User_Vote = gql`
+  mutation createUserVote($musicId: ID!, $userId: ID!, $voteType: String!) {
+    createUserVote(
+      data: {
+        music: { connect: { id: $musicId } }
+        myUser: { connect: { id: $userId } }
+        voteType: $voteType
+      }
+    ) {
+      id
+      voteType
+    }
+  }
+`;
+
+const Publish_User_Vote = gql`
+  mutation publishUserVote($id: ID!) {
+    publishUserVote(where: { id: $id }) {
+      id
+      voteType
+    }
+  }
+`;
+
+const Update_Music_Like = gql`
+  mutation updateMusicLike($like: Int!, $musicId: ID!) {
+    updateMusic(where: { id: $musicId }, data: { like: $like }) {
+      id
+      like
+      name
+    }
+  }
+`;
+
+const Update_Music_dislike = gql`
+  mutation updateMusicDislike($dislike: Int!, $musicId: ID!) {
+    updateMusic(where: { id: $musicId }, data: { dislike: $dislike }) {
+      id
+      dislike
+      name
+    }
+  }
+`;
 export {
   Create_User,
   Publish_User,
@@ -119,4 +162,8 @@ export {
   Delete_User_Music,
   Delete_Music_Asset,
   Publish_Music_For_View,
+  Create_User_Vote,
+  Publish_User_Vote,
+  Update_Music_Like,
+  Update_Music_dislike,
 };

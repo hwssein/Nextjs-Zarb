@@ -35,6 +35,7 @@ const publishMusic = async (id: string): Promise<FunctionResponse> => {
       throw new Error("server error");
 
     revalidatePath("/admin");
+    revalidatePath("/");
     return { message: "published successfully" };
   } catch (error) {
     if (error instanceof Error) {

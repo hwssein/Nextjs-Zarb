@@ -13,8 +13,8 @@ function HomePage({ musics }: GetMusicProps) {
         {musics && musics.length > 0 ? (
           <AllMusicPreview musics={musics} />
         ) : (
-          <div className="w-full text-center bg-secondary py-4 px-2 rounded-md mt-4 mb-10">
-            No Items Found
+          <div className="w-full text-center bg-secondary py-4 px-2 rounded-md mt-4 mb-10 capitalize">
+            No music has been added yet
           </div>
         )}
 

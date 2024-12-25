@@ -3,7 +3,7 @@
 import { FindExistingUserProps, UserInfo } from "@/types/types";
 
 import createApolloClient from "@/config/apolloClient";
-import { Find_Existing_User } from "@/graphql/query";
+import { Get_Existing_User } from "@/graphql/query";
 import checkSession from "./checkSession";
 
 const findUser = async (): Promise<UserInfo | { error: string }> => {
@@ -14,7 +14,7 @@ const findUser = async (): Promise<UserInfo | { error: string }> => {
     const client = createApolloClient();
 
     const { data } = await client.query<FindExistingUserProps>({
-      query: Find_Existing_User,
+      query: Get_Existing_User,
       variables: { email: session.email },
     });
     if (data.myUsers.length === 0)

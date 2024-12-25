@@ -6,7 +6,7 @@ import { cookies } from "next/headers";
 import { FindExistingUserProps, FunctionResponse } from "@/types/types";
 
 import createApolloClient from "@/config/apolloClient";
-import { Find_Existing_User } from "@/graphql/query";
+import { Get_Existing_User } from "@/graphql/query";
 
 import { comparePassword } from "@/utils/verifyPassword";
 
@@ -18,7 +18,7 @@ const signinAccount = async (
     const client = createApolloClient();
 
     const { data } = await client.query<FindExistingUserProps>({
-      query: Find_Existing_User,
+      query: Get_Existing_User,
       variables: { email },
     });
     if (data.myUsers.length === 0) throw new Error("this user does not exist");
