@@ -124,6 +124,15 @@ const Create_User_Vote = gql`
   }
 `;
 
+const Update_User_Vote = gql`
+  mutation updateUserVote($userVoteId: ID!, $voteType: String!) {
+    updateUserVote(where: { id: $userVoteId }, data: { voteType: $voteType }) {
+      id
+      voteType
+    }
+  }
+`;
+
 const Publish_User_Vote = gql`
   mutation publishUserVote($id: ID!) {
     publishUserVote(where: { id: $id }) {
@@ -163,6 +172,7 @@ export {
   Delete_Music_Asset,
   Publish_Music_For_View,
   Create_User_Vote,
+  Update_User_Vote,
   Publish_User_Vote,
   Update_Music_Like,
   Update_Music_dislike,

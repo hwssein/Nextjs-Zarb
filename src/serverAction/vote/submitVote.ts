@@ -1,15 +1,17 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
+
 import { FunctionResponse } from "@/types/types";
+
+import changeVote from "./changeVote";
+import createFirstVote from "./createFirstVote";
+import findUser from "../findUser";
 
 import createApolloClient from "@/config/apolloClient";
 import { Get_User_Vote } from "@/graphql/query";
 
-import findUser from "../findUser";
-import createFirstVote from "./createFirstVote";
-import { revalidatePath } from "next/cache";
-
-const voteSubmit = async (
+const submitVote = async (
   musicId: string,
   voteType: "like" | "dislike"
 ): Promise<FunctionResponse> => {
@@ -26,12 +28,32 @@ const voteSubmit = async (
     });
     if (!userVote || "error" in userVote) throw new Error("server error");
 
+    if (userVote?.userVotes[0]?.voteType === voteType) {
+      return {
+        error: `you already voted to ${userVote.userVotes[0].voteType}`,
+      };
+    }
+
     if (userVote.userVotes.length !== 0) {
-      console.log("user already voted");
+      const changeVoteRes = await changeVote(
+        musicId,
+        userVote.userVotes[0].id,
+        voteType
+      );
+      if ("error" in changeVoteRes || changeVoteRes.error) {
+        console.log(changeVoteRes.error);
+        throw new Error("server error");
+      }
+
+      revalidatePath("/all-musics");
+
+      return { message: "submit new vote" };
     } else {
       const firstVoteRes = await createFirstVote(musicId, user.id, voteType);
-      if ("error" in firstVoteRes || firstVoteRes.error)
+      if ("error" in firstVoteRes || firstVoteRes.error) {
+        console.log(firstVoteRes.error);
         throw new Error("server error");
+      }
 
       revalidatePath("/all-musics");
 
@@ -47,4 +69,4 @@ const voteSubmit = async (
   return { error: "an unexpected error occurred" };
 };
 
-export default voteSubmit;
+export default submitVote;

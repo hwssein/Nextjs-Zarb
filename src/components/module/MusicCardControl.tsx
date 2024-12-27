@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { Bool, MusicPlayerProps, OnClickType } from "@/types/types";
 
-import voteSubmit from "@/serverAction/vote/voteSubmit";
+import submitVote from "@/serverAction/vote/submitVote";
 
 import MusicCard from "./MusicCard";
 
@@ -46,7 +46,7 @@ function MusicCardControl({
       setIsLoading((prevValue) => ({ ...prevValue, dislike: true }));
     }
 
-    const likeResponse = await voteSubmit(id, voteType);
+    const likeResponse = await submitVote(id, voteType);
 
     if (voteType === "like") {
       setIsLoading((prevValue) => ({ ...prevValue, like: false }));
