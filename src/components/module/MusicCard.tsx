@@ -1,29 +1,11 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
+import { Play } from "lucide-react";
 
-import { Bool, MusicPlayerProps } from "@/types/types";
-import MusicPlayer from "../element/MusicPlayer";
-
-function MusicCard({
-  name,
-  artist,
-  url,
-  category,
-  language,
-}: MusicPlayerProps) {
-  const [isPlay, setIsPlay] = useState<Bool>(false);
-
+function MusicCard({ name, artist }: { name: string; artist: string }) {
   return (
     <>
-      {isPlay ? (
-        <MusicPlayer url={url} isPlay={isPlay} setIsPlay={setIsPlay} />
-      ) : (
-        <div
-          onClick={() => setIsPlay(true)}
-          className="w-full flex items-center justify-start gap-1 cursor-pointer bg-secondary rounded"
-        >
+      <div className="w-full h-16 bg-secondary flex items-center justify-between rounded">
+        <div className="w-full flex items-center justify-start gap-1">
           <Image
             src="/images/music-card.png"
             width={100}
@@ -33,20 +15,20 @@ function MusicCard({
             priority={true}
           ></Image>
 
-          <div className="w-full flex flex-col items-start justify-start gap-0.5 capitalize overflow-hidden">
-            <span className="w-full overflow-x-auto scrollbar-hidden whitespace-nowrap">
+          <div className="w-full flex flex-col items-start justify-start gap-1 capitalize overflow-hidden">
+            <span className="w-full overflow-x-auto scrollbar-hidden whitespace-nowrap font-semibold">
               {name}
             </span>
             <span className="w-full overflow-x-auto scrollbar-hidden whitespace-nowrap">
               {artist}
             </span>
-            <div className="w-full flex items-center justify-start gap-2 text-stroke">
-              <span>{category}</span>
-              <span>{language}</span>
-            </div>
           </div>
         </div>
-      )}
+
+        <span className="w-10 flex items-center justify-center">
+          <Play />
+        </span>
+      </div>
     </>
   );
 }

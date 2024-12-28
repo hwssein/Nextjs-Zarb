@@ -23,6 +23,8 @@ const Get_User_Music = gql`
           url
           category
           language
+          like
+          dislike
           assetId
         }
       }
@@ -40,6 +42,8 @@ const Get_Unpublished_Music = gql`
       language
       url
       assetId
+      like
+      dislike
     }
   }
 `;

@@ -4,7 +4,7 @@ import UserMusicCardControl from "../module/UserMusicCardControl";
 function AdminPage({ musics, role }: GetMusicProps & { role: string }) {
   return (
     <>
-      <div className="w-full flex flex-col items-center justify-start gap-2 md:flex-row md:flex-wrap md:justify-between">
+      <div className="w-full flex flex-col items-center justify-start gap-2 md:flex-row md:flex-wrap md:justify-between shadow">
         {musics.map((item) => (
           <UserMusicCardControl
             role={role}
@@ -14,6 +14,8 @@ function AdminPage({ musics, role }: GetMusicProps & { role: string }) {
             url={item.url}
             category={item.category}
             language={item.language}
+            like={item.like ?? 0}
+            dislike={item.dislike ?? 0}
             id={item.id}
             assetId={item.assetId ?? "false"}
           />

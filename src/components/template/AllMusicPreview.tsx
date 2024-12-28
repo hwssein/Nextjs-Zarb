@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { GetMusicProps } from "@/types/types";
 
-import MusicCard from "../module/MusicCard";
+import MusicCardControl from "../module/MusicCardControl";
 
 import { Button } from "../ui/button";
 import { MoveRight } from "lucide-react";
@@ -27,14 +27,17 @@ function AllMusicPreview({ musics }: GetMusicProps) {
           {selectedMusics.map((item) => (
             <div
               key={item.id}
-              className="w-full h-20 flex items-center shadow-md md:w-[calc(50%-4px)] bg-secondary rounded pr-1"
+              className="w-full flex items-center shadow md:w-[calc(50%-4px)]"
             >
-              <MusicCard
+              <MusicCardControl
                 name={item.name}
                 artist={item.artist}
                 url={item.url}
                 category={item.category}
                 language={item.language}
+                like={item.like ?? 0}
+                dislike={item.dislike ?? 0}
+                id={item.id}
               />
             </div>
           ))}

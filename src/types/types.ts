@@ -40,6 +40,8 @@ export interface UserMusicInfoProps {
       url: string;
       category: MusicCategory;
       language: MusicLanguage;
+      like: number | null;
+      dislike: number | null;
       assetId: string;
     }[];
   };
@@ -63,11 +65,14 @@ export interface GetMusicProps {
 }
 
 export interface MusicPlayerProps {
+  id: string;
   name: string;
   artist: string;
   url: string;
   category: MusicCategory;
   language: MusicLanguage;
+  like: number;
+  dislike: number;
 }
 
 export interface CheckSessionResponse {
