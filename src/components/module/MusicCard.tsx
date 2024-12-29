@@ -4,7 +4,7 @@ import { Play } from "lucide-react";
 function MusicCard({ name, artist }: { name: string; artist: string }) {
   return (
     <>
-      <div className="w-full h-16 bg-secondary flex items-center justify-between rounded">
+      <div className="w-full h-16 bg-secondary flex items-center justify-between rounded pr-1">
         <div className="w-full flex items-center justify-start gap-1">
           <Image
             src="/images/music-card.png"
