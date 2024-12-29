@@ -1,9 +1,13 @@
+import { Suspense } from "react";
+
 import { GetMusicProps } from "@/types/types";
 
 import HomePage from "@/components/template/HomePage";
 
 import createApolloClient from "@/config/apolloClient";
 import { Get_Published_Music } from "@/graphql/query";
+
+import Loader from "@/components/element/Loader";
 
 async function Home() {
   const client = createApolloClient();
@@ -13,7 +17,9 @@ async function Home() {
 
   return (
     <>
-      <HomePage musics={data?.musics} />
+      <Suspense fallback={<Loader />}>
+        <HomePage musics={data?.musics} />
+      </Suspense>
     </>
   );
 }

@@ -47,6 +47,21 @@ export interface UserMusicInfoProps {
   };
 }
 
+export interface LikedMusicProps {
+  userVotes: {
+    music: {
+      name: string;
+      artist: string;
+      url: string;
+      category: MusicCategory;
+      language: MusicLanguage;
+      like: number;
+      dislike: number;
+      id: string;
+    };
+  }[];
+}
+
 export interface GetMusicProps {
   musics: [
     {

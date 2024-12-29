@@ -43,9 +43,11 @@ function InformationSection({
           </Link>
         )}
 
-        <Button variant="secondary" size="sm" className="font-light">
-          Liked Musics
-        </Button>
+        <Link href="/dashboard/liked-music">
+          <Button variant="secondary" size="sm" className="font-light">
+            Liked Musics
+          </Button>
+        </Link>
       </div>
     </section>
   );

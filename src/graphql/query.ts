@@ -83,6 +83,23 @@ const Get_Music_Vote = gql`
   }
 `;
 
+const Get_Liked_Music = gql`
+  query getLikedMusic($userId: ID!) {
+    userVotes(where: { myUser: { id: $userId }, voteType: "like" }) {
+      music {
+        name
+        artist
+        url
+        category
+        language
+        like
+        dislike
+        id
+      }
+    }
+  }
+`;
+
 export {
   Get_Existing_User,
   Get_User_Music,
@@ -90,4 +107,5 @@ export {
   Get_Published_Music,
   Get_User_Vote,
   Get_Music_Vote,
+  Get_Liked_Music,
 };

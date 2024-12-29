@@ -1,9 +1,13 @@
+import { Suspense } from "react";
+
 import { GetMusicProps } from "@/types/types";
 
 import AllMusicsPage from "@/components/template/AllMusicsPage";
 
 import createApolloClient from "@/config/apolloClient";
 import { Get_Published_Music } from "@/graphql/query";
+
+import Loader from "@/components/element/Loader";
 
 async function AllMusics() {
   const client = createApolloClient();
@@ -14,7 +18,9 @@ async function AllMusics() {
   if ("musics" in data && data.musics.length > 0) {
     return (
       <>
-        <AllMusicsPage musics={data?.musics} />
+        <Suspense fallback={<Loader />}>
+          <AllMusicsPage musics={data?.musics} />
+        </Suspense>
       </>
     );
   } else {
