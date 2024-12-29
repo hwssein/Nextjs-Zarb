@@ -140,11 +140,6 @@ input {
 @tailwind components;
 @tailwind utilities;
 
-body {
-  max-width: 1024px;
-  margin: 0 auto;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;

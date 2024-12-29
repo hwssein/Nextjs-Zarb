@@ -41,21 +41,11 @@ function MusicPlayer({
   ) => {
     event.stopPropagation();
 
-    if (voteType === "like") {
-      setIsLoading((prevValue) => ({ ...prevValue, like: true }));
-    }
-    if (voteType === "dislike") {
-      setIsLoading((prevValue) => ({ ...prevValue, dislike: true }));
-    }
+    setIsLoading((prevValue) => ({ ...prevValue, [voteType]: true }));
 
     const likeResponse = await submitVote(id, voteType);
 
-    if (voteType === "like") {
-      setIsLoading((prevValue) => ({ ...prevValue, like: false }));
-    }
-    if (voteType === "dislike") {
-      setIsLoading((prevValue) => ({ ...prevValue, dislike: false }));
-    }
+    setIsLoading((prevValue) => ({ ...prevValue, [voteType]: false }));
 
     if ("error" in likeResponse || likeResponse.error) {
       toast({
