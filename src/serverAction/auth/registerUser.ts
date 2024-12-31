@@ -6,8 +6,8 @@ import {
   LoginFormProps,
 } from "@/types/types";
 
-import signupAccount from "./signupAccount";
 import signinAccount from "./signinAccount";
+import signupAccount from "./signupAccount";
 
 import createApolloClient from "@/config/apolloClient";
 import { Get_Existing_User } from "@/query/userQuery";

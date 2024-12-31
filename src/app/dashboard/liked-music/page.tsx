@@ -3,8 +3,8 @@ import { redirect } from "next/navigation";
 
 import { LikedMusicProps } from "@/types/types";
 
-import getLikedMusic from "@/serverAction/getLikedMusic";
-import findUser from "@/serverAction/findUser";
+import findUser from "@/serverAction/auth/findUser";
+import getLikedMusic from "@/serverAction/music/getLikedMusic";
 
 import LikedMusicPage from "@/components/template/LikedMusicPage";
 import Loader from "@/components/element/animation/Loader";

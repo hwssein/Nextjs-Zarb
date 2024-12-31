@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import { FunctionResponse, LoginFormProps } from "@/types/types";
 
-import registerUser from "@/serverAction/registerUser";
+import registerUser from "@/serverAction/auth/registerUser";
 import LoginForm from "../module/LoginForm";
 
 import { useToast } from "@/hooks/use-toast";

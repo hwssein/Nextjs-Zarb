@@ -2,7 +2,7 @@
 
 import { FunctionResponse, UserMusicInfo } from "@/types/types";
 
-import findUser from "./findUser";
+import findUser from "../auth/findUser";
 
 import createApolloClient from "@/config/apolloClient";
 import { Get_User_Music } from "@/query/userQuery";

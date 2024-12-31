@@ -5,7 +5,7 @@ import { GetMusicProps } from "@/types/types";
 import createApolloClient from "@/config/apolloClient";
 import { Get_Unpublished_Music } from "@/query/musicQuery";
 
-import findUser from "@/serverAction/findUser";
+import findUser from "@/serverAction/auth/findUser";
 import AdminPage from "@/components/template/AdminPage";
 
 async function Admin() {

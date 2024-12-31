@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { redirect } from "next/navigation";
-import checkSession from "@/serverAction/checkSession";
+import checkSession from "@/serverAction/auth/checkSession";
 
 import LoginPage from "@/components/template/LoginPage";
 

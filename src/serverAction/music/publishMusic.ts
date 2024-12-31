@@ -4,9 +4,9 @@ import { revalidatePath } from "next/cache";
 
 import { FunctionResponse } from "@/types/types";
 
-import createApolloClient from "@/config/apolloClient";
+import findUser from "../auth/findUser";
 
-import findUser from "./findUser";
+import createApolloClient from "@/config/apolloClient";
 import {
   Publish_Music_For_View,
   Publish_User_music_Data,

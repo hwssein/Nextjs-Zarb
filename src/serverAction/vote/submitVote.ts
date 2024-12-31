@@ -6,7 +6,7 @@ import { FunctionResponse } from "@/types/types";
 
 import changeVote from "./changeVote";
 import createFirstVote from "./createFirstVote";
-import findUser from "../findUser";
+import findUser from "../auth/findUser";
 
 import createApolloClient from "@/config/apolloClient";
 import { Get_User_Vote } from "@/query/userQuery";

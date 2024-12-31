@@ -2,7 +2,7 @@
 
 import { FunctionResponse, LikedMusicProps } from "@/types/types";
 
-import findUser from "./findUser";
+import findUser from "../auth/findUser";
 
 import createApolloClient from "@/config/apolloClient";
 import { Get_Liked_Music } from "@/query/musicQuery";

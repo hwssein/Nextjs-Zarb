@@ -4,8 +4,9 @@ import { revalidatePath } from "next/cache";
 
 import { FunctionResponse } from "@/types/types";
 
+import findUser from "../auth/findUser";
+
 import createApolloClient from "@/config/apolloClient";
-import findUser from "./findUser";
 import {
   Delete_Music_Asset,
   Delete_User_Music,

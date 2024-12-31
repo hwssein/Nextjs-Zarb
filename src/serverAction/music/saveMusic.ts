@@ -2,10 +2,9 @@
 
 import { FunctionResponse } from "@/types/types";
 
-import findUser from "./findUser";
-
-import uploadMusicFile from "@/serverAction/uploadMusicFile";
-import createMusicData from "@/serverAction/createMusicData";
+import findUser from "../auth/findUser";
+import uploadMusicFile from "./uploadMusicFile";
+import createMusicData from "@/serverAction/music/createMusicData";
 
 const saveMusic = async (formData: FormData): Promise<FunctionResponse> => {
   try {

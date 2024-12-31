@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { MusicFormProps, OnChangeEvent } from "@/types/types";
 
 import AddMusicForm from "./AddMusicForm";
-import saveMusic from "@/serverAction/saveMusic";
+import saveMusic from "@/serverAction/music/saveMusic";
 
 import { useToast } from "@/hooks/use-toast";
 import Loader from "../element/animation/Loader";

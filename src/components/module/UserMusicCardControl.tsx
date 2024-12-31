@@ -7,8 +7,8 @@ import { MusicPlayerProps, OnClickEvent } from "@/types/types";
 import MusicPlayer from "./MusicPlayer";
 import MusicCard from "./MusicCard";
 
-import deleteMusic from "@/serverAction/deleteMusic";
-import publishMusic from "@/serverAction/publishMusic";
+import deleteMusic from "@/serverAction/music/deleteMusic";
+import publishMusic from "@/serverAction/music/publishMusic";
 
 import { Drawer, DrawerContent, DrawerTrigger } from "../ui/drawer";
 import { Button } from "../ui/button";
