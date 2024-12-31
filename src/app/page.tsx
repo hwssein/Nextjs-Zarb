@@ -7,7 +7,7 @@ import HomePage from "@/components/template/HomePage";
 import createApolloClient from "@/config/apolloClient";
 import { Get_Published_Music } from "@/graphql/query";
 
-import Loader from "@/components/element/Loader";
+import Loader from "@/components/element/animation/Loader";
 
 async function Home() {
   const client = createApolloClient();

@@ -4,7 +4,7 @@ import { ChildrenProps } from "@/types/types";
 
 import { useEffect, useState } from "react";
 
-import Loader from "@/element/Loader";
+import Loader from "@/components/element/animation/Loader";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 
 function ShadThemeProviders({ children }: ChildrenProps) {

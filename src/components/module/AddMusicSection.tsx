@@ -9,7 +9,7 @@ import AddMusicForm from "./AddMusicForm";
 import saveMusic from "@/serverAction/saveMusic";
 
 import { useToast } from "@/hooks/use-toast";
-import Loader from "../element/Loader";
+import Loader from "../element/animation/Loader";
 
 function AddMusicSection() {
   const router = useRouter();

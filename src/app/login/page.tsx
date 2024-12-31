@@ -4,7 +4,7 @@ import checkSession from "@/serverAction/checkSession";
 
 import LoginPage from "@/components/template/LoginPage";
 
-import Loader from "@/components/element/Loader";
+import Loader from "@/components/element/animation/Loader";
 
 function Login() {
   const session = checkSession();

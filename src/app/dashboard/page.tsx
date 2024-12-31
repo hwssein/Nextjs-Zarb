@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import findUser from "@/serverAction/findUser";
 
 import DashboardPage from "@/components/template/DashboardPage";
-import Loader from "@/components/element/Loader";
+import Loader from "@/components/element/animation/Loader";
 
 async function Dashboard() {
   const user = await findUser();

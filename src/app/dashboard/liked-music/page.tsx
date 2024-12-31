@@ -7,7 +7,7 @@ import getLikedMusic from "@/serverAction/getLikedMusic";
 import findUser from "@/serverAction/findUser";
 
 import LikedMusicPage from "@/components/template/LikedMusicPage";
-import Loader from "@/components/element/Loader";
+import Loader from "@/components/element/animation/Loader";
 
 async function LikedMusic() {
   const user = await findUser();

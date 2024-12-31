@@ -7,7 +7,7 @@ import AllMusicsPage from "@/components/template/AllMusicsPage";
 import createApolloClient from "@/config/apolloClient";
 import { Get_Published_Music } from "@/graphql/query";
 
-import Loader from "@/components/element/Loader";
+import Loader from "@/components/element/animation/Loader";
 
 async function AllMusics() {
   const client = createApolloClient();

@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import findUser from "@/serverAction/findUser";
 import getUserMusic from "@/serverAction/getUserMusic";
 
-import Loader from "@/components/element/Loader";
+import Loader from "@/components/element/animation/Loader";
 import AddedMusicPage from "@/components/template/AddedMusicPage";
 
 async function AddedMusic() {
