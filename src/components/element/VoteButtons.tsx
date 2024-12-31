@@ -1,6 +1,6 @@
 "use client";
 
-import { Bool, OnClickType } from "@/types/types";
+import { OnClickEvent } from "@/types/types";
 import { Button } from "../ui/button";
 
 import { ThumbsUp } from "lucide-react";
@@ -8,8 +8,8 @@ import { ThumbsDown } from "lucide-react";
 import { Loader } from "lucide-react";
 
 interface VoteButtonsProps {
-  isLoading: { like: Bool; dislike: Bool };
-  voteHandler: (event: OnClickType, voteType: "like" | "dislike") => void;
+  isLoading: { like: boolean; dislike: boolean };
+  voteHandler: (event: OnClickEvent, voteType: "like" | "dislike") => void;
   like: number;
   dislike: number;
 }

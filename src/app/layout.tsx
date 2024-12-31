@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Children } from "@/types/types";
+import { ChildrenProps } from "@/types/types";
 
 import Layout from "@/layout/Layout";
 
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "this is a next.js project developed by hwssein for personal or public usage",
 };
 
-export default function RootLayout({ children }: Children) {
+export default function RootLayout({ children }: ChildrenProps) {
   return (
     <html lang="en" className={`${myFont.className}`}>
       <body className="w-full font-normal flex items-center justify-center">

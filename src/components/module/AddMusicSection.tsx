@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { Bool, MusicFormProps, OnChangeType } from "@/types/types";
+import { MusicFormProps, OnChangeEvent } from "@/types/types";
 
 import AddMusicForm from "./AddMusicForm";
 import saveMusic from "@/serverAction/saveMusic";
@@ -15,7 +15,7 @@ function AddMusicSection() {
   const router = useRouter();
   const { toast } = useToast();
 
-  const [isLoading, setIsLoading] = useState<Bool>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [form, setForm] = useState<MusicFormProps>({
     name: "",
     artist: "",
@@ -25,7 +25,7 @@ function AddMusicSection() {
     language: "",
   });
 
-  const changeHandler = (event: OnChangeType) => {
+  const changeHandler = (event: OnChangeEvent) => {
     const { name, value } = event.target;
 
     setForm({ ...form, [name]: name === "url" ? value.trim() : value });

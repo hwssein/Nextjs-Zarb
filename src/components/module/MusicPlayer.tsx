@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 
-import { MusicPlayerProps, OnClickType, Bool } from "@/types/types";
+import { MusicPlayerProps, OnClickEvent } from "@/types/types";
 
 import submitVote from "@/serverAction/vote/submitVote";
-import VoteButtons from "./VoteButtons";
+import VoteButtons from "../element/VoteButtons";
 
 import ReactPlayer from "react-player";
 
@@ -30,13 +30,16 @@ function MusicPlayer({
 }: MusicPlayerProps) {
   const { toast } = useToast();
 
-  const [isLoading, setIsLoading] = useState<{ like: Bool; dislike: Bool }>({
+  const [isLoading, setIsLoading] = useState<{
+    like: boolean;
+    dislike: boolean;
+  }>({
     like: false,
     dislike: false,
   });
 
   const voteHandler = async (
-    event: OnClickType,
+    event: OnClickEvent,
     voteType: "like" | "dislike"
   ) => {
     event.stopPropagation();

@@ -18,17 +18,19 @@ function InformationSection({
         <span>{user.email}</span>
       </div>
 
-      <div className="flex items-center justify-start gap-1 font-light">
-        <span>Role:</span>
-        <span>{user.role}</span>
-      </div>
+      {user.role === "ADMIN" && (
+        <div className="flex items-center justify-start gap-1 font-light">
+          <span>Role:</span>
+          <span>{user.role}</span>
+        </div>
+      )}
 
       <div className="w-full flex items-center gap-1 font-light">
         <span>Register Date:</span>
         <span>{`${year}-${month}-${day}`}</span>
       </div>
 
-      <div className="w-full flex items-center justify-evenly gap-2 ">
+      <div className="w-full flex items-center justify-evenly gap-2 mt-2">
         <Link href="/dashboard/added-music">
           <Button variant="secondary" size="sm" className="font-light">
             Your Musics

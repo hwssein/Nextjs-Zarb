@@ -1,25 +1,25 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
-import { Bool, FunctionResponse, LoginFormType } from "@/types/types";
+import { FunctionResponse, LoginFormProps } from "@/types/types";
 
 import registerUser from "@/serverAction/registerUser";
 import LoginForm from "../module/LoginForm";
 
 import { useToast } from "@/hooks/use-toast";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 function LoginPage() {
   const { toast } = useToast();
   const router = useRouter();
 
-  const [form, setForm] = useState<LoginFormType>({
+  const [form, setForm] = useState<LoginFormProps>({
     email: "",
     password: "",
   });
-  const [isShowPassword, setIsShowPassword] = useState<Bool>(false);
+  const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;

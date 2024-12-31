@@ -3,7 +3,7 @@
 import {
   FindExistingUserProps,
   FunctionResponse,
-  LoginFormType,
+  LoginFormProps,
 } from "@/types/types";
 
 import signupAccount from "./signupAccount";
@@ -12,7 +12,9 @@ import signinAccount from "./signinAccount";
 import createApolloClient from "@/config/apolloClient";
 import { Get_Existing_User } from "@/graphql/query";
 
-const registerUser = async (form: LoginFormType): Promise<FunctionResponse> => {
+const registerUser = async (
+  form: LoginFormProps
+): Promise<FunctionResponse> => {
   try {
     const { email, password } = form;
 

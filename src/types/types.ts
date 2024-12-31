@@ -1,85 +1,39 @@
-export type Children = Readonly<{ children: React.ReactNode }>;
-export type Bool = boolean;
-export type OnChangeType = React.ChangeEvent<HTMLInputElement>;
-export type OnClickType = React.MouseEvent<HTMLButtonElement>;
+// General Types
+export type ChildrenProps = { children: React.ReactNode };
 
+// Event Handlers
+export type OnChangeEvent = React.ChangeEvent<HTMLInputElement>;
+export type OnClickEvent = React.MouseEvent<HTMLButtonElement>;
+
+// Music Types
 export type MusicCategory = "remix" | "electronic" | "hip-hop" | "house";
 export type MusicLanguage = "persian" | "english" | "turkish" | "other";
 
-export interface LoginFormType {
-  email: string;
-  password: string;
-}
+// Response Types
 export interface FunctionResponse {
   error?: string;
   message?: string;
 }
 
-export interface FindExistingUserProps {
-  myUsers: {
-    id: string;
-    email: string;
-    role: "ADMIN" | "USER";
-    password: string;
-    createdAt: string;
-  }[];
-}
-export interface UserInfo {
+// User Types
+export interface LoginFormProps {
   email: string;
+  password: string;
+}
+
+export interface User {
   id: string;
+  email: string;
   role: "ADMIN" | "USER";
   createdAt: string;
 }
 
-export interface UserMusicInfoProps {
-  myUser: {
-    music: {
-      id: string;
-      name: string;
-      artist: string;
-      url: string;
-      category: MusicCategory;
-      language: MusicLanguage;
-      like: number | null;
-      dislike: number | null;
-      assetId: string;
-    }[];
-  };
+export interface FindExistingUserProps {
+  myUsers: (User & { password: string })[];
 }
+export type UserInfo = User;
 
-export interface LikedMusicProps {
-  userVotes: {
-    music: {
-      name: string;
-      artist: string;
-      url: string;
-      category: MusicCategory;
-      language: MusicLanguage;
-      like: number;
-      dislike: number;
-      id: string;
-    };
-  }[];
-}
-
-export interface GetMusicProps {
-  musics: [
-    {
-      id: string;
-      name: string;
-      artist: string;
-      url: string;
-      category: MusicCategory;
-      language: MusicLanguage;
-      createdAt: string;
-      assetId?: string;
-      like?: number;
-      dislike?: number;
-    }
-  ];
-}
-
-export interface MusicPlayerProps {
+export interface Music {
   id: string;
   name: string;
   artist: string;
@@ -88,12 +42,26 @@ export interface MusicPlayerProps {
   language: MusicLanguage;
   like: number;
   dislike: number;
+  assetId?: string;
 }
 
-export interface CheckSessionResponse {
-  email: string;
-  exp?: number;
+export interface UserMusicInfo {
+  myUser: {
+    music: Music[];
+  };
 }
+
+export interface LikedMusicProps {
+  userVotes: Array<{
+    music: Music;
+  }>;
+}
+
+export interface GetMusicProps {
+  musics: (Music & { createdAt: string })[];
+}
+
+export type MusicPlayerProps = Music;
 
 export interface MusicFormProps {
   name: string;
@@ -102,4 +70,10 @@ export interface MusicFormProps {
   mp3File: File | null;
   category: MusicCategory | "";
   language: MusicLanguage | "";
+}
+
+// Session Check
+export interface CheckSessionResponse {
+  email: string;
+  exp?: number;
 }

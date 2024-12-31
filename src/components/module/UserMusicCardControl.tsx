@@ -2,9 +2,9 @@
 
 import { useRouter } from "next/navigation";
 
-import { MusicPlayerProps, OnClickType } from "@/types/types";
+import { MusicPlayerProps, OnClickEvent } from "@/types/types";
 
-import MusicPlayer from "../element/MusicPlayer";
+import MusicPlayer from "./MusicPlayer";
 import MusicCard from "./MusicCard";
 
 import deleteMusic from "@/serverAction/deleteMusic";
@@ -32,7 +32,7 @@ function UserMusicCardControl({
   const { toast } = useToast();
   const router = useRouter();
 
-  const deleteHandler = async (event: OnClickType) => {
+  const deleteHandler = async (event: OnClickEvent) => {
     event.stopPropagation();
     const confirmDelete: boolean = confirm("Are You Sure To DELETE?");
 
@@ -49,7 +49,7 @@ function UserMusicCardControl({
       toast({ description: "Server Error, Try Again", variant: "destructive" });
   };
 
-  const publishHandler = async (event: OnClickType) => {
+  const publishHandler = async (event: OnClickEvent) => {
     event.stopPropagation();
 
     const confirmDelete: boolean = confirm("Are You Sure To PUBLISH?");

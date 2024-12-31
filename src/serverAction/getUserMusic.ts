@@ -1,22 +1,20 @@
 "use server";
 
-import { FunctionResponse, UserMusicInfoProps } from "@/types/types";
+import { FunctionResponse, UserMusicInfo } from "@/types/types";
 
 import findUser from "./findUser";
 
 import createApolloClient from "@/config/apolloClient";
 import { Get_User_Music } from "@/graphql/query";
 
-const getUserMusic = async (): Promise<
-  FunctionResponse | UserMusicInfoProps
-> => {
+const getUserMusic = async (): Promise<FunctionResponse | UserMusicInfo> => {
   try {
     const user = await findUser();
     if ("error" in user) throw new Error("please login to your account");
 
     const client = createApolloClient();
 
-    const { data: getUserMusicArray } = await client.query<UserMusicInfoProps>({
+    const { data: getUserMusicArray } = await client.query<UserMusicInfo>({
       query: Get_User_Music,
       variables: { id: user.id },
     });

@@ -1,10 +1,10 @@
-import { Bool, OnChangeType } from "@/types/types";
+import { OnChangeEvent } from "@/types/types";
 
 interface MusicCategoryButtonProps {
   title: string;
   value: string;
-  changeHandler: (event: OnChangeType) => void;
-  checked: Bool;
+  changeHandler: (event: OnChangeEvent) => void;
+  checked: boolean;
 }
 
 function MusicCategoryButton({

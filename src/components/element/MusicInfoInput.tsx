@@ -1,11 +1,11 @@
-import { MusicFormProps, OnChangeType } from "@/types/types";
+import { MusicFormProps, OnChangeEvent } from "@/types/types";
 import { Input } from "../ui/input";
 
 interface MusicInfoInputProps {
   title: string;
   name: keyof MusicFormProps;
   value: string;
-  changeHandler: (event: OnChangeType) => void;
+  changeHandler: (event: OnChangeEvent) => void;
   form: MusicFormProps;
 }
 

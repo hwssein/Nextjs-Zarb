@@ -1,6 +1,6 @@
 import { MusicPlayerProps } from "@/types/types";
 
-import MusicPlayer from "../element/MusicPlayer";
+import MusicPlayer from "./MusicPlayer";
 import MusicCard from "./MusicCard";
 
 import { Drawer, DrawerContent, DrawerTrigger } from "../ui/drawer";

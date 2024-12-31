@@ -1,4 +1,4 @@
-import { MusicFormProps, OnChangeType } from "@/types/types";
+import { MusicFormProps, OnChangeEvent } from "@/types/types";
 
 import MusicCategoryButton from "../element/MusicCategoryButton";
 import MusicInfoInput from "../element/MusicInfoInput";
@@ -9,7 +9,7 @@ import MusicFileInput from "../element/MusicFileInput";
 interface AddMusicFormProps {
   form: MusicFormProps;
   setForm: React.Dispatch<React.SetStateAction<MusicFormProps>>;
-  changeHandler: (event: OnChangeType) => void;
+  changeHandler: (event: OnChangeEvent) => void;
   saveMusicHandler: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 

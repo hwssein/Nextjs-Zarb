@@ -1,10 +1,10 @@
-import { Children } from "@/types/types";
+import { ChildrenProps } from "@/types/types";
 
 import Header from "./Header";
 import Footer from "./Footer";
 import checkSession from "@/serverAction/checkSession";
 
-async function Layout({ children }: Children) {
+async function Layout({ children }: ChildrenProps) {
   const session = await checkSession();
 
   return (

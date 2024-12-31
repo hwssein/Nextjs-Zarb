@@ -1,7 +1,7 @@
 "use client";
 
 import { useToast } from "@/hooks/use-toast";
-import { MusicFormProps, OnChangeType } from "@/types/types";
+import { MusicFormProps, OnChangeEvent } from "@/types/types";
 
 interface MusicFileInputProps {
   title: string;
@@ -13,7 +13,7 @@ interface MusicFileInputProps {
 function MusicFileInput({ title, name, form, setForm }: MusicFileInputProps) {
   const { toast } = useToast();
 
-  const changeHandler = (event: OnChangeType) => {
+  const changeHandler = (event: OnChangeEvent) => {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
 

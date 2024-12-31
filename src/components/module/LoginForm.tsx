@@ -1,15 +1,15 @@
-import { Bool, LoginFormType, OnChangeType } from "@/types/types";
+import { LoginFormProps, OnChangeEvent } from "@/types/types";
 
 import { Input } from "../ui/input";
 
 import { Eye, EyeOff } from "lucide-react";
 import FormButton from "../element/FormButton";
 
-interface LoginFormProps {
-  form: LoginFormType;
-  changeHandler: (event: OnChangeType) => void;
-  isShowPassword: Bool;
-  setIsShowPassword: React.Dispatch<React.SetStateAction<Bool>>;
+interface LoginFormFunctionProps {
+  form: LoginFormProps;
+  changeHandler: (event: OnChangeEvent) => void;
+  isShowPassword: boolean;
+  setIsShowPassword: React.Dispatch<React.SetStateAction<boolean>>;
   loginHandler: () => void;
 }
 
@@ -19,7 +19,7 @@ function LoginForm({
   isShowPassword,
   setIsShowPassword,
   loginHandler,
-}: LoginFormProps) {
+}: LoginFormFunctionProps) {
   return (
     <>
       <form

@@ -1,13 +1,13 @@
 "use client";
 
-import { Children } from "@/types/types";
+import { ChildrenProps } from "@/types/types";
 
 import { useEffect, useState } from "react";
 
 import Loader from "@/element/Loader";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 
-function ShadThemeProviders({ children }: Children) {
+function ShadThemeProviders({ children }: ChildrenProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
