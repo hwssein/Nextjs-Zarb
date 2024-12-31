@@ -1,10 +1,13 @@
 import { GetMusicProps } from "@/types/types";
 import MusicCardControl from "../module/MusicCardControl";
+import FilterSection from "../module/FilterSection";
 
 function AllMusicsPage({ musics }: GetMusicProps) {
   return (
     <>
       <div className="w-full flex flex-col items-center justify-start gap-2 md:flex-row md:flex-wrap md:justify-between">
+        <FilterSection />
+
         {musics.map((item) => (
           <div
             key={item.id}
