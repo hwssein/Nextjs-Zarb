@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { ChildrenProps } from "@/types/types";
 
 import Layout from "@/layout/Layout";
-
-import ShadThemeProviders from "@/providers/ShadThemeProvider";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 
 import myFont from "@/config/font";
 import "./globals.css";
@@ -17,12 +16,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: ChildrenProps) {
   return (
-    <html lang="en" className={`${myFont.className}`}>
+    <html suppressHydrationWarning lang="en" className={`${myFont.className}`}>
       <body className="w-full font-normal flex items-center justify-center">
         <div className="max-w-5xl w-full p-2">
-          <ShadThemeProviders>
+          <ThemeProvider>
             <Layout>{children}</Layout>
-          </ShadThemeProviders>
+          </ThemeProvider>
           <Toaster />
         </div>
       </body>

@@ -75,9 +75,27 @@ input {
   line-height: 1em;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+html {
+  transition: background-color 0.1s ease, color 0.1s ease;
+}
+
+body {
+  transition: background-color 0.1s ease, color 0.1s ease;
+}
+
+body.dark {
+  background-color: var(--background-dark);
+  color: var(--foreground-dark);
+}
+
+body.light {
+  background-color: var(--background-light);
+  color: var(--foreground-light);
+}
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @layer base {
   :root {
