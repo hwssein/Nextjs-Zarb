@@ -3,14 +3,16 @@
 import { FunctionResponse } from "@/types/types";
 
 import createApolloClient from "@/config/apolloClient";
-import { Get_Music_Vote } from "@/graphql/query";
+import { Get_Music_Vote } from "@/query/musicQuery";
 import {
-  Publish_User_music_Data,
-  Publish_User_Vote,
   Update_Music_dislike,
   Update_Music_Like,
   Update_User_Vote,
-} from "@/graphql/mutation";
+} from "@/mutation/updateMutation";
+import {
+  Publish_User_music_Data,
+  Publish_User_Vote,
+} from "@/mutation/publishMutation";
 
 const changeVote = async (
   musicId: string,

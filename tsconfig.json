@@ -27,8 +27,8 @@
       "@/template/*": ["src/components/template/*"],
       "@/ui/*": ["src/components/ui/*"],
       "@/config/*": ["src/config/*"],
-      "@/models/*": ["src/models/*"],
-      "@/providers/*": ["src/providers/*"],
+      "@/mutation/*": ["src/graphql/mutation/*"],
+      "@/query/*": ["src/graphql/query/*"],
       "@/serverAction/*": ["src/serverAction/*"],
       "@/types/*": ["src/types/*"],
       "@/utils/*": ["src/utils/*"]

@@ -3,7 +3,8 @@
 import { FunctionResponse } from "@/types/types";
 
 import createApolloClient from "@/config/apolloClient";
-import { Create_Music, Publish_User_music_Data } from "@/graphql/mutation";
+import { Create_Music } from "@/mutation/createMutation";
+import { Publish_User_music_Data } from "@/mutation/publishMutation";
 
 const createMusicData = async (
   name: string,

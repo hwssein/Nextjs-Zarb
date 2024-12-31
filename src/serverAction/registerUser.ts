@@ -10,7 +10,7 @@ import signupAccount from "./signupAccount";
 import signinAccount from "./signinAccount";
 
 import createApolloClient from "@/config/apolloClient";
-import { Get_Existing_User } from "@/graphql/query";
+import { Get_Existing_User } from "@/query/userQuery";
 
 const registerUser = async (
   form: LoginFormProps

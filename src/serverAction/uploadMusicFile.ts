@@ -3,12 +3,10 @@
 import { FunctionResponse } from "@/types/types";
 
 import createApolloClient from "@/config/apolloClient";
-import {
-  Create_Asset_Music_Url,
-  Publish_User_music_Asset,
-} from "@/graphql/mutation";
 
 import createMusicData from "./createMusicData";
+import { Create_Asset_Music_Url } from "@/mutation/createMutation";
+import { Publish_User_music_Asset } from "@/mutation/publishMutation";
 
 const uploadMusicFile = async (
   name: string,

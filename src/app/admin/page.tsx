@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { GetMusicProps } from "@/types/types";
 
 import createApolloClient from "@/config/apolloClient";
-import { Get_Unpublished_Music } from "@/graphql/query";
+import { Get_Unpublished_Music } from "@/query/musicQuery";
 
 import findUser from "@/serverAction/findUser";
 import AdminPage from "@/components/template/AdminPage";

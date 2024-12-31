@@ -9,7 +9,7 @@ import createFirstVote from "./createFirstVote";
 import findUser from "../findUser";
 
 import createApolloClient from "@/config/apolloClient";
-import { Get_User_Vote } from "@/graphql/query";
+import { Get_User_Vote } from "@/query/userQuery";
 
 const submitVote = async (
   musicId: string,

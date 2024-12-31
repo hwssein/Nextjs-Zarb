@@ -6,9 +6,9 @@ import { cookies } from "next/headers";
 import { FindExistingUserProps, FunctionResponse } from "@/types/types";
 
 import createApolloClient from "@/config/apolloClient";
-import { Get_Existing_User } from "@/graphql/query";
 
 import { comparePassword } from "@/utils/verifyPassword";
+import { Get_Existing_User } from "@/query/userQuery";
 
 const signinAccount = async (
   email: string,

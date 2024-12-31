@@ -5,7 +5,7 @@ import { FunctionResponse, LikedMusicProps } from "@/types/types";
 import findUser from "./findUser";
 
 import createApolloClient from "@/config/apolloClient";
-import { Get_Liked_Music } from "@/graphql/query";
+import { Get_Liked_Music } from "@/query/musicQuery";
 
 const getLikedMusic = async (): Promise<FunctionResponse | LikedMusicProps> => {
   try {

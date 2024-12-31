@@ -5,7 +5,7 @@ import { GetMusicProps } from "@/types/types";
 import HomePage from "@/components/template/HomePage";
 
 import createApolloClient from "@/config/apolloClient";
-import { Get_Published_Music } from "@/graphql/query";
+import { Get_Published_Music } from "@/query/musicQuery";
 
 import Loader from "@/components/element/animation/Loader";
 

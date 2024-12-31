@@ -5,7 +5,7 @@ import { FunctionResponse, UserMusicInfo } from "@/types/types";
 import findUser from "./findUser";
 
 import createApolloClient from "@/config/apolloClient";
-import { Get_User_Music } from "@/graphql/query";
+import { Get_User_Music } from "@/query/userQuery";
 
 const getUserMusic = async (): Promise<FunctionResponse | UserMusicInfo> => {
   try {

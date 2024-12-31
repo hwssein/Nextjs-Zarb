@@ -5,12 +5,12 @@ import { revalidatePath } from "next/cache";
 import { FunctionResponse } from "@/types/types";
 
 import createApolloClient from "@/config/apolloClient";
+
+import findUser from "./findUser";
 import {
   Publish_Music_For_View,
   Publish_User_music_Data,
-} from "@/graphql/mutation";
-
-import findUser from "./findUser";
+} from "@/mutation/publishMutation";
 
 const publishMusic = async (id: string): Promise<FunctionResponse> => {
   try {

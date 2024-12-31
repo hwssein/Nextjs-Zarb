@@ -6,7 +6,8 @@ import signinAccount from "./signinAccount";
 import { hashPassword } from "@/utils/verifyPassword";
 
 import createApolloClient from "@/config/apolloClient";
-import { Create_User, Publish_User } from "@/graphql/mutation";
+import { Create_User } from "@/mutation/createMutation";
+import { Publish_User } from "@/mutation/publishMutation";
 
 const signupAccount = async (
   email: string,

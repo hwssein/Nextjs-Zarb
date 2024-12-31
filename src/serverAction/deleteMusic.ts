@@ -4,9 +4,12 @@ import { revalidatePath } from "next/cache";
 
 import { FunctionResponse } from "@/types/types";
 
-import { Delete_Music_Asset, Delete_User_Music } from "@/graphql/mutation";
 import createApolloClient from "@/config/apolloClient";
 import findUser from "./findUser";
+import {
+  Delete_Music_Asset,
+  Delete_User_Music,
+} from "@/mutation/deleteMutation";
 
 const deleteMusic = async (
   id: string,
