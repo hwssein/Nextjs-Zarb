@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import { OnClickEvent } from "@/types/types";
@@ -20,8 +20,38 @@ function FilterSection() {
   const searchParams = useSearchParams();
 
   const [searchValue, setSearchValue] = useState<string>("");
-  const [categoryValue, setCategoryValue] = useState<string>("");
-  const [languageValue, setLanguageValue] = useState<string>("");
+  const [categoryValue, setCategoryValue] = useState<string>("all");
+  const [languageValue, setLanguageValue] = useState<string>("all");
+
+  useEffect(() => {
+    const search = searchParams.get("search");
+    const category = searchParams.get("category");
+    const language = searchParams.get("language");
+
+    setSearchValue(search || "");
+    setCategoryValue(category || "");
+    setLanguageValue(language || "");
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (categoryValue || languageValue) {
+      const currentParams = new URLSearchParams(searchParams.toString());
+
+      if (categoryValue && categoryValue !== "all") {
+        currentParams.set("category", categoryValue);
+      } else if (!categoryValue || categoryValue === "all") {
+        currentParams.delete("category");
+      }
+
+      if (languageValue && languageValue !== "all") {
+        currentParams.set("language", languageValue);
+      } else if (!languageValue || languageValue === "all") {
+        currentParams.delete("language");
+      }
+
+      router.push(`/all-musics?${currentParams.toString()}`);
+    }
+  }, [categoryValue, languageValue, router, searchParams]);
 
   const searchHandler = (event: OnClickEvent) => {
     event.stopPropagation();
@@ -85,6 +115,7 @@ function FilterSection() {
               </SelectTrigger>
 
               <SelectContent>
+                <SelectItem value="all">All</SelectItem>
                 <SelectItem value="remix">Remix</SelectItem>
                 <SelectItem value="electronic">Electronic</SelectItem>
                 <SelectItem value="hip-hop">Hip-Hop</SelectItem>
@@ -99,6 +130,7 @@ function FilterSection() {
                 <SelectValue placeholder="Language" />
               </SelectTrigger>
               <SelectContent>
+                <SelectItem value="all">All</SelectItem>
                 <SelectItem value="persian">Persian</SelectItem>
                 <SelectItem value="english">English</SelectItem>
                 <SelectItem value="turkish">Turkish</SelectItem>
