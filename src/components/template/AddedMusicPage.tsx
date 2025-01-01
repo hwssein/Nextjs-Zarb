@@ -5,6 +5,10 @@ function AddedMusicPage({ musics }: { musics: UserMusicInfo }) {
   return (
     <>
       <div className="w-full flex flex-col items-center justify-start gap-2 md:flex-row md:flex-wrap md:justify-between shadow">
+        <div className="w-full flex items-center justify-center p-2 bg-secondary mb-2 rounded-md capitalize">
+          <h3>added musics</h3>
+        </div>
+
         {musics.myUser.music.map((item) => (
           <UserMusicCardControl
             key={item.id}
