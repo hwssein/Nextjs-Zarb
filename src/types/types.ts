@@ -43,6 +43,7 @@ export interface Music {
   like: number;
   dislike: number;
   assetId?: string;
+  createdAt?: string;
 }
 
 export interface UserMusicInfo {
@@ -58,7 +59,7 @@ export interface LikedMusicProps {
 }
 
 export interface GetMusicProps {
-  musics: (Music & { createdAt: string })[];
+  musics: Music[];
 }
 
 export type MusicPlayerProps = Music;

@@ -9,7 +9,9 @@ import { MoveRight } from "lucide-react";
 
 function AllMusicPreview({ musics }: GetMusicProps) {
   const sortedMusics = [...musics].sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    (a, b) =>
+      new Date(b.createdAt ?? "").getTime() -
+      new Date(a.createdAt ?? "").getTime()
   );
 
   const selectedMusics = sortedMusics.slice(0, 4);
