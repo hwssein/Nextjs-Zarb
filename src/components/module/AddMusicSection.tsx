@@ -105,7 +105,7 @@ function AddMusicSection() {
             <div className="w-full flex flex-col items-center justify-start gap-2 font-light">
               <span>Uploading File in Progress</span>
 
-              <span className="w-10">
+              <span className="w-12">
                 <Loader />
               </span>
             </div>
