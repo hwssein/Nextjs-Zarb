@@ -49,11 +49,11 @@ function LoginPage() {
 
   return (
     <>
-      <div className="w-11/12 flex flex-col items-center justify-start gap-2 bg-secondary rounded-md my-4 mx-auto py-4 px-1 shadow sm:w-4/6">
+      <div className="w-[calc(100%-4px)] flex flex-col items-center justify-start gap-2 bg-secondary rounded-md my-4 mx-auto py-4 px-1 shadow sm:w-4/6">
         <Image
-          src="/images/logo.png"
-          width={300}
-          height={200}
+          src="/images/new-logo.png"
+          width={176}
+          height={150}
           alt="logo"
           className="w-44 mb-4 rounded"
           priority={true}
@@ -64,11 +64,11 @@ function LoginPage() {
         </p>
 
         <Image
-          src="/images/header-login.png"
-          width={300}
-          height={200}
+          src="/images/new-header-login.png"
+          width={224}
+          height={150}
           alt="login header image"
-          className="w-40 flex items-center justify-center mb-4 sm:w-48"
+          className="w-56 flex items-center justify-center mb-4 sm:w-48"
           priority={true}
         ></Image>
 

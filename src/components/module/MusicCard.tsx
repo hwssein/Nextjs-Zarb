@@ -7,7 +7,7 @@ function MusicCard({ name, artist }: { name: string; artist: string }) {
       <div className="w-full h-16 bg-secondary flex items-center justify-between rounded pr-1">
         <div className="w-full flex items-center justify-start gap-1">
           <Image
-            src="/images/music-card.png"
+            src="/images/new-music-card.png"
             width={64}
             height={64}
             alt="card cover"

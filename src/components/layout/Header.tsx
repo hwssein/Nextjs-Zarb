@@ -23,9 +23,9 @@ function Header({
       <nav className="w-full flex items-center justify-between">
         <Link href="/">
           <Image
-            src="/images/logo.png"
-            width={200}
-            height={100}
+            src="/images/new-logo.png"
+            width={96}
+            height={50}
             alt="logo"
             className="w-24 rounded"
             priority={true}
