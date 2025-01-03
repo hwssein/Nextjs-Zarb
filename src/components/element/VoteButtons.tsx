@@ -21,14 +21,13 @@ function VoteButtons({
   dislike,
 }: VoteButtonsProps) {
   return (
-    <div className="w-full flex items-center justify-between gap-4 mb-4">
+    <div className="w-full flex items-center justify-between gap-4 mb-4 md:gap-14">
       <div className="w-3/6 flex items-center justify-center gap-2">
         <Button
           onClick={(event) => voteHandler(event, "dislike")}
           className="w-full bg-destructive text-white"
           variant="outline"
           disabled={isLoading.like || isLoading.dislike}
-          size="lg"
         >
           {isLoading.dislike ? (
             <Loader />
@@ -49,7 +48,6 @@ function VoteButtons({
           className="w-full bg-chart-2 text-white"
           variant="outline"
           disabled={isLoading.like || isLoading.dislike}
-          size="lg"
         >
           {isLoading.like ? (
             <Loader />

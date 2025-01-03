@@ -45,6 +45,7 @@ const submitVote = async (
         throw new Error("server error");
       }
 
+      revalidatePath("/");
       revalidatePath("/all-musics");
 
       return { message: "submit new vote" };
@@ -55,6 +56,7 @@ const submitVote = async (
         throw new Error("server error");
       }
 
+      revalidatePath("/");
       revalidatePath("/all-musics");
 
       return { message: "successfully voted" };

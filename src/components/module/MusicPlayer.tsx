@@ -106,7 +106,7 @@ function MusicPlayer({
 
         <DrawerClose className="w-full flex items-center justify-center">
           <span className="w-28 bg-background border border-stroke p-1 rounded-md transition-all ease-in duration-100 hover:bg-secondary">
-            Stop
+            Close
           </span>
         </DrawerClose>
       </DrawerFooter>

@@ -40,7 +40,7 @@ const HeaderTextAnim2: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full h-full flex items-center justify-center border-y-2 border-secondary pt-1">
+    <div className="w-full h-full flex items-center justify-center pt-1">
       <h1 className="ml7">
         <span className="text-wrapper">
           <span className="letters text-3xl text md:text-5xl uppercase">

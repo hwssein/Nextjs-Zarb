@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Play } from "lucide-react";
+import { EllipsisVertical } from "lucide-react";
 
 function MusicCard({ name, artist }: { name: string; artist: string }) {
   return (
@@ -26,7 +26,7 @@ function MusicCard({ name, artist }: { name: string; artist: string }) {
         </div>
 
         <span className="w-10 flex items-center justify-center">
-          <Play />
+          <EllipsisVertical />
         </span>
       </div>
     </>
