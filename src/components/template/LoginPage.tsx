@@ -52,7 +52,7 @@ function LoginPage() {
       <div className="w-[calc(100%-4px)] flex flex-col items-center justify-start gap-2 bg-secondary rounded-md my-4 mx-auto py-4 px-1 shadow sm:w-4/6">
         <Image
           src="/images/new-logo.png"
-          width={176}
+          width={200}
           height={150}
           alt="logo"
           className="w-44 mb-4 rounded"
@@ -65,10 +65,10 @@ function LoginPage() {
 
         <Image
           src="/images/new-header-login.png"
-          width={224}
+          width={250}
           height={150}
           alt="login header image"
-          className="w-56 flex items-center justify-center mb-4 sm:w-48"
+          className="w-56 flex items-center justify-center mb-4 "
           priority={true}
         ></Image>
 

@@ -8,8 +8,8 @@ function MusicCard({ name, artist }: { name: string; artist: string }) {
         <div className="w-full flex items-center justify-start gap-1">
           <Image
             src="/images/new-music-card.png"
-            width={64}
-            height={64}
+            width={100}
+            height={100}
             alt="card cover"
             className="w-16 rounded-md mr-2 p-1"
             priority={false}

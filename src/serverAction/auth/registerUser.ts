@@ -36,7 +36,7 @@ const registerUser = async (
     });
 
     if (data.myUsers.length === 0) {
-      const signUp = await await signupAccount(email, password);
+      const signUp = await signupAccount(email, password);
       if (signUp.error) throw new Error("unable connect to server , try again");
     } else {
       const signin = await signinAccount(email, password);

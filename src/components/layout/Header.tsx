@@ -24,7 +24,7 @@ function Header({
         <Link href="/">
           <Image
             src="/images/new-logo.png"
-            width={96}
+            width={100}
             height={50}
             alt="logo"
             className="w-24 rounded"
