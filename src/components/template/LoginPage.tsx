@@ -4,9 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-import { FunctionResponse, LoginFormProps } from "@/types/types";
+import { LoginFormProps } from "@/types/types";
 
-import registerUser from "@/serverAction/auth/registerUser";
 import LoginForm from "../module/LoginForm";
 
 import { useToast } from "@/hooks/use-toast";
@@ -31,7 +30,13 @@ function LoginPage() {
   };
 
   const loginHandler = async () => {
-    const data: FunctionResponse = await registerUser(form);
+    const loginRes = await fetch("/api/auth/register-user", {
+      method: "POST",
+      body: JSON.stringify(form),
+      headers: { "Content-Type": "application/json" },
+    });
+    const data = await loginRes.json();
+
     if (data.error)
       toast({
         description: data.error,
