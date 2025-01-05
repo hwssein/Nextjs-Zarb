@@ -1,13 +1,12 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
 
 import { FunctionResponse } from "@/types/types";
 
 import changeVote from "./changeVote";
 import createFirstVote from "./createFirstVote";
-import findUser from "../auth/findUser";
-
 import createApolloClient from "@/config/apolloClient";
 import { Get_User_Vote } from "@/query/userQuery";
 
@@ -16,9 +15,18 @@ const submitVote = async (
   voteType: "like" | "dislike"
 ): Promise<FunctionResponse> => {
   try {
-    const user = await findUser();
-    if ("error" in user || !user)
-      throw new Error("please login to your account");
+    const cookie = cookies();
+    const token = cookie.get("token")?.value;
+
+    const res = await fetch(`${process.env.BASE_URL}/api/auth/find-user`, {
+      method: "POST",
+      body: JSON.stringify({ token: token || "" }),
+      headers: { "Content-Type": "application/json" },
+      cache: "no-cache",
+    });
+    const user = await res.json();
+
+    if (user.error || !user) throw new Error("please login to your account");
 
     const client = createApolloClient();
 

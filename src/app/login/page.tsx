@@ -1,14 +1,24 @@
 import { Suspense } from "react";
 import { redirect } from "next/navigation";
-import checkSession from "@/serverAction/auth/checkSession";
+import { cookies } from "next/headers";
 
 import LoginPage from "@/components/template/LoginPage";
 
 import Loader from "@/components/element/animation/Loader";
 
-function Login() {
-  const session = checkSession();
-  if ("email" in session) redirect("/dashboard");
+async function Login() {
+  const cookie = cookies();
+  const token = cookie.get("token")?.value;
+
+  const res = await fetch(`${process.env.BASE_URL}/api/auth/find-user`, {
+    method: "POST",
+    body: JSON.stringify({ token: token || "" }),
+    headers: { "Content-Type": "application/json" },
+    cache: "reload",
+  });
+  const user = await res.json();
+
+  if (user.email) redirect("/dashboard");
 
   return (
     <>

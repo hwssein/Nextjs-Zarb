@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 import { LoginFormProps } from "@/types/types";
@@ -12,7 +11,6 @@ import { useToast } from "@/hooks/use-toast";
 
 function LoginPage() {
   const { toast } = useToast();
-  const router = useRouter();
 
   const [form, setForm] = useState<LoginFormProps>({
     email: "",
@@ -48,7 +46,7 @@ function LoginPage() {
       });
       setForm({ email: "", password: "" });
 
-      router.replace("/");
+      location.replace("/");
     }
   };
 

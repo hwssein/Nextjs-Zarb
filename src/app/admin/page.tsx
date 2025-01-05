@@ -1,16 +1,26 @@
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 
 import { GetMusicProps } from "@/types/types";
 
 import createApolloClient from "@/config/apolloClient";
 import { Get_Unpublished_Music } from "@/query/musicQuery";
 
-import findUser from "@/serverAction/auth/findUser";
 import AdminPage from "@/components/template/AdminPage";
 
 async function Admin() {
-  const user = await findUser();
-  if ("error" in user || user.role !== "ADMIN") redirect("/dashboard");
+  const cookie = cookies();
+  const token = cookie.get("token")?.value;
+
+  const res = await fetch(`${process.env.BASE_URL}/api/auth/find-user`, {
+    method: "POST",
+    body: JSON.stringify({ token: token || "" }),
+    headers: { "Content-Type": "application/json" },
+    cache: "reload",
+  });
+  const user = await res.json();
+
+  if (user.error || user.role !== "ADMIN") redirect("/dashboard");
 
   const client = createApolloClient();
   const { data } = await client.query<GetMusicProps>({

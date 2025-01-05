@@ -1,16 +1,25 @@
 "use server";
 
 import { FunctionResponse, LikedMusicProps } from "@/types/types";
-
-import findUser from "../auth/findUser";
+import { cookies } from "next/headers";
 
 import createApolloClient from "@/config/apolloClient";
 import { Get_Liked_Music } from "@/query/musicQuery";
 
 const getLikedMusic = async (): Promise<FunctionResponse | LikedMusicProps> => {
   try {
-    const user = await findUser();
-    if ("error" in user) throw new Error("please login to your account");
+    const cookie = cookies();
+    const token = cookie.get("token")?.value;
+
+    const res = await fetch(`${process.env.BASE_URL}/api/auth/find-user`, {
+      method: "POST",
+      body: JSON.stringify({ token: token || "" }),
+      headers: { "Content-Type": "application/json" },
+      cache: "no-cache",
+    });
+    const user = await res.json();
+
+    if (user.error) throw new Error("please login to your account");
 
     const client = createApolloClient();
 

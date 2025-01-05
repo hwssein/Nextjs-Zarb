@@ -1,15 +1,25 @@
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
+import { cookies } from "next/headers";
 
-import findUser from "@/serverAction/auth/findUser";
 import getUserMusic from "@/serverAction/music/getUserMusic";
 
 import Loader from "@/components/element/animation/Loader";
 import AddedMusicPage from "@/components/template/AddedMusicPage";
 
 async function AddedMusic() {
-  const user = await findUser();
-  if ("error" in user) redirect("/login");
+  const cookie = cookies();
+  const token = cookie.get("token")?.value;
+
+  const res = await fetch(`${process.env.BASE_URL}/api/auth/find-user`, {
+    method: "POST",
+    body: JSON.stringify({ token: token || "" }),
+    headers: { "Content-Type": "application/json" },
+    cache: "reload",
+  });
+  const user = await res.json();
+
+  if (user.error) redirect("/login");
 
   const musics = await getUserMusic();
 

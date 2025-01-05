@@ -1,10 +1,9 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
 
 import { FunctionResponse } from "@/types/types";
-
-import findUser from "../auth/findUser";
 
 import createApolloClient from "@/config/apolloClient";
 import {
@@ -14,9 +13,18 @@ import {
 
 const publishMusic = async (id: string): Promise<FunctionResponse> => {
   try {
-    const user = await findUser();
-    if ("error" in user || user.role !== "ADMIN")
-      throw new Error("Unauthorized");
+    const cookie = cookies();
+    const token = cookie.get("token")?.value;
+
+    const res = await fetch(`${process.env.BASE_URL}/api/auth/find-user`, {
+      method: "POST",
+      body: JSON.stringify({ token: token || "" }),
+      headers: { "Content-Type": "application/json" },
+      cache: "no-cache",
+    });
+    const user = await res.json();
+
+    if (user.error || user.role !== "ADMIN") throw new Error("Unauthorized");
 
     const client = createApolloClient();
 

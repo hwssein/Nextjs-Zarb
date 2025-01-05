@@ -74,7 +74,9 @@ export interface MusicFormProps {
 }
 
 // Session Check
-export interface CheckSessionResponse {
+export interface CheckSession {
   email: string;
-  exp?: number;
+  id: string;
+  role: "ADMIN" | "USER";
+  createdAt: string;
 }

@@ -4,17 +4,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-import { CheckSessionResponse } from "@/types/types";
+import { CheckSession } from "@/types/types";
 
 import ThemeToggle from "../element/ThemeToggle";
 import { Button } from "../ui/button";
 import LogoutButton from "../element/LogoutButton";
 
-function Header({
-  session,
-}: {
-  session: CheckSessionResponse | { error: string };
-}) {
+interface SessionProps {
+  session: CheckSession;
+}
+
+function Header({ session }: SessionProps) {
   const pathName = usePathname();
   if (pathName === "/login") return null;
 

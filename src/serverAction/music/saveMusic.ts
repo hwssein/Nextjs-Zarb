@@ -1,8 +1,8 @@
 "use server";
+import { cookies } from "next/headers";
 
 import { FunctionResponse } from "@/types/types";
 
-import findUser from "../auth/findUser";
 import uploadMusicFile from "./uploadMusicFile";
 import createMusicData from "@/serverAction/music/createMusicData";
 
@@ -21,8 +21,18 @@ const saveMusic = async (formData: FormData): Promise<FunctionResponse> => {
       throw new Error("Please fill in all the required fields.");
     }
 
-    const user = await findUser();
-    if ("error" in user) throw new Error("please login to your account");
+    const cookie = cookies();
+    const token = cookie.get("token")?.value;
+
+    const res = await fetch(`${process.env.BASE_URL}/api/auth/find-user`, {
+      method: "POST",
+      body: JSON.stringify({ token: token || "" }),
+      headers: { "Content-Type": "application/json" },
+      cache: "no-cache",
+    });
+    const user = await res.json();
+
+    if (user.error) throw new Error("please login to your account");
 
     if (mp3File && !url) {
       const uploadAssetResponse = await uploadMusicFile(
