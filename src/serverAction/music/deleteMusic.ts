@@ -48,6 +48,8 @@ const deleteMusic = async (
       throw new Error("server error");
 
     revalidatePath("/dashboard/added-music");
+    revalidatePath("/");
+    revalidatePath("/all-musics");
     return { message: "deleted successful" };
   } catch (error) {
     if (error instanceof Error) {
