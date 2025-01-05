@@ -1,10 +1,11 @@
 "use server";
-import { cookies } from "next/headers";
 
 import { FunctionResponse } from "@/types/types";
 
-import uploadMusicFile from "./uploadMusicFile";
+import sessionRequest from "@/config/sessionRequest";
 import createMusicData from "@/serverAction/music/createMusicData";
+
+import uploadMusicFile from "./uploadMusicFile";
 
 const saveMusic = async (formData: FormData): Promise<FunctionResponse> => {
   try {
@@ -21,16 +22,7 @@ const saveMusic = async (formData: FormData): Promise<FunctionResponse> => {
       throw new Error("Please fill in all the required fields.");
     }
 
-    const cookie = cookies();
-    const token = cookie.get("token")?.value;
-
-    const res = await fetch(`${process.env.BASE_URL}/api/auth/find-user`, {
-      method: "POST",
-      body: JSON.stringify({ token: token || "" }),
-      headers: { "Content-Type": "application/json" },
-      cache: "no-cache",
-    });
-    const user = await res.json();
+    const user = await sessionRequest();
 
     if (user.error) throw new Error("please login to your account");
 

@@ -1,9 +1,10 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { cookies } from "next/headers";
 
 import { FunctionResponse } from "@/types/types";
+
+import sessionRequest from "@/config/sessionRequest";
 
 import changeVote from "./changeVote";
 import createFirstVote from "./createFirstVote";
@@ -15,16 +16,7 @@ const submitVote = async (
   voteType: "like" | "dislike"
 ): Promise<FunctionResponse> => {
   try {
-    const cookie = cookies();
-    const token = cookie.get("token")?.value;
-
-    const res = await fetch(`${process.env.BASE_URL}/api/auth/find-user`, {
-      method: "POST",
-      body: JSON.stringify({ token: token || "" }),
-      headers: { "Content-Type": "application/json" },
-      cache: "no-cache",
-    });
-    const user = await res.json();
+    const user = await sessionRequest();
 
     if (user.error || !user) throw new Error("please login to your account");
 

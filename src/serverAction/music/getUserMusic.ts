@@ -1,23 +1,15 @@
 "use server";
 
 import { FunctionResponse, UserMusicInfo } from "@/types/types";
-import { cookies } from "next/headers";
+
+import sessionRequest from "@/config/sessionRequest";
 
 import createApolloClient from "@/config/apolloClient";
 import { Get_User_Music } from "@/query/userQuery";
 
 const getUserMusic = async (): Promise<FunctionResponse | UserMusicInfo> => {
   try {
-    const cookie = cookies();
-    const token = cookie.get("token")?.value;
-
-    const res = await fetch(`${process.env.BASE_URL}/api/auth/find-user`, {
-      method: "POST",
-      body: JSON.stringify({ token: token || "" }),
-      headers: { "Content-Type": "application/json" },
-      cache: "no-cache",
-    });
-    const user = await res.json();
+    const user = await sessionRequest();
 
     if (user.error) throw new Error("please login to your account");
 

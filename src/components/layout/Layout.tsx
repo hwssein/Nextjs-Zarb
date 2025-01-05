@@ -1,20 +1,12 @@
-import { cookies } from "next/headers";
 import { ChildrenProps } from "@/types/types";
+
+import sessionRequest from "@/config/sessionRequest";
 
 import Header from "./Header";
 import Footer from "./Footer";
 
 async function Layout({ children }: ChildrenProps) {
-  const cookie = cookies();
-  const token = cookie.get("token")?.value;
-
-  const res = await fetch(`${process.env.BASE_URL}/api/auth/find-user`, {
-    method: "POST",
-    body: JSON.stringify({ token: token || "" }),
-    headers: { "Content-Type": "application/json" },
-    cache: "reload",
-  });
-  const user = await res.json();
+  const user = await sessionRequest();
 
   return (
     <>

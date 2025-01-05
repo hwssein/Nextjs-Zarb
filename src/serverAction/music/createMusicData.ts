@@ -5,6 +5,7 @@ import { FunctionResponse } from "@/types/types";
 import createApolloClient from "@/config/apolloClient";
 import { Create_Music } from "@/mutation/createMutation";
 import { Publish_User_music_Data } from "@/mutation/publishMutation";
+import { revalidatePath } from "next/cache";
 
 const createMusicData = async (
   name: string,
@@ -38,6 +39,8 @@ const createMusicData = async (
       variables: { id: createMusicData.createMusic.id },
     });
     if (!publishMusicData.publishMusic.id) throw new Error("server error");
+
+    revalidatePath("/admin");
 
     return { message: "music created successfully" };
   } catch (error) {

@@ -59,6 +59,7 @@ const uploadMusicFile = async (
     const uploadAsset = await fetch(assetUrl, {
       method: "POST",
       body: assetFormData,
+      cache: "no-store",
     });
 
     if (uploadAsset.status !== 204 || "error" in uploadAsset || !uploadAsset)

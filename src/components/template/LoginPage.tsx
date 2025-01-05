@@ -32,6 +32,7 @@ function LoginPage() {
       method: "POST",
       body: JSON.stringify(form),
       headers: { "Content-Type": "application/json" },
+      cache: "no-store",
     });
     const data = await loginRes.json();
 

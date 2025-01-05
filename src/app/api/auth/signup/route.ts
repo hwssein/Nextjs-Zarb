@@ -36,9 +36,8 @@ const POST = async (req: NextRequest) => {
         {
           method: "POST",
           body: JSON.stringify({ email, password }),
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
+          cache: "no-store",
         }
       );
       const signupData = await signupResponse.json();

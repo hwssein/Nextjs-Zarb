@@ -36,7 +36,8 @@ export async function POST(req: Request) {
         {
           method: "POST",
           body: JSON.stringify({ email, password }),
-          headers: { "Content-Type": "applocation/json" },
+          headers: { "Content-Type": "application/json" },
+          cache: "no-store",
         }
       );
       const signupUserData = await signupUserResponse.json();
@@ -68,6 +69,7 @@ export async function POST(req: Request) {
           method: "POST",
           body: JSON.stringify({ email, password }),
           headers: { "Content-Type": "application/json" },
+          cache: "no-store",
         }
       );
       const signinUserData = await signinUserResponse.json();
