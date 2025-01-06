@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
 
 import { LikedMusicProps } from "@/types/types";
 
@@ -8,6 +9,10 @@ import sessionRequest from "@/config/sessionRequest";
 
 import LikedMusicPage from "@/components/template/LikedMusicPage";
 import Loader from "@/components/element/animation/Loader";
+
+export const metadata: Metadata = {
+  title: "ZARB | liked Musics",
+};
 
 async function LikedMusic() {
   const user = await sessionRequest();

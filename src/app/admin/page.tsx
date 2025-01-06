@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
 
 import { GetMusicProps } from "@/types/types";
 
@@ -8,6 +9,10 @@ import createApolloClient from "@/config/apolloClient";
 import { Get_Unpublished_Music } from "@/query/musicQuery";
 
 import AdminPage from "@/components/template/AdminPage";
+
+export const metadata: Metadata = {
+  title: "ZARB | Admin",
+};
 
 async function Admin() {
   const user = await sessionRequest();

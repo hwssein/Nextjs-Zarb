@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { Metadata } from "next";
 
 import { GetMusicProps } from "@/types/types";
 
@@ -14,6 +15,11 @@ import { Get_Published_Music } from "@/query/musicQuery";
 
 import Loader from "@/components/element/animation/Loader";
 import sessionRequest from "@/config/sessionRequest";
+
+export const metadata: Metadata = {
+  title: "ZARB | All Musics",
+  description: "Music For Build Your Body",
+};
 
 interface SearchParams {
   searchParams: {

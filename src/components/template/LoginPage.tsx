@@ -68,7 +68,7 @@ function LoginPage() {
         </p>
 
         <Image
-          src="/images/new-header-login.png"
+          src="/images/header-login.png"
           width={250}
           height={150}
           alt="login header image"

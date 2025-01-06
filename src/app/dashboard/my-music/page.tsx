@@ -1,11 +1,16 @@
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
+import { Metadata } from "next";
 
 import getUserMusic from "@/serverAction/music/getUserMusic";
 import sessionRequest from "@/config/sessionRequest";
 
 import Loader from "@/components/element/animation/Loader";
 import MyMusicPage from "@/components/template/MyMusicPage";
+
+export const metadata: Metadata = {
+  title: "ZARB | My Musics",
+};
 
 async function MyMusic() {
   const user = await sessionRequest();
