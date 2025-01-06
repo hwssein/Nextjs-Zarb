@@ -91,7 +91,7 @@ function MusicPlayer({
 
   return (
     <>
-      <DrawerHeader className="w-full max-w-5xl flex flex-col items-start justify-start gap-6">
+      <DrawerHeader className="w-full max-w-5xl flex flex-col items-start justify-start gap-4">
         <DrawerTitle className="w-full flex flex-col items-start justify-start gap-4 capitalize">
           <span className="w-full text-left font-bold">{name}</span>
           <span className="w-full text-left">{artist}</span>
@@ -113,9 +113,15 @@ function MusicPlayer({
               },
               forceAudio: true,
             },
+            youtube: {
+              playerVars: { showinfo: 0, modestbranding: 1 },
+            },
+            soundcloud: {
+              options: { show_artwork: false, hide_related: true },
+            },
           }}
           width="100%"
-          height="50px"
+          height="85px"
         />
       </DrawerHeader>
 
