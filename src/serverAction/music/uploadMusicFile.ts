@@ -60,9 +60,10 @@ const uploadMusicFile = async (
       method: "POST",
       body: assetFormData,
       cache: "no-store",
+      credentials: "include",
     });
 
-    if (uploadAsset.status !== 204 || "error" in uploadAsset || !uploadAsset)
+    if ("error" in uploadAsset || !uploadAsset)
       throw new Error("there was a problem uploading the file");
 
     const { data: publishMusicAsset } = await client.mutate({
