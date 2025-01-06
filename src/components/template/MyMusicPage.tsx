@@ -20,7 +20,7 @@ function MyMusicPage({ musics }: { musics: UserMusicInfo }) {
             like={item.like ?? 0}
             dislike={item.dislike ?? 0}
             id={item.id}
-            assetId={item.assetId ?? "false"}
+            assetId={item.assetId}
           />
         ))}
       </div>

@@ -62,7 +62,7 @@ export interface GetMusicProps {
   musics: Music[];
 }
 
-export type MusicPlayerProps = Music;
+export type MusicPlayerProps = Music & { role?: "ADMIN" | "USER" };
 
 export interface MusicFormProps {
   name: string;

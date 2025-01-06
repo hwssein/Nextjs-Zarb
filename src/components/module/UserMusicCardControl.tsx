@@ -26,7 +26,6 @@ function UserMusicCardControl({
   assetId,
   role,
 }: MusicPlayerProps & {
-  assetId: string;
   role?: string;
 }) {
   const { toast } = useToast();
@@ -39,7 +38,7 @@ function UserMusicCardControl({
 
     if (!confirmDelete) return;
 
-    const deleteRes = await deleteMusic(id, assetId);
+    const deleteRes = await deleteMusic(id, assetId ?? "false");
 
     if ("message" in deleteRes || deleteRes.message) {
       toast({ description: "Deleted successful" });

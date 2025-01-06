@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { MusicPlayerProps, OnClickEvent } from "@/types/types";
 
 import submitVote from "@/serverAction/vote/submitVote";
+import deleteMusic from "@/serverAction/music/deleteMusic";
 import VoteButtons from "../element/VoteButtons";
 
 import ReactPlayer from "react-player";
@@ -27,7 +29,10 @@ function MusicPlayer({
   like,
   dislike,
   id,
+  assetId,
+  role,
 }: MusicPlayerProps) {
+  const router = useRouter();
   const { toast } = useToast();
 
   const [isLoading, setIsLoading] = useState<{
@@ -64,6 +69,24 @@ function MusicPlayer({
         description: likeResponse.message,
       });
     }
+  };
+
+  const deleteHandler = async (event: OnClickEvent) => {
+    event.stopPropagation();
+
+    const confirmDelete: boolean = confirm("Are You Sure To DELETE?");
+
+    if (!confirmDelete) return;
+
+    const deleteRes = await deleteMusic(id, assetId ?? "false");
+
+    if ("message" in deleteRes || deleteRes.message) {
+      toast({ description: "Deleted successful" });
+      router.refresh();
+    }
+
+    if ("error" in deleteRes || deleteRes.error)
+      toast({ description: "Server Error, Try Again", variant: "destructive" });
   };
 
   return (
@@ -104,10 +127,19 @@ function MusicPlayer({
           dislike={dislike}
         />
 
-        <DrawerClose className="w-full flex items-center justify-center">
+        <DrawerClose className="w-full flex items-center justify-center gap-4">
           <span className="w-28 bg-background border border-stroke p-1 rounded-md transition-all ease-in duration-100 hover:bg-secondary">
             Close
           </span>
+
+          {role === "ADMIN" && (
+            <span
+              onClick={deleteHandler}
+              className="w-28 bg-destructive text-white border border-destructive p-1 rounded-md transition-all ease-in duration-100 hover:bg-secondary hover:text-foreground"
+            >
+              Delete
+            </span>
+          )}
         </DrawerClose>
       </DrawerFooter>
     </>

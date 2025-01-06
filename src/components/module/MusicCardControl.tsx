@@ -14,6 +14,8 @@ function MusicCardControl({
   like,
   dislike,
   id,
+  assetId,
+  role,
 }: MusicPlayerProps) {
   return (
     <>
@@ -32,6 +34,8 @@ function MusicCardControl({
             like={like}
             dislike={dislike}
             id={id}
+            assetId={assetId}
+            role={role}
           />
         </DrawerContent>
       </Drawer>

@@ -13,6 +13,7 @@ import createApolloClient from "@/config/apolloClient";
 import { Get_Published_Music } from "@/query/musicQuery";
 
 import Loader from "@/components/element/animation/Loader";
+import sessionRequest from "@/config/sessionRequest";
 
 interface SearchParams {
   searchParams: {
@@ -23,6 +24,8 @@ interface SearchParams {
 }
 
 async function AllMusics({ searchParams }: SearchParams) {
+  const user = await sessionRequest();
+
   const client = createApolloClient();
   const { data } = await client.query<GetMusicProps>({
     query: Get_Published_Music,
@@ -36,7 +39,7 @@ async function AllMusics({ searchParams }: SearchParams) {
     return (
       <>
         <Suspense fallback={<Loader />}>
-          <AllMusicsPage musics={filteredData} />
+          <AllMusicsPage musics={filteredData} role={user.role} />
         </Suspense>
       </>
     );

@@ -28,6 +28,7 @@ export const Get_Published_Music = gql`
       createdAt
       like
       dislike
+      assetId
     }
   }
 `;

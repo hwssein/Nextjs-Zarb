@@ -2,7 +2,10 @@ import { GetMusicProps } from "@/types/types";
 import MusicCardControl from "../module/MusicCardControl";
 import FilterSection from "../module/FilterSection";
 
-function AllMusicsPage({ musics }: GetMusicProps) {
+function AllMusicsPage({
+  musics,
+  role,
+}: GetMusicProps & { role: "ADMIN" | "USER" }) {
   return (
     <>
       <div className="w-full flex flex-col items-center justify-start gap-2 md:flex-row md:flex-wrap md:justify-between">
@@ -10,7 +13,6 @@ function AllMusicsPage({ musics }: GetMusicProps) {
 
         {musics.length !== 0 ? (
           <>
-            {" "}
             <div className="w-full flex items-center justify-center p-2 bg-secondary mb-2 rounded-md capitalize">
               <h3>all musics</h3>
             </div>
@@ -28,6 +30,8 @@ function AllMusicsPage({ musics }: GetMusicProps) {
                   like={item.like ?? 0}
                   dislike={item.dislike ?? 0}
                   id={item.id}
+                  assetId={item.assetId}
+                  role={role}
                 />
               </div>
             ))}
