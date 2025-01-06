@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const Publish_User = gql`
-  mutation publishItem($id: ID!) {
+  mutation publishUser($id: ID!) {
     publishMyUser(where: { id: $id }) {
       email
     }
@@ -9,7 +9,7 @@ export const Publish_User = gql`
 `;
 
 export const Publish_User_music_Asset = gql`
-  mutation publishUserMusicFile($id: ID!) {
+  mutation publishUserMusicAsset($id: ID!) {
     publishAsset(where: { id: $id }) {
       id
     }

@@ -9,7 +9,7 @@ export const Create_User = gql`
 `;
 
 export const Create_Asset_Music_Url = gql`
-  mutation createUploadMusicUrl($fileName: String!) {
+  mutation createAssetMusicUrl($fileName: String!) {
     createAsset(data: { fileName: $fileName }) {
       fileName
       id

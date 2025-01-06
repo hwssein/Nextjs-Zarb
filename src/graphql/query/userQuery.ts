@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const Get_Existing_User = gql`
-  query findExistingUser($email: String!) {
+  query getExistingUser($email: String!) {
     myUsers(where: { email: $email }) {
       id
       email
