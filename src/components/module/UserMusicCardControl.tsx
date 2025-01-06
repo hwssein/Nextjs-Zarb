@@ -34,6 +34,7 @@ function UserMusicCardControl({
 
   const deleteHandler = async (event: OnClickEvent) => {
     event.stopPropagation();
+
     const confirmDelete: boolean = confirm("Are You Sure To DELETE?");
 
     if (!confirmDelete) return;
@@ -71,20 +72,28 @@ function UserMusicCardControl({
     <>
       <Drawer>
         <DrawerTrigger asChild className="w-full cursor-pointer">
-          <div className="w-full flex items-center justify-between h-16 bg-secondary rounded pr-2">
-            <MusicCard name={name} artist={artist} />
-            <div className="flex items-center justify-center gap-1">
+          <div className="w-full flex flex-col items-center justify-start bg-secondary rounded pr-2 pb-2">
+            <div className="w-full">
+              <MusicCard name={name} artist={artist} />
+            </div>
+
+            <div className="w-full flex items-center justify-end gap-2">
               <Button
                 size="sm"
-                variant="outline"
-                className="bg-destructive"
+                variant="destructive"
+                className="w-16 sm:w-20"
                 onClick={deleteHandler}
               >
                 Delete
               </Button>
 
               {role === "ADMIN" && (
-                <Button size="sm" variant="outline" onClick={publishHandler}>
+                <Button
+                  size="sm"
+                  variant="default"
+                  className="w-16 sm:w-20"
+                  onClick={publishHandler}
+                >
                   Publish
                 </Button>
               )}

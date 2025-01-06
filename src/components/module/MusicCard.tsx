@@ -25,7 +25,7 @@ function MusicCard({ name, artist }: { name: string; artist: string }) {
           </div>
         </div>
 
-        <span className="w-10 flex items-center justify-center">
+        <span className="w-6 flex items-center justify-center">
           <EllipsisVertical />
         </span>
       </div>

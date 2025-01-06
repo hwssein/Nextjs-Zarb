@@ -1,7 +1,7 @@
 import { UserMusicInfo } from "@/types/types";
 import UserMusicCardControl from "../module/UserMusicCardControl";
 
-function AddedMusicPage({ musics }: { musics: UserMusicInfo }) {
+function MyMusicPage({ musics }: { musics: UserMusicInfo }) {
   return (
     <>
       <div className="w-full flex flex-col items-center justify-start gap-2 md:flex-row md:flex-wrap md:justify-between shadow">
@@ -28,4 +28,4 @@ function AddedMusicPage({ musics }: { musics: UserMusicInfo }) {
   );
 }
 
-export default AddedMusicPage;
+export default MyMusicPage;

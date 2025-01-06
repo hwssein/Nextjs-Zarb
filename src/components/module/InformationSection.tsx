@@ -31,7 +31,7 @@ function InformationSection({
       </div>
 
       <div className="w-full flex items-center justify-evenly gap-2 mt-2">
-        <Link href="/dashboard/added-music">
+        <Link href="/dashboard/my-music">
           <Button variant="secondary" size="sm" className="font-light">
             My Musics
           </Button>

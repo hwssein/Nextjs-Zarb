@@ -5,9 +5,9 @@ import getUserMusic from "@/serverAction/music/getUserMusic";
 import sessionRequest from "@/config/sessionRequest";
 
 import Loader from "@/components/element/animation/Loader";
-import AddedMusicPage from "@/components/template/AddedMusicPage";
+import MyMusicPage from "@/components/template/MyMusicPage";
 
-async function AddedMusic() {
+async function MyMusic() {
   const user = await sessionRequest();
 
   if (user.error) redirect("/login");
@@ -18,7 +18,7 @@ async function AddedMusic() {
     return (
       <>
         <Suspense fallback={<Loader />}>
-          <AddedMusicPage musics={musics} />
+          <MyMusicPage musics={musics} />
         </Suspense>
       </>
     );
@@ -33,4 +33,4 @@ async function AddedMusic() {
   }
 }
 
-export default AddedMusic;
+export default MyMusic;
