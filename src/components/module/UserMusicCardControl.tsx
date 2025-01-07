@@ -56,7 +56,7 @@ function UserMusicCardControl({
 
     if (!confirmDelete) return;
 
-    const publishRes = await publishMusic(id);
+    const publishRes = await publishMusic(id, assetId ?? "false");
 
     if ("message" in publishRes || publishRes.message) {
       toast({ description: "published successful" });
@@ -71,12 +71,12 @@ function UserMusicCardControl({
     <>
       <Drawer>
         <DrawerTrigger asChild className="w-full cursor-pointer">
-          <div className="w-full flex flex-col items-center justify-start bg-secondary rounded pr-2 pb-2">
+          <div className="w-full flex flex-col items-center justify-start bg-secondary rounded pb-2">
             <div className="w-full">
               <MusicCard name={name} artist={artist} />
             </div>
 
-            <div className="w-full flex items-center justify-end gap-2">
+            <div className="w-full flex items-center justify-end gap-2 pr-3">
               <Button
                 size="sm"
                 variant="destructive"

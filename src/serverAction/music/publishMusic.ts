@@ -9,10 +9,14 @@ import sessionRequest from "@/config/sessionRequest";
 import createApolloClient from "@/config/apolloClient";
 import {
   Publish_Music_For_View,
+  Publish_User_music_Asset,
   Publish_User_music_Data,
 } from "@/mutation/publishMutation";
 
-const publishMusic = async (id: string): Promise<FunctionResponse> => {
+const publishMusic = async (
+  id: string,
+  assetId: string
+): Promise<FunctionResponse> => {
   try {
     const user = await sessionRequest();
 
@@ -27,12 +31,24 @@ const publishMusic = async (id: string): Promise<FunctionResponse> => {
     if ("error" in musicValuePublish || musicValuePublish.error)
       throw new Error("server error");
 
-    const { data: musicDataPublish } = await client.mutate({
-      mutation: Publish_User_music_Data,
-      variables: { id },
-    });
-    if ("error" in musicDataPublish || musicDataPublish.error)
+    const [publishMusicAsset, publishMusicData] = await Promise.all([
+      client.mutate({
+        mutation: Publish_User_music_Asset,
+        variables: { assetId },
+      }),
+
+      client.mutate({
+        mutation: Publish_User_music_Data,
+        variables: { id },
+      }),
+    ]);
+
+    const assetIdResult = publishMusicAsset?.data?.publishAsset?.id;
+    const musicIdResult = publishMusicData?.data?.publishMusic?.id;
+
+    if (!assetIdResult || !musicIdResult) {
       throw new Error("server error");
+    }
 
     revalidatePath("/");
     revalidatePath("/admin");

@@ -53,8 +53,8 @@ function MusicFileInput({ title, name, form, setForm }: MusicFileInputProps) {
         />
         <label
           htmlFor={`music-${name}`}
-          className={`bg-secondary border border-stroke py-1 px-2 rounded cursor-pointer hover:bg-stroke transition-all duration-100 ease-in ${
-            form.mp3File && "bg-stroke"
+          className={`border border-stroke py-1 px-2 rounded cursor-pointer hover:bg-secondary transition-all duration-100 ease-in ${
+            form.mp3File && "bg-[var(--highlight)] text-black"
           }`}
         >
           {title}

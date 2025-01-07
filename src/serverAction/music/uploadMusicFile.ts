@@ -6,7 +6,6 @@ import createMusicData from "./createMusicData";
 
 import createApolloClient from "@/config/apolloClient";
 import { Create_Asset_Music_Url } from "@/mutation/createMutation";
-import { Publish_User_music_Asset } from "@/mutation/publishMutation";
 
 const uploadMusicFile = async (
   name: string,
@@ -60,18 +59,11 @@ const uploadMusicFile = async (
       method: "POST",
       body: assetFormData,
       cache: "no-store",
-      credentials: "include",
     });
 
-    if ("error" in uploadAsset || !uploadAsset)
+    if (!uploadAsset.ok) {
       throw new Error("there was a problem uploading the file");
-
-    const { data: publishMusicAsset } = await client.mutate({
-      mutation: Publish_User_music_Asset,
-      variables: { id: urlMusicAsset.createAsset.id },
-    });
-    if (!publishMusicAsset || !publishMusicAsset.publishAsset.id)
-      throw new Error("server error");
+    }
 
     const createMusicDataResponse = await createMusicData(
       name,

@@ -9,8 +9,8 @@ export const Publish_User = gql`
 `;
 
 export const Publish_User_music_Asset = gql`
-  mutation publishUserMusicAsset($id: ID!) {
-    publishAsset(where: { id: $id }) {
+  mutation publishUserMusicAsset($assetId: ID!) {
+    publishAsset(where: { id: $assetId }) {
       id
     }
   }
