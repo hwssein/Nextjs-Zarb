@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const Get_Unpublished_Music = gql`
   query getUnpublishedMusic {
-    musics(where: { published: false }) {
+    musics(where: { published: false }, first: 50) {
       id
       name
       artist
@@ -18,7 +18,7 @@ export const Get_Unpublished_Music = gql`
 
 export const Get_Published_Music = gql`
   query getPublishedMusic {
-    musics(where: { published: true }) {
+    musics(where: { published: true }, first: 50) {
       id
       name
       artist
@@ -45,7 +45,10 @@ export const Get_Music_Vote = gql`
 
 export const Get_Liked_Music = gql`
   query getLikedMusic($userId: ID!) {
-    userVotes(where: { myUser: { id: $userId }, voteType: "like" }) {
+    userVotes(
+      where: { myUser: { id: $userId }, voteType: "like" }
+      first: 20000
+    ) {
       music {
         name
         artist

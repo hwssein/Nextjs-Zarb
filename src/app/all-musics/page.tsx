@@ -35,6 +35,7 @@ async function AllMusics({ searchParams }: SearchParams) {
   const client = createApolloClient();
   const { data } = await client.query<GetMusicProps>({
     query: Get_Published_Music,
+    fetchPolicy: "network-only",
   });
 
   if ("musics" in data && data.musics.length > 0) {

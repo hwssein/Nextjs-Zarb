@@ -13,6 +13,7 @@ async function Home() {
   const client = createApolloClient();
   const { data } = await client.query<GetMusicProps>({
     query: Get_Published_Music,
+    fetchPolicy: "network-only",
   });
 
   return (

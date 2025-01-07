@@ -47,7 +47,7 @@ const changeVote = async (
     const dislikeCount = musicVote.music.dislike;
 
     if (newVote === "like") {
-      const decreaseDislike = dislikeCount === 0 ? 0 : dislikeCount - 1;
+      const decreaseDislike = dislikeCount <= 0 ? 0 : dislikeCount - 1;
       const increaseLike = likeCount + 1;
 
       const { data: updateDislike } = await client.mutate({
@@ -73,7 +73,7 @@ const changeVote = async (
 
       return { message: "successful" };
     } else if (newVote === "dislike") {
-      const decreaseLike = likeCount === 0 ? 0 : likeCount - 1;
+      const decreaseLike = likeCount <= 0 ? 0 : likeCount - 1;
       const increaseDisLike = dislikeCount + 1;
 
       const { data: updateLike } = await client.mutate({
