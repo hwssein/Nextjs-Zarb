@@ -22,15 +22,16 @@ export const metadata: Metadata = {
 };
 
 interface SearchParams {
-  searchParams: {
-    search?: string;
-    category?: string;
-    language?: string;
-  };
+  search?: string;
+  category?: string;
+  language?: string;
 }
+type SearchParamsProps = Promise<SearchParams>;
 
-async function AllMusics({ searchParams }: SearchParams) {
+async function AllMusics(props: { searchParams: SearchParamsProps }) {
   const user = await sessionRequest();
+
+  const searchParams = await props.searchParams;
 
   const client = createApolloClient();
   const { data } = await client.query<GetMusicProps>({

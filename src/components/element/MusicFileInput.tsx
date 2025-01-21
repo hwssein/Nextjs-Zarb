@@ -26,9 +26,9 @@ function MusicFileInput({ title, name, form, setForm }: MusicFileInputProps) {
         return;
       }
 
-      if (file.size >= 4500000) {
+      if (file.size >= 20000000) {
         toast({
-          description: "max file size 4.5MB",
+          description: "max file size 20MB",
           variant: "destructive",
         });
 
@@ -60,7 +60,7 @@ function MusicFileInput({ title, name, form, setForm }: MusicFileInputProps) {
           {title}
         </label>
 
-        <span className="text-stroke">Max Size 4.5MB(vercel limit)</span>
+        <span className="text-stroke">Max Size 20MB</span>
       </span>
     </>
   );

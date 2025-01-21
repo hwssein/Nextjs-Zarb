@@ -3,8 +3,8 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-const logoutAccount = (): void => {
-  const cookie = cookies();
+const logoutAccount = async (): Promise<void> => {
+  const cookie = await cookies();
   cookie.delete("token");
 
   redirect("/");

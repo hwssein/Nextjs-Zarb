@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 
 const sessionRequest = async () => {
-  const cookie = cookies();
+  const cookie = await cookies();
   const token = cookie.get("token")?.value;
 
   const res = await fetch(`${process.env.BASE_URL}/api/auth/find-user`, {
