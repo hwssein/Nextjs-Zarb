@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { GetMusicProps } from "@/types/types";
 
 import AllMusicPreview from "./AllMusicPreview";
@@ -5,12 +7,19 @@ import TopMusics from "./TopMusics";
 
 import HomePageHeader from "./HomePageHeader";
 import HeaderTextAnim2 from "../element/animation/HeaderTextAnim2";
+import { BicepsFlexed } from "lucide-react";
 
 function HomePage({ musics }: GetMusicProps) {
   return (
     <>
       <div className="w-full flex flex-col items-center justify-start gap-2">
         <HomePageHeader />
+
+        <Link href="/player" className="w-full mt-1 mb-3">
+          <div className="w-full flex items-center justify-center gap-1 bg-[var(--highlight)] py-4 uppercase text-black font-semibold rounded-md">
+            play <BicepsFlexed />
+          </div>
+        </Link>
 
         {musics && musics.length > 0 ? (
           <AllMusicPreview musics={musics} />

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { MusicPlayerProps, OnClickEvent } from "@/types/types";
+import { MusicPlayerDrawerProps, OnClickEvent } from "@/types/types";
 
 import submitVote from "@/serverAction/vote/submitVote";
 import deleteMusic from "@/serverAction/music/deleteMusic";
@@ -20,7 +20,7 @@ import {
   DrawerTitle,
 } from "@/components/ui/drawer";
 
-function MusicPlayer({
+function MusicPlayerDrawer({
   name,
   artist,
   url,
@@ -31,7 +31,7 @@ function MusicPlayer({
   id,
   assetId,
   role,
-}: MusicPlayerProps) {
+}: MusicPlayerDrawerProps) {
   const router = useRouter();
   const { toast } = useToast();
 
@@ -152,4 +152,4 @@ function MusicPlayer({
   );
 }
 
-export default MusicPlayer;
+export default MusicPlayerDrawer;

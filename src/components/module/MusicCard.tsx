@@ -16,7 +16,7 @@ function MusicCard({ name, artist }: { name: string; artist: string }) {
           ></Image>
 
           <div className="w-full flex flex-col items-start justify-start gap-1 capitalize overflow-hidden">
-            <span className="w-full overflow-x-auto scrollbar-hidden whitespace-nowrap font-semibold">
+            <span className="w-full overflow-x-auto scrollbar-hidden whitespace-nowrap font-medium">
               {name}
             </span>
             <span className="w-full overflow-x-auto scrollbar-hidden whitespace-nowrap">

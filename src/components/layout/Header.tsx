@@ -6,9 +6,13 @@ import { usePathname } from "next/navigation";
 
 import { CheckSession } from "@/types/types";
 
-import ThemeToggle from "../element/ThemeToggle";
 import { Button } from "../ui/button";
 import LogoutButton from "../element/LogoutButton";
+import dynamic from "next/dynamic";
+
+const ThemeToggle = dynamic(() => import("../element/ThemeToggle"), {
+  ssr: false,
+});
 
 interface SessionProps {
   session: CheckSession;

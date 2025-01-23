@@ -2,9 +2,9 @@
 
 import { useRouter } from "next/navigation";
 
-import { MusicPlayerProps, OnClickEvent } from "@/types/types";
+import { MusicPlayerDrawerProps, OnClickEvent } from "@/types/types";
 
-import MusicPlayer from "./MusicPlayer";
+import MusicPlayerDrawer from "./MusicPlayerDrawer";
 import MusicCard from "./MusicCard";
 
 import deleteMusic from "@/serverAction/music/deleteMusic";
@@ -25,7 +25,7 @@ function UserMusicCardControl({
   id,
   assetId,
   role,
-}: MusicPlayerProps & {
+}: MusicPlayerDrawerProps & {
   role?: string;
 }) {
   const { toast } = useToast();
@@ -101,7 +101,7 @@ function UserMusicCardControl({
         </DrawerTrigger>
 
         <DrawerContent className="w-full flex flex-col items-center justify-center">
-          <MusicPlayer
+          <MusicPlayerDrawer
             name={name}
             artist={artist}
             url={url}

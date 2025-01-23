@@ -1,6 +1,6 @@
-import { MusicPlayerProps } from "@/types/types";
+import { MusicPlayerDrawerProps } from "@/types/types";
 
-import MusicPlayer from "./MusicPlayer";
+import MusicPlayerDrawer from "./MusicPlayerDrawer";
 import MusicCard from "./MusicCard";
 
 import { Drawer, DrawerContent, DrawerTrigger } from "../ui/drawer";
@@ -16,7 +16,7 @@ function MusicCardControl({
   id,
   assetId,
   role,
-}: MusicPlayerProps) {
+}: MusicPlayerDrawerProps) {
   return (
     <>
       <Drawer>
@@ -25,7 +25,7 @@ function MusicCardControl({
         </DrawerTrigger>
 
         <DrawerContent className="w-full flex flex-col items-center justify-center">
-          <MusicPlayer
+          <MusicPlayerDrawer
             name={name}
             artist={artist}
             url={url}
