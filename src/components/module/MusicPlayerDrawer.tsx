@@ -8,8 +8,7 @@ import { MusicPlayerDrawerProps, OnClickEvent } from "@/types/types";
 import submitVote from "@/serverAction/vote/submitVote";
 import deleteMusic from "@/serverAction/music/deleteMusic";
 import VoteButtons from "../element/VoteButtons";
-
-import ReactPlayer from "react-player";
+import MusicPlayer from "./MusicPlayer";
 
 import { useToast } from "@/hooks/use-toast";
 import {
@@ -102,27 +101,7 @@ function MusicPlayerDrawer({
           <span>{language}</span>
         </DrawerDescription>
 
-        <ReactPlayer
-          url={url}
-          controls={true}
-          config={{
-            file: {
-              attributes: {
-                controlsList: "nodownload",
-                disablePictureInPicture: true,
-              },
-              forceAudio: true,
-            },
-            youtube: {
-              playerVars: { showinfo: 0, modestbranding: 1 },
-            },
-            soundcloud: {
-              options: { show_artwork: false, hide_related: true },
-            },
-          }}
-          width="100%"
-          height="85px"
-        />
+        <MusicPlayer musicUrls={[url]} />
       </DrawerHeader>
 
       <DrawerFooter className="w-full  max-w-5xl">
