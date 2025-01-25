@@ -93,7 +93,7 @@ function MusicPlayerDrawer({
           <span className="text-stroke">{language}</span>
         </DrawerDescription>
 
-        <MusicPlayer musicUrls={[url]} />
+        <MusicPlayer musicUrl={url} />
       </DrawerHeader>
 
       <DrawerFooter className="w-full  max-w-5xl">

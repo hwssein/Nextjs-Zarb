@@ -18,7 +18,7 @@ import sessionRequest from "@/config/sessionRequest";
 
 export const metadata: Metadata = {
   title: "ZARB | All Musics",
-  description: "Music For Build Your Body",
+  description: "Zarb Musics Page For Build Your Body",
 };
 
 interface SearchParams {

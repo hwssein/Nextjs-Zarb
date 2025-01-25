@@ -11,28 +11,18 @@ import { Play } from "lucide-react";
 import { Pause } from "lucide-react";
 
 interface MusicPlayerProps {
-  musicUrls: string[];
+  musicUrl: string;
+  nextHandler?: () => void;
+  prevHandler?: () => void;
 }
 
-function MusicPlayer({ musicUrls }: MusicPlayerProps) {
-  const [playlist] = useState<Array<string>>(musicUrls);
+function MusicPlayer({ musicUrl, nextHandler, prevHandler }: MusicPlayerProps) {
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
-  const [currentMusic, setCurrentMusic] = useState<number>(0);
   const [progressPercentage, setProgressPercentage] = useState<number>(0);
   const [progressSeconds, setProgressSeconds] = useState<number>(0);
   const [totalDuration, setTotalDuration] = useState<number>(0);
 
   const playerRef = useRef<ReactPlayer | null>(null);
-
-  const nextHandler = () => {
-    const newIndex = (currentMusic + 1) % playlist.length;
-    setCurrentMusic(newIndex);
-  };
-
-  const prevHandler = () => {
-    const newIndex = (currentMusic - 1 + playlist.length) % playlist.length;
-    setCurrentMusic(newIndex);
-  };
 
   const seekHandler = (newProgress: number) => {
     if (playerRef.current) {
@@ -53,12 +43,13 @@ function MusicPlayer({ musicUrls }: MusicPlayerProps) {
     <div className="w-full flex flex-col items-center justify-start gap-4">
       <ReactPlayer
         ref={playerRef}
-        url={playlist[currentMusic]}
+        url={musicUrl}
         style={{ display: "none" }}
         width="0"
         height="0"
         playing={isPlaying}
         onDuration={(duration) => setTotalDuration(duration)}
+        onEnded={nextHandler}
         onProgress={(progress) => {
           setProgressPercentage(progress.played * 100);
           setProgressSeconds(progress.playedSeconds);

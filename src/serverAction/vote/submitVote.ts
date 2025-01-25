@@ -47,6 +47,7 @@ const submitVote = async (
 
       revalidatePath("/");
       revalidatePath("/all-musics");
+      revalidatePath("/player");
 
       return { message: "submit new vote" };
     } else {
@@ -58,6 +59,7 @@ const submitVote = async (
 
       revalidatePath("/");
       revalidatePath("/all-musics");
+      revalidatePath("/player");
 
       return { message: "successfully voted" };
     }
