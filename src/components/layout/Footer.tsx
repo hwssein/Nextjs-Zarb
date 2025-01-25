@@ -10,14 +10,14 @@ function Footer() {
   return (
     <>
       <div className="w-full flex flex-col items-center justify-center gap-1 p-1 mt-10">
-        <span className="font-semibold capitalize text-center">
+        <p className="font-semibold capitalize text-center">
           Listen to the music and build your body
-        </span>
+        </p>
 
-        <span className="font-light capitalize text-center">
+        <p className="font-light capitalize text-center">
           Everything here is for you. by{" "}
           <strong className="font-bold">ZARB</strong>
-        </span>
+        </p>
       </div>
 
       <div className="w-full flex items-center justify-center">

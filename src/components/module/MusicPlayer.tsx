@@ -10,10 +10,14 @@ import { SkipBack } from "lucide-react";
 import { Play } from "lucide-react";
 import { Pause } from "lucide-react";
 
-function MusicPlayer({ musicUrls }: { musicUrls: string[] }) {
+interface MusicPlayerProps {
+  musicUrls: string[];
+}
+
+function MusicPlayer({ musicUrls }: MusicPlayerProps) {
   const [playlist] = useState<Array<string>>(musicUrls);
-  const [currentMusic, setCurrentMusic] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [currentMusic, setCurrentMusic] = useState<number>(0);
   const [progressPercentage, setProgressPercentage] = useState<number>(0);
   const [progressSeconds, setProgressSeconds] = useState<number>(0);
   const [totalDuration, setTotalDuration] = useState<number>(0);
@@ -82,7 +86,7 @@ function MusicPlayer({ musicUrls }: { musicUrls: string[] }) {
         <span>{formatTime(totalDuration)}</span>
       </div>
 
-      <div className="w-full flex items-start justify-between gap-2 px-4 sm:w-1/2">
+      <div className="w-full flex items-center justify-between gap-2 px-4 sm:w-1/2">
         <span
           onClick={prevHandler}
           className="p-1 cursor-pointer rounded-md transition-all ease-in duration-100 hover:bg-secondary"
@@ -93,14 +97,14 @@ function MusicPlayer({ musicUrls }: { musicUrls: string[] }) {
         {isPlaying ? (
           <span
             onClick={() => setIsPlaying(false)}
-            className="p-1 cursor-pointer rounded-md transition-all ease-in duration-100 hover:bg-secondary"
+            className="p-3 text-black cursor-pointer rounded-full bg-[var(--highlight)]"
           >
             <Pause />
           </span>
         ) : (
           <span
             onClick={() => setIsPlaying(true)}
-            className="p-1 cursor-pointer rounded-md transition-all ease-in duration-100 hover:bg-secondary"
+            className="p-3 text-black cursor-pointer rounded-full bg-[var(--highlight)]"
           >
             <Play />
           </span>

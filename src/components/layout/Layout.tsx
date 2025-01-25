@@ -10,9 +10,15 @@ async function Layout({ children }: ChildrenProps) {
 
   return (
     <>
-      <Header session={user} />
-      {children}
-      <Footer />
+      <header className="w-full">
+        <Header session={user} />
+      </header>
+
+      <main className="w-full">{children}</main>
+
+      <footer className="w-full">
+        <Footer />
+      </footer>
     </>
   );
 }

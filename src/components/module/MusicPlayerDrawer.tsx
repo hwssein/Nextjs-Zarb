@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 
 import { MusicPlayerDrawerProps, OnClickEvent } from "@/types/types";
@@ -18,6 +18,7 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from "@/components/ui/drawer";
+import { CircleX } from "lucide-react";
 
 function MusicPlayerDrawer({
   name,
@@ -31,16 +32,9 @@ function MusicPlayerDrawer({
   assetId,
   role,
 }: MusicPlayerDrawerProps) {
+  const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const { toast } = useToast();
-
-  const [isLoading, setIsLoading] = useState<{
-    like: boolean;
-    dislike: boolean;
-  }>({
-    like: false,
-    dislike: false,
-  });
 
   const voteHandler = async (
     event: OnClickEvent,
@@ -48,26 +42,24 @@ function MusicPlayerDrawer({
   ) => {
     event.stopPropagation();
 
-    setIsLoading((prevValue) => ({ ...prevValue, [voteType]: true }));
+    startTransition(async () => {
+      const likeResponse = await submitVote(id, voteType);
 
-    const likeResponse = await submitVote(id, voteType);
+      if ("error" in likeResponse || likeResponse.error) {
+        toast({
+          description: likeResponse.error,
+          variant: "destructive",
+        });
 
-    setIsLoading((prevValue) => ({ ...prevValue, [voteType]: false }));
+        return;
+      }
 
-    if ("error" in likeResponse || likeResponse.error) {
-      toast({
-        description: likeResponse.error,
-        variant: "destructive",
-      });
-
-      return;
-    }
-
-    if ("message" in likeResponse || likeResponse.message) {
-      toast({
-        description: likeResponse.message,
-      });
-    }
+      if ("message" in likeResponse || likeResponse.message) {
+        toast({
+          description: likeResponse.message,
+        });
+      }
+    });
   };
 
   const deleteHandler = async (event: OnClickEvent) => {
@@ -91,14 +83,14 @@ function MusicPlayerDrawer({
   return (
     <>
       <DrawerHeader className="w-full max-w-5xl flex flex-col items-start justify-start gap-4">
-        <DrawerTitle className="w-full flex flex-col items-start justify-start gap-4 capitalize">
-          <span className="w-full text-left font-bold">{name}</span>
-          <span className="w-full text-left">{artist}</span>
+        <DrawerTitle className="w-full flex flex-col items-start justify-start gap-4 capitalize mt-2">
+          <span className="w-full text-left font-semibold">{name}</span>
+          <span className="w-full text-left font-medium">{artist}</span>
         </DrawerTitle>
 
-        <DrawerDescription className="w-full flex items-center justify-around gap-2 capitalize">
-          <span>{category}</span>
-          <span>{language}</span>
+        <DrawerDescription className="w-full flex items-center justify-around gap-2 uppercase">
+          <span className="text-stroke">{category}</span>
+          <span className="text-stroke">{language}</span>
         </DrawerDescription>
 
         <MusicPlayer musicUrls={[url]} />
@@ -106,26 +98,26 @@ function MusicPlayerDrawer({
 
       <DrawerFooter className="w-full  max-w-5xl">
         <VoteButtons
-          isLoading={isLoading}
+          isLoading={isPending}
           voteHandler={voteHandler}
           like={like}
           dislike={dislike}
         />
 
-        <DrawerClose className="w-full flex items-center justify-center gap-4">
-          <span className="w-28 bg-background border border-stroke p-1 rounded-md transition-all ease-in duration-100 hover:bg-secondary">
-            Close
-          </span>
+        <div className="w-full flex items-center justify-center gap-4">
+          <DrawerClose className="w-10 text-center absolute top-2 right-2 p-2">
+            <CircleX />
+          </DrawerClose>
 
           {role === "ADMIN" && (
             <span
               onClick={deleteHandler}
-              className="w-28 bg-destructive text-white border border-destructive p-1 rounded-md transition-all ease-in duration-100 hover:bg-secondary hover:text-foreground"
+              className="w-24 text-center bg-destructive text-white border border-destructive p-1 rounded-md"
             >
               Delete
             </span>
           )}
-        </DrawerClose>
+        </div>
       </DrawerFooter>
     </>
   );

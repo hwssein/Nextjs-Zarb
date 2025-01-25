@@ -1,5 +1,11 @@
+import PlayerPage from "@/components/template/PlayerPage";
+
 function Player() {
-  return <div>Player</div>;
+  return (
+    <>
+      <PlayerPage />
+    </>
+  );
 }
 
 export default Player;
