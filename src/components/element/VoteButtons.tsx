@@ -24,7 +24,7 @@ function VoteButtons({
       <div className="w-3/6 flex items-center justify-center gap-2">
         <Button
           onClick={(event) => voteHandler(event, "dislike")}
-          className="w-40 border border-destructive"
+          className="w-36 border-2 border-destructive"
           variant="outline"
           disabled={isLoading}
         >
@@ -36,7 +36,7 @@ function VoteButtons({
       <div className="w-3/6 flex items-center justify-center gap-2">
         <Button
           onClick={(event) => voteHandler(event, "like")}
-          className="w-40 border border-chart-2"
+          className="w-36 border-2 border-chart-2"
           variant="outline"
           disabled={isLoading}
         >

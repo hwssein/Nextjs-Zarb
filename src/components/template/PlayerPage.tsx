@@ -63,37 +63,41 @@ function PlayerPage({ musics }: GetMusicProps) {
 
   return (
     <>
-      <div className="w-full h-[calc(100vh-210px)] rounded-md flex flex-col items-center justify-between gap-2">
-        <div className="w-full flex flex-col items-center justify-center gap-4 mt-4">
-          <div className="w-full flex flex-col items-center justify-start gap-2 capitalize text-xl">
-            <span className="font-medium">{playlist[currentMusic]?.name}</span>
-            <span className="font-normal">
-              {playlist[currentMusic]?.artist}
-            </span>
+      <div className="w-full bg-[url(/images/player-background-light.jpg)] dark:bg-[url(/images/player-background-dark.jpg)] bg-cover bg-center rounded-md">
+        <div className="w-full flex flex-col items-center justify-between gap-2 pb-4 backdrop-blur-sm">
+          <div className="w-full flex flex-col items-center justify-center gap-4 mt-4 mb-8">
+            <div className="w-full flex flex-col items-center justify-start gap-2 capitalize text-xl">
+              <span className="font-medium">
+                {playlist[currentMusic]?.name}
+              </span>
+              <span className="font-normal">
+                {playlist[currentMusic]?.artist}
+              </span>
+            </div>
+
+            <Image
+              src="/images/player-cover.jpg"
+              alt="player-cover"
+              width={300}
+              height={300}
+              className="rounded-md"
+            />
           </div>
 
-          <Image
-            src="/images/music-player-cover.png"
-            alt="player-cover"
-            width={300}
-            height={300}
-            className="rounded-md"
-          />
-        </div>
+          <div className="w-full px-4 mb-4 flex flex-col items-center justify-start gap-10">
+            <VoteButtons
+              isLoading={isPending}
+              voteHandler={voteHandler}
+              like={playlist[currentMusic]?.like}
+              dislike={playlist[currentMusic]?.dislike}
+            />
 
-        <div className="w-full px-4 mb-4 flex flex-col items-center justify-start gap-12">
-          <VoteButtons
-            isLoading={isPending}
-            voteHandler={voteHandler}
-            like={playlist[currentMusic]?.like}
-            dislike={playlist[currentMusic]?.dislike}
-          />
-
-          <MusicPlayer
-            musicUrl={playlist[currentMusic].url}
-            nextHandler={nextHandler}
-            prevHandler={prevHandler}
-          />
+            <MusicPlayer
+              musicUrl={playlist[currentMusic].url}
+              nextHandler={nextHandler}
+              prevHandler={prevHandler}
+            />
+          </div>
         </div>
       </div>
     </>
