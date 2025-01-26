@@ -18,7 +18,7 @@ export const Get_Unpublished_Music = gql`
 
 export const Get_Published_Music = gql`
   query getPublishedMusic {
-    musics(where: { published: true }, first: 50) {
+    musics(where: { published: true }, first: 100) {
       id
       name
       artist

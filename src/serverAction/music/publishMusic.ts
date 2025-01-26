@@ -46,7 +46,7 @@ const publishMusic = async (
     const assetIdResult = publishMusicAsset?.data?.publishAsset?.id;
     const musicIdResult = publishMusicData?.data?.publishMusic?.id;
 
-    if (!assetIdResult || !musicIdResult) {
+    if ((assetId !== "false" && !assetIdResult) || !musicIdResult) {
       throw new Error("server error");
     }
 
