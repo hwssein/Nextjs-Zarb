@@ -3,6 +3,7 @@ import { ChildrenProps } from "@/types/types";
 
 import Layout from "@/layout/Layout";
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import { metadataKeyword } from "@/constant/metadataKeyword";
 
 import myFont from "@/config/font";
 import "./globals.css";
@@ -11,7 +12,8 @@ import { Toaster } from "@/components/ui/toaster";
 export const metadata: Metadata = {
   title: "ZARB | The Music For Build The Body",
   description:
-    "this is a next.js project developed by hwssein for personal or public usage",
+    "Explore the best music collection online for your workout. By Zarb Beat",
+  keywords: metadataKeyword,
 };
 
 export default function RootLayout({ children }: ChildrenProps) {

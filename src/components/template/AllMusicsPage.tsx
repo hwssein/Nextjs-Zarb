@@ -1,6 +1,12 @@
 import { GetMusicProps } from "@/types/types";
-import MusicCardControl from "../module/MusicCardControl";
 import FilterSection from "../module/FilterSection";
+import dynamic from "next/dynamic";
+import Loader from "../element/animation/Loader";
+
+const MusicCardControl = dynamic(() => import("@/module/MusicCardControl"), {
+  loading: () => <Loader />,
+  ssr: true,
+});
 
 function AllMusicsPage({
   musics,

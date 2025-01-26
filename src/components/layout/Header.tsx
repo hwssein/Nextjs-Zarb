@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 
 import { CheckSession } from "@/types/types";
 
 import { Button } from "../ui/button";
 import LogoutButton from "../element/LogoutButton";
-import dynamic from "next/dynamic";
 
 const ThemeToggle = dynamic(() => import("../element/ThemeToggle"), {
   ssr: false,
@@ -20,7 +20,7 @@ interface SessionProps {
 
 function Header({ session }: SessionProps) {
   const pathName = usePathname();
-  if (pathName === "/login") return null;
+  if (pathName === "/login" || pathName === "/player") return null;
 
   return (
     <>
