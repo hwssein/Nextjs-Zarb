@@ -72,16 +72,16 @@ function PlayerPage({ musics }: GetMusicProps) {
         <div className="w-full h-full flex flex-col items-center justify-between gap-4 backdrop-blur-sm">
           <div className="w-full flex flex-col items-center justify-start gap-2">
             <div className="w-full flex items-center justify-between gap-4 px-2">
-              <Link href="/" className="p-2">
+              <Link href="/" className="p-1">
                 <MoveLeft />
               </Link>
 
-              <span className="p-2">
+              <span className="p-1">
                 <ToggleTheme />
               </span>
             </div>
 
-            <div className="w-full flex flex-col items-center justify-start gap-2 capitalize text-xl mb-4">
+            <div className="w-full flex flex-col items-center justify-start gap-2 capitalize text-xl mb-3">
               <span className="font-medium">
                 {playlist[currentMusic]?.name}
               </span>
@@ -97,7 +97,7 @@ function PlayerPage({ musics }: GetMusicProps) {
               width={250}
               height={250}
               priority={true}
-              className="rounded-md mb-4"
+              className="rounded-md mb-3 w-52 h-52 sm:w-64 sm:h-64"
             />
 
             <div className="font-normal flex items-center justify-center gap-5 uppercase text-base text-stroke">
@@ -106,7 +106,7 @@ function PlayerPage({ musics }: GetMusicProps) {
             </div>
           </div>
 
-          <div className="w-full px-4 mb-10 flex flex-col items-center justify-start gap-12">
+          <div className="w-full px-4 mb-8 flex flex-col items-center justify-start gap-12">
             <VoteButtons
               isLoading={isPending}
               voteHandler={voteHandler}
