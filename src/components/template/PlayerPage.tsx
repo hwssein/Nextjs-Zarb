@@ -9,9 +9,12 @@ import { GetMusicProps, OnClickEvent } from "@/types/types";
 
 import submitVote from "@/serverAction/vote/submitVote";
 import VoteButtons from "../element/VoteButtons";
+import PlayerPlaylist from "./PlayerPlaylist";
 
 import { useToast } from "@/hooks/use-toast";
 import { MoveLeft } from "lucide-react";
+import { ListMusic } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "@/ui/sheet";
 
 const MusicPlayer = dynamic(() => import("@/module/MusicPlayer"), {
   ssr: false,
@@ -23,6 +26,7 @@ const ToggleTheme = dynamic(() => import("@/element/ThemeToggle"), {
 function PlayerPage({ musics }: GetMusicProps) {
   const playlist = useMemo(() => musics, [musics]);
   const [currentMusic, setCurrentMusic] = useState<number>(0);
+  const [isOpenSheet, setIsOpenSheet] = useState<boolean>(false);
 
   const [isPending, startTransition] = useTransition();
   const { toast } = useToast();
@@ -79,6 +83,20 @@ function PlayerPage({ musics }: GetMusicProps) {
               <span className="p-1">
                 <ToggleTheme />
               </span>
+
+              <Sheet open={isOpenSheet} onOpenChange={setIsOpenSheet}>
+                <SheetTrigger className="p-1 cursor-pointer">
+                  <ListMusic />
+                </SheetTrigger>
+
+                <SheetContent className="overflow-y-auto">
+                  <PlayerPlaylist
+                    musics={musics}
+                    setCurrentMusic={setCurrentMusic}
+                    setIsOpenSheet={setIsOpenSheet}
+                  />
+                </SheetContent>
+              </Sheet>
             </div>
 
             <div className="w-full flex flex-col items-center justify-start gap-2 capitalize text-xl mb-3">
