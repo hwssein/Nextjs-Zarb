@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { memo, useRef, useState } from "react";
 
 import ReactPlayer from "react-player";
 import RangeProgress from "../ui/RangeProgress";
@@ -17,7 +17,7 @@ interface MusicPlayerProps {
 }
 
 function MusicPlayer({ musicUrl, nextHandler, prevHandler }: MusicPlayerProps) {
-  const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [progressPercentage, setProgressPercentage] = useState<number>(0);
   const [progressSeconds, setProgressSeconds] = useState<number>(0);
   const [totalDuration, setTotalDuration] = useState<number>(0);
@@ -112,4 +112,4 @@ function MusicPlayer({ musicUrl, nextHandler, prevHandler }: MusicPlayerProps) {
   );
 }
 
-export default MusicPlayer;
+export default memo(MusicPlayer);

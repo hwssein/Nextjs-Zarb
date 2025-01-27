@@ -128,12 +128,12 @@ function PlayerPage({ musics }: GetMusicProps) {
             <VoteButtons
               isLoading={isPending}
               voteHandler={voteHandler}
-              like={playlist[currentMusic]?.like}
-              dislike={playlist[currentMusic]?.dislike}
+              like={playlist[currentMusic]?.like ?? 0}
+              dislike={playlist[currentMusic]?.dislike ?? 0}
             />
 
             <MusicPlayer
-              musicUrl={playlist[currentMusic].url}
+              musicUrl={playlist[currentMusic]?.url}
               nextHandler={nextHandler}
               prevHandler={prevHandler}
             />
