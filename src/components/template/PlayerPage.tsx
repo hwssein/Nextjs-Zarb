@@ -89,7 +89,7 @@ function PlayerPage({ musics }: GetMusicProps) {
                   <ListMusic />
                 </SheetTrigger>
 
-                <SheetContent className="overflow-y-auto">
+                <SheetContent className="overflow-y-auto px-2 w-5/6 sm:w-96">
                   <PlayerPlaylist
                     musics={musics}
                     setCurrentMusic={setCurrentMusic}

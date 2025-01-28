@@ -29,7 +29,7 @@ function PlayerPlaylist({
           all musics
         </SheetTitle>
 
-        <SheetDescription asChild>
+        <SheetDescription asChild className="w-full">
           <div className="w-full flex flex-col items-center justify-start gap-2">
             {musics.map((item, index) => (
               <div

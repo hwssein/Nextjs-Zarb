@@ -55,6 +55,17 @@ function MusicPlayer({ musicUrl, nextHandler, prevHandler }: MusicPlayerProps) {
           setProgressSeconds(progress.playedSeconds);
         }}
         config={{
+          soundcloud: {
+            options: {
+              hide_related: false,
+              visual: false,
+            },
+          },
+          youtube: {
+            playerVars: {
+              controls: 0,
+            },
+          },
           file: {
             attributes: {
               controlsList: "nodownload",
