@@ -14,6 +14,22 @@ const config: Config = {
       fontFamily: {
         poppins: ["var(--font-poppins)"],
       },
+      animation: {
+        uploadText: "uploadText infinite ease-in 2s",
+      },
+      keyframes: {
+        uploadText: {
+          "0%": {
+            opacity: "1",
+          },
+          "50%": {
+            opacity: "0.1",
+          },
+          "100%": {
+            opacity: "1",
+          },
+        },
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

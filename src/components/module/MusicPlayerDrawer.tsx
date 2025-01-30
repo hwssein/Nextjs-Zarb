@@ -66,18 +66,22 @@ function MusicPlayerDrawer({
     event.stopPropagation();
 
     const confirmDelete: boolean = confirm("Are You Sure To DELETE?");
-
     if (!confirmDelete) return;
 
-    const deleteRes = await deleteMusic(id, assetId ?? "false");
+    startTransition(async () => {
+      const deleteRes = await deleteMusic(id, assetId ?? "false");
 
-    if ("message" in deleteRes || deleteRes.message) {
-      toast({ description: "Deleted successful" });
-      router.refresh();
-    }
+      if ("message" in deleteRes || deleteRes.message) {
+        toast({ description: "Deleted successful" });
+        router.refresh();
+      }
 
-    if ("error" in deleteRes || deleteRes.error)
-      toast({ description: "Server Error, Try Again", variant: "destructive" });
+      if ("error" in deleteRes || deleteRes.error)
+        toast({
+          description: "Server Error, Try Again",
+          variant: "destructive",
+        });
+    });
   };
 
   return (
@@ -109,14 +113,19 @@ function MusicPlayerDrawer({
             <CircleX />
           </DrawerClose>
 
-          {role === "ADMIN" && (
-            <span
-              onClick={deleteHandler}
-              className="w-24 text-center bg-destructive text-white border border-destructive p-1 rounded-md"
-            >
-              Delete
-            </span>
-          )}
+          {role === "ADMIN" &&
+            (isPending ? (
+              <span className="w-24 cursor-wait text-center bg-secondary text-white border border-secondary p-1 rounded-md">
+                Delete
+              </span>
+            ) : (
+              <span
+                onClick={deleteHandler}
+                className="w-24 cursor-pointer text-center bg-destructive text-white border border-destructive p-1 rounded-md"
+              >
+                Delete
+              </span>
+            ))}
         </div>
       </DrawerFooter>
     </>

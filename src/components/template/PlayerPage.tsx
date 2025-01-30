@@ -76,7 +76,7 @@ function PlayerPage({ musics }: GetMusicProps) {
         <div className="w-full h-full flex flex-col items-center justify-between gap-4 backdrop-blur-sm">
           <div className="w-full flex flex-col items-center justify-start gap-2">
             <div className="w-full flex items-center justify-between gap-4 px-2">
-              <Link href="/" className="p-1">
+              <Link replace={true} href="/" className="p-1">
                 <MoveLeft />
               </Link>
 

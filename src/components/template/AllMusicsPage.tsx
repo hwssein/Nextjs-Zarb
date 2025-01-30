@@ -44,7 +44,7 @@ function AllMusicsPage({
           </>
         ) : (
           <div className="w-full text-center bg-secondary py-4 px-2 rounded-md mt-4 mb-10 capitalize">
-            Unfortunately, no items were found
+            no items were found
           </div>
         )}
       </div>

@@ -49,7 +49,7 @@ function FilterSection() {
         currentParams.delete("language");
       }
 
-      router.push(`/all-musics?${currentParams.toString()}`);
+      router.replace(`/all-musics?${currentParams.toString()}`);
     }
   }, [categoryValue, languageValue, router, searchParams]);
 
@@ -64,7 +64,7 @@ function FilterSection() {
       currentParams.delete("search");
     }
 
-    router.push(`/all-musics?${currentParams.toString()}`);
+    router.replace(`/all-musics?${currentParams.toString()}`);
   };
 
   const clearSearch = (event: OnClickEvent) => {
@@ -73,7 +73,7 @@ function FilterSection() {
     setSearchValue("");
 
     searchHandler(event);
-    router.push("/all-musics");
+    router.replace("/all-musics");
   };
 
   return (
@@ -83,7 +83,7 @@ function FilterSection() {
           <div className="w-full flex items-center justify-start gap-1 border border-input rounded-md px-1 transition-colors focus-within:border-primary">
             <input
               type="text"
-              placeholder="Search"
+              placeholder="Search By Music Name"
               value={searchValue}
               onChange={(event) => setSearchValue(event.target.value)}
               name="search"

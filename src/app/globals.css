@@ -64,6 +64,18 @@ input {
   line-height: 1em;
 }
 
+@keyframes uploadText {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 html {
   transition: background-color 0.1s ease, color 0.1s ease;
 }

@@ -105,6 +105,12 @@ function AddMusicSection() {
             <div className="w-full flex flex-col items-center justify-start gap-2 font-light">
               <span>Uploading File in Progress</span>
 
+              {form.name && form.artist && (
+                <span className="text-stroke capitalize animate-uploadText">
+                  {form?.name} - {form.artist}
+                </span>
+              )}
+
               <span className="w-12">
                 <Loader />
               </span>

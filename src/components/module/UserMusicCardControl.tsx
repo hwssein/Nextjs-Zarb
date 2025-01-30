@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useTransition } from "react";
 
 import { MusicPlayerDrawerProps, OnClickEvent } from "@/types/types";
 
@@ -30,6 +31,7 @@ function UserMusicCardControl({
 }) {
   const { toast } = useToast();
   const router = useRouter();
+  const [isPending, startTransition] = useTransition();
 
   const deleteHandler = async (event: OnClickEvent) => {
     event.stopPropagation();
@@ -38,15 +40,20 @@ function UserMusicCardControl({
 
     if (!confirmDelete) return;
 
-    const deleteRes = await deleteMusic(id, assetId ?? "false");
+    startTransition(async () => {
+      const deleteRes = await deleteMusic(id, assetId ?? "false");
 
-    if ("message" in deleteRes || deleteRes.message) {
-      toast({ description: "Deleted successful" });
-      router.refresh();
-    }
+      if ("message" in deleteRes || deleteRes.message) {
+        toast({ description: "Deleted successful" });
+        router.refresh();
+      }
 
-    if ("error" in deleteRes || deleteRes.error)
-      toast({ description: "Server Error, Try Again", variant: "destructive" });
+      if ("error" in deleteRes || deleteRes.error)
+        toast({
+          description: "Server Error, Try Again",
+          variant: "destructive",
+        });
+    });
   };
 
   const publishHandler = async (event: OnClickEvent) => {
@@ -56,15 +63,20 @@ function UserMusicCardControl({
 
     if (!confirmDelete) return;
 
-    const publishRes = await publishMusic(id, assetId ?? "false");
+    startTransition(async () => {
+      const publishRes = await publishMusic(id, assetId ?? "false");
 
-    if ("message" in publishRes || publishRes.message) {
-      toast({ description: "published successful" });
-      router.refresh();
-    }
+      if ("message" in publishRes || publishRes.message) {
+        toast({ description: "published successful" });
+        router.refresh();
+      }
 
-    if ("error" in publishRes || publishRes.error)
-      toast({ description: "Server Error, Try Again", variant: "destructive" });
+      if ("error" in publishRes || publishRes.error)
+        toast({
+          description: "Server Error, Try Again",
+          variant: "destructive",
+        });
+    });
   };
 
   return (
@@ -79,6 +91,7 @@ function UserMusicCardControl({
             <div className="w-full flex items-center justify-end gap-2 pr-3">
               <Button
                 size="sm"
+                disabled={isPending}
                 variant="destructive"
                 className="w-16 sm:w-20"
                 onClick={deleteHandler}
@@ -89,6 +102,7 @@ function UserMusicCardControl({
               {role === "ADMIN" && (
                 <Button
                   size="sm"
+                  disabled={isPending}
                   variant="default"
                   className="w-16 sm:w-20"
                   onClick={publishHandler}

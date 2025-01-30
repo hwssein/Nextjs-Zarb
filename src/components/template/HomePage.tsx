@@ -15,9 +15,11 @@ function HomePage({ musics }: GetMusicProps) {
       <div className="w-full flex flex-col items-center justify-start gap-2">
         <HomePageHeader />
 
-        <Link href="/player" className="w-full mt-1 mb-3">
-          <div className="w-full flex items-center justify-center gap-1 bg-[var(--highlight)] py-4 uppercase text-black font-semibold rounded-md">
-            play <BicepsFlexed />
+        <Link replace={true} href="/player" className="w-full mt-1 mb-3">
+          <div className="w-full bg-[var(--highlight)] py-4 rounded-md">
+            <span className="w-full text-black font-semibold uppercase animate-uploadText flex items-center justify-center gap-1 text-center">
+              play <BicepsFlexed />
+            </span>
           </div>
         </Link>
 
