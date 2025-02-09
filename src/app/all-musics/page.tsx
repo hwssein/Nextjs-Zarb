@@ -17,8 +17,9 @@ import Loader from "@/components/element/animation/Loader";
 import sessionRequest from "@/config/sessionRequest";
 
 export const metadata: Metadata = {
-  title: "ZARB | All Musics",
-  description: "Zarb Musics Page For Build Your Body",
+  title: "ZARBBEAT | Power Your Workout with the Best Gym Beats - All Musics",
+  description:
+    "Unleash your full potential with Zarb Beat - the ultimate collection of high-energy gym music designed to power up your workouts. From intense training sessions to motivational beats, our playlist will keep you moving and crushing your fitness goals",
 };
 
 interface SearchParams {

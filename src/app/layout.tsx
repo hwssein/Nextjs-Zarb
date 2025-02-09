@@ -10,9 +10,9 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: "ZARB | The Music For Build The Body",
+  title: "ZARBBEAT | Power Your Workout with the Best Gym Beats",
   description:
-    "Explore the best music collection online for your workout. By Zarb Beat",
+    "Unleash your full potential with Zarb Beat - the ultimate collection of high-energy gym music designed to power up your workouts. From intense training sessions to motivational beats, our playlist will keep you moving and crushing your fitness goals.",
   keywords: metadataKeyword,
 };
 

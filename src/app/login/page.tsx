@@ -9,7 +9,7 @@ import LoginPage from "@/components/template/LoginPage";
 import Loader from "@/components/element/animation/Loader";
 
 export const metadata: Metadata = {
-  title: "ZARB | SignUp Or Login",
+  title: "ZARBBEAT | SignUp Or Login",
 };
 
 async function Login() {

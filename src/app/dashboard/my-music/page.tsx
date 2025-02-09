@@ -9,7 +9,7 @@ import Loader from "@/components/element/animation/Loader";
 import MyMusicPage from "@/components/template/MyMusicPage";
 
 export const metadata: Metadata = {
-  title: "ZARB | My Musics",
+  title: "ZARBBEAT | My Musics",
 };
 
 async function MyMusic() {

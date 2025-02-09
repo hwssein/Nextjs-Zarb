@@ -11,7 +11,7 @@ import { Get_Unpublished_Music } from "@/query/musicQuery";
 import AdminPage from "@/components/template/AdminPage";
 
 export const metadata: Metadata = {
-  title: "ZARB | Admin",
+  title: "ZARBBEAT | Admin",
 };
 
 async function Admin() {

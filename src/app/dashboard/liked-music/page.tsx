@@ -11,7 +11,7 @@ import LikedMusicPage from "@/components/template/LikedMusicPage";
 import Loader from "@/components/element/animation/Loader";
 
 export const metadata: Metadata = {
-  title: "ZARB | liked Musics",
+  title: "ZARBBEAT | liked Musics",
 };
 
 async function LikedMusic() {

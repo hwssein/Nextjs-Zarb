@@ -20,9 +20,9 @@ function AllMusicPreview({ musics }: GetMusicProps) {
     <>
       <div className="w-full flex flex-col items-center justify-start gap-2 p-2 border border-stroke rounded-md">
         <div className="w-full flex items-start">
-          <h2 className="capitalize font-semibold text-lg tracking-wider border-b-2 border-primary mb-2">
+          <h3 className="capitalize font-semibold text-lg tracking-wider border-b-2 border-primary mb-2">
             newest
-          </h2>
+          </h3>
         </div>
 
         <div className="w-full flex flex-col items-center justify-start gap-2 md:flex-row md:flex-wrap md:justify-between">

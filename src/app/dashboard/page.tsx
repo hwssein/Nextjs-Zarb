@@ -7,7 +7,7 @@ import Loader from "@/components/element/animation/Loader";
 import sessionRequest from "@/config/sessionRequest";
 
 export const metadata: Metadata = {
-  title: "ZARB | Dashboard",
+  title: "ZARBBEAT | Dashboard",
 };
 
 async function Dashboard() {

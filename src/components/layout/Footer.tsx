@@ -16,7 +16,7 @@ function Footer() {
 
         <p className="font-light capitalize text-center">
           Everything here is for you. by{" "}
-          <strong className="font-bold">ZARB</strong>
+          <strong className="font-bold">ZARB BEAT</strong>
         </p>
       </div>
 

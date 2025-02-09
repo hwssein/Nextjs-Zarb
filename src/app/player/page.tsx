@@ -11,8 +11,9 @@ import { Get_Published_Music } from "@/graphql/query/musicQuery";
 import Loader from "@/components/element/animation/Loader";
 
 export const metadata: Metadata = {
-  title: "ZARB | Music Player",
-  description: "Zarb Music Player For Build Your Body",
+  title: "ZARBBEAT | Power Your Workout with the Best Gym Beats - Music Player",
+  description:
+    "Unleash your full potential with Zarb Beat - the ultimate collection of high-energy gym music designed to power up your workouts. From intense training sessions to motivational beats, our playlist will keep you moving and crushing your fitness goals",
 };
 
 async function Player() {
